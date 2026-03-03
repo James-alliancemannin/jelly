@@ -2,7 +2,7 @@
 <html lang="en-GB">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Free Data Leak Check • Aspen Meridian</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -81,10 +81,12 @@
   </div>
 
   <script>
-    // IMPORTANT:
-    // If your site is hosted on GitHub Pages and the API is on Vercel,
-    // you MUST call the full Vercel URL here (not /api/check-leak).
-    const API_ENDPOINT = "https://am-amber.vercel.app/api/check-leak"; // <-- CHANGE if your Vercel URL differs
+    /**
+     * IMPORTANT:
+     * Your main site is static (GitHub Pages). It cannot serve /api/*.
+     * Always call the Vercel deployment domain for the serverless function.
+     */
+    const API_ENDPOINT = "https://am-amber.vercel.app/api/check-leak";
 
     const form = document.getElementById("leak-form");
     const modal = document.getElementById("result-modal");
@@ -106,7 +108,7 @@
       modal.classList.add("hidden");
     }
 
-    // click outside to close
+    // close if clicking outside the card
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
     });
@@ -127,7 +129,6 @@
         return;
       }
 
-      // Loading UI
       btn.disabled = true;
       btn.classList.add("opacity-60", "cursor-not-allowed");
 
@@ -147,6 +148,7 @@
         });
 
         const raw = await res.text();
+
         let data = null;
         try { data = JSON.parse(raw); } catch (_) {}
 
@@ -162,7 +164,6 @@
           throw new Error("Unexpected server response (non-JSON).");
         }
 
-        // Render results
         const count = Number(data.count || 0);
         const breaches = Array.isArray(data.breaches) ? data.breaches : [];
 
@@ -191,8 +192,7 @@
                    class="inline-block w-full py-5 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
                   Request Consultation →
                 </a>
-                <button
-                  type="button"
+                <button type="button"
                   onclick="document.getElementById('result-modal').classList.add('hidden')"
                   class="w-full py-4 bg-zinc-800 hover:bg-zinc-700 rounded-3xl text-sm font-semibold">
                   Close
@@ -200,7 +200,6 @@
               </div>
             </div>
           `);
-
         } else {
           openModal(`
             <div class="text-center">
@@ -218,8 +217,7 @@
                    class="inline-block w-full py-5 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
                   Request Consultation →
                 </a>
-                <button
-                  type="button"
+                <button type="button"
                   onclick="document.getElementById('result-modal').classList.add('hidden')"
                   class="w-full py-4 bg-zinc-800 hover:bg-zinc-700 rounded-3xl text-sm font-semibold">
                   Close
@@ -231,16 +229,19 @@
 
       } catch (err) {
         console.error(err);
+
         openModal(`
           <div class="text-center py-10 text-red-400">
             <p class="text-xl">Sorry, something went wrong with the search.</p>
             <p class="text-sm mt-3 text-zinc-500 break-words">
               ${escapeHtml(err && err.message ? err.message : "Unknown error")}
             </p>
-            <button
-              type="button"
+            <p class="text-[11px] text-zinc-500 mt-4">
+              Debug: calling <span class="text-zinc-300">${escapeHtml(API_ENDPOINT)}</span>
+            </p>
+            <button type="button"
               onclick="document.getElementById('result-modal').classList.add('hidden')"
-              class="mt-8 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">
+              class="mt-7 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-semibold">
               Close
             </button>
           </div>
