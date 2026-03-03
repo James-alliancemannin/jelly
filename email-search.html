@@ -7,147 +7,39 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <style>
-        .modal { animation: modalPop 0.3s ease-out forwards; }
-        @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-    </style>
 </head>
-<body class="tail-container bg-zinc-950 text-white min-h-screen">
+<body class="bg-zinc-950 text-white min-h-screen p-8">
 
-<div class="max-w-2xl mx-auto px-6 py-20">
-    <div class="text-center mb-12">
-        <img src="/assets/images/logo.png" alt="Aspen Meridian" class="h-20 mx-auto mb-6">
-        <h1 class="text-4xl font-semibold tracking-tight">Free Data Leak Check</h1>
-        <p class="text-zinc-400 mt-3">Enter your email address below for a quick check against known breaches.</p>
+<div class="max-w-2xl mx-auto">
+    <div class="text-center mb-8">
+        <h1 class="text-4xl font-bold">DEBUG VERSION - FULL VERCEL SUBDOMAIN</h1>
+        <p class="text-emerald-400">If you see this text, you have the latest file</p>
     </div>
 
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
+    <div class="bg-zinc-900 p-10 rounded-3xl">
         <form id="leak-form">
-            <div class="mb-6">
-                <label class="block text-sm text-zinc-400 mb-2">Email Address</label>
-                <input type="email" id="email" required
-                       class="w-full bg-zinc-800 border border-zinc-700 focus:border-emerald-500 rounded-2xl px-6 py-4 outline-none text-lg"
-                       placeholder="you@example.com">
-            </div>
-
-            <div class="flex justify-center my-6">
-                <div class="g-recaptcha" data-sitekey="6LcQI34sAAAAALuDqFMT5cbiRy-CIVrxp477-5xz"></div>
-            </div>
-
-            <button type="submit" id="search-btn"
-                    class="w-full bg-emerald-600 hover:bg-emerald-700 py-5 rounded-3xl text-lg font-semibold transition-all">
-                Check My Email Now
-            </button>
+            <input type="email" id="email" value="account-exists@hibp-integration-tests.com" class="w-full p-4 rounded-xl bg-zinc-800 mb-6">
+            <div class="g-recaptcha" data-sitekey="6LcQI34sAAAAALuDqFMT5cbiRy-CIVrxp477-5xz"></div>
+            <button type="submit" class="w-full mt-6 bg-red-600 py-6 rounded-3xl text-xl font-bold">TEST API CALL</button>
         </form>
     </div>
 </div>
 
-<!-- RESULT MODAL -->
-<div id="result-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[200]">
-    <div class="bg-zinc-900 rounded-3xl max-w-lg w-full mx-4 modal overflow-auto max-h-[90vh]">
-        <div class="p-8" id="modal-content"></div>
-    </div>
-</div>
-
 <script>
-    const form = document.getElementById('leak-form');
-    const modal = document.getElementById('result-modal');
-    const modalContent = document.getElementById('modal-content');
-
-    form.addEventListener('submit', async (e) => {
+    document.getElementById('leak-form').addEventListener('submit', async (e) => {
         e.preventDefault();
+        const email = document.getElementById('email').value;
 
-        const email = document.getElementById('email').value.trim();
-        const recaptchaResponse = grecaptcha.getResponse();
+        alert("Sending to https://am-amber.vercel.app/api/check-leak ...");
 
-        if (!recaptchaResponse) {
-            alert("Please complete the 'I'm not a robot' checkbox.");
-            return;
-        }
-        if (!email) {
-            alert("Please enter a valid email address.");
-            return;
-        }
+        const res = await fetch('https://am-amber.vercel.app/api/check-leak', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, recaptchaToken: grecaptcha.getResponse() })
+        });
 
-        modal.classList.remove('hidden');
-        modalContent.innerHTML = `
-            <div class="text-center py-12">
-                <i class="fa-solid fa-spinner fa-spin text-4xl text-emerald-500 mb-4"></i>
-                <p class="text-lg">Searching known breach databases...</p>
-                <p class="text-zinc-500 text-sm mt-2">Please wait...</p>
-            </div>
-        `;
-
-        try {
-            // FIXED: Using full Vercel subdomain to bypass custom domain routing issue
-            const apiUrl = 'https://am-amber.vercel.app/api/check-leak';
-            console.log('Calling API at:', apiUrl);
-
-            const res = await fetch(apiUrl, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, recaptchaToken: recaptchaResponse })
-            });
-
-            console.log('Status:', res.status);
-            const text = await res.text();
-            console.log('Raw response:', text);
-
-            let data;
-            try {
-                data = JSON.parse(text);
-            } catch (e) {
-                modalContent.innerHTML = `
-                    <div class="text-red-400">
-                        <h2 class="text-xl font-bold mb-4">Backend Error</h2>
-                        <p>Status: ${res.status}</p>
-                        <pre class="bg-zinc-800 p-4 text-xs overflow-auto max-h-96 mt-4">${text}</pre>
-                        <button onclick="modal.classList.add('hidden')" class="mt-6 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">Close</button>
-                    </div>
-                `;
-                return;
-            }
-
-            let html = '';
-            if (data.success && data.count > 0) {
-                html = `
-                    <div class="text-center">
-                        <div class="text-red-500 text-6xl mb-4">⚠️</div>
-                        <h2 class="text-3xl font-semibold text-red-400">Warning: Your email was found in breaches</h2>
-                        <p class="text-4xl font-bold text-white mt-4">${data.count} breach${data.count > 1 ? 'es' : ''}</p>
-                        <div class="mt-8 text-left bg-zinc-800 rounded-2xl p-6 text-sm">
-                            ${data.breaches.map(b => `<div class="py-2 border-b border-zinc-700 last:border-0">${b.Name} (${b.BreachDate || 'Unknown date'})</div>`).join('')}
-                        </div>
-                        <a href="/index.html?open=contact" class="mt-8 inline-block w-full py-6 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
-                            Request Consultation →
-                        </a>
-                    </div>
-                `;
-            } else {
-                html = `
-                    <div class="text-center">
-                        <div class="text-emerald-500 text-6xl mb-4">✅</div>
-                        <h2 class="text-3xl font-semibold text-emerald-400">Good news!</h2>
-                        <p class="text-2xl mt-4">No known breaches found for this email.</p>
-                        <p class="mt-8 text-zinc-400">However, this is only a superficial free check.</p>
-                        <a href="/index.html?open=contact" class="mt-8 inline-block w-full py-6 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
-                            Request Consultation →
-                        </a>
-                    </div>
-                `;
-            }
-            modalContent.innerHTML = html;
-
-        } catch (err) {
-            console.error(err);
-            modalContent.innerHTML = `
-                <div class="text-red-400">
-                    <h2 class="text-xl font-bold mb-4">Search failed</h2>
-                    <p class="text-sm">Check browser console (F12) for details.</p>
-                    <button onclick="modal.classList.add('hidden')" class="mt-6 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">Close</button>
-                </div>
-            `;
-        }
+        const text = await res.text();
+        alert(`Status: ${res.status}\n\nResponse:\n${text.substring(0, 500)}`);
     });
 </script>
 </body>
