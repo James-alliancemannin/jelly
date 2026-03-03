@@ -44,7 +44,7 @@
 
 <!-- RESULT MODAL -->
 <div id="result-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[200]">
-    <div class="bg-zinc-900 rounded-3xl max-w-lg w-full mx-4 modal">
+    <div class="bg-zinc-900 rounded-3xl max-w-lg w-full mx-4 modal overflow-auto max-h-[90vh]">
         <div class="p-8" id="modal-content"></div>
     </div>
 </div>
@@ -85,7 +85,7 @@
                 body: JSON.stringify({ email: email, recaptchaToken: recaptchaResponse })
             });
 
-            console.log('Response status:', res.status);
+            console.log('Status code:', res.status);
             const text = await res.text();
             console.log('Raw response from backend:', text);
 
@@ -93,8 +93,17 @@
             try {
                 data = JSON.parse(text);
             } catch (e) {
-                console.error('Failed to parse JSON. Raw response was:', text);
-                throw new Error('Backend did not return valid JSON');
+                console.error('Failed to parse JSON');
+                modalContent.innerHTML = `
+                    <div class="text-red-400">
+                        <h2 class="text-xl font-bold mb-4">Backend Error</h2>
+                        <p class="mb-2">Status: ${res.status}</p>
+                        <p class="mb-4 text-sm text-zinc-400">Raw response:</p>
+                        <pre class="bg-zinc-800 p-4 text-xs overflow-auto max-h-96 whitespace-pre-wrap">${text}</pre>
+                        <button onclick="modal.classList.add('hidden')" class="mt-6 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">Close</button>
+                    </div>
+                `;
+                return;
             }
 
             let html = '';
@@ -130,10 +139,10 @@
         } catch (err) {
             console.error('Full error:', err);
             modalContent.innerHTML = `
-                <div class="text-center py-12 text-red-400">
-                    <p class="text-xl">Search failed</p>
-                    <p class="text-sm mt-4 text-zinc-400">Check the browser console (F12) for details.</p>
-                    <button onclick="modal.classList.add('hidden')" class="mt-8 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">Close</button>
+                <div class="text-red-400">
+                    <h2 class="text-xl font-bold mb-4">Search failed</h2>
+                    <p class="mb-4">Check the browser console (F12) for details.</p>
+                    <button onclick="modal.classList.add('hidden')" class="mt-6 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">Close</button>
                 </div>
             `;
         }
