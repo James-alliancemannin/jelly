@@ -79,8 +79,11 @@
         `;
 
         try {
-            // FIXED: Use full Vercel subdomain to bypass custom domain routing issues
-            const res = await fetch('https://am-amber.vercel.app/api/check-leak', {
+            // FIXED: Using full Vercel subdomain to bypass custom domain routing issue
+            const apiUrl = 'https://am-amber.vercel.app/api/check-leak';
+            console.log('Calling API at:', apiUrl);
+
+            const res = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: email, recaptchaToken: recaptchaResponse })
@@ -88,18 +91,17 @@
 
             console.log('Status:', res.status);
             const text = await res.text();
-            console.log('Raw backend response:', text);
+            console.log('Raw response:', text);
 
             let data;
             try {
                 data = JSON.parse(text);
             } catch (e) {
                 modalContent.innerHTML = `
-                    <div class="text-red-400 p-6">
+                    <div class="text-red-400">
                         <h2 class="text-xl font-bold mb-4">Backend Error</h2>
                         <p>Status: ${res.status}</p>
-                        <p class="mt-4 text-sm">Raw response:</p>
-                        <pre class="bg-zinc-800 p-4 text-xs overflow-auto max-h-96">${text}</pre>
+                        <pre class="bg-zinc-800 p-4 text-xs overflow-auto max-h-96 mt-4">${text}</pre>
                         <button onclick="modal.classList.add('hidden')" class="mt-6 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">Close</button>
                     </div>
                 `;
@@ -139,9 +141,9 @@
         } catch (err) {
             console.error(err);
             modalContent.innerHTML = `
-                <div class="text-red-400 p-6">
+                <div class="text-red-400">
                     <h2 class="text-xl font-bold mb-4">Search failed</h2>
-                    <p>Check browser console (F12) for details.</p>
+                    <p class="text-sm">Check browser console (F12) for details.</p>
                     <button onclick="modal.classList.add('hidden')" class="mt-6 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">Close</button>
                 </div>
             `;
