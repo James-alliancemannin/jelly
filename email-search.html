@@ -30,7 +30,6 @@
                        placeholder="you@example.com">
             </div>
 
-            <!-- Checkbox reCAPTCHA (most reliable) -->
             <div class="flex justify-center my-6">
                 <div class="g-recaptcha" data-sitekey="6LcQI34sAAAAALuDqFMT5cbiRy-CIVrxp477-5xz"></div>
             </div>
@@ -86,7 +85,17 @@
                 body: JSON.stringify({ email: email, recaptchaToken: recaptchaResponse })
             });
 
-            const data = await res.json();
+            console.log('Response status:', res.status);
+            const text = await res.text();
+            console.log('Raw response from backend:', text);
+
+            let data;
+            try {
+                data = JSON.parse(text);
+            } catch (e) {
+                console.error('Failed to parse JSON. Raw response was:', text);
+                throw new Error('Backend did not return valid JSON');
+            }
 
             let html = '';
             if (data.success && data.count > 0) {
@@ -119,10 +128,11 @@
             modalContent.innerHTML = html;
 
         } catch (err) {
-            console.error(err);
+            console.error('Full error:', err);
             modalContent.innerHTML = `
                 <div class="text-center py-12 text-red-400">
-                    <p class="text-xl">Sorry, something went wrong with the search.</p>
+                    <p class="text-xl">Search failed</p>
+                    <p class="text-sm mt-4 text-zinc-400">Check the browser console (F12) for details.</p>
                     <button onclick="modal.classList.add('hidden')" class="mt-8 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">Close</button>
                 </div>
             `;
