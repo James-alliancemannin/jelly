@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +31,10 @@
                        placeholder="you@example.com">
             </div>
 
-            <div class="g-recaptcha" data-sitekey="6LcQI34sAAAAALuDqFMT5cbiRy-CIVrxp477-5xz" data-size="invisible"></div>
+            <!-- Standard checkbox reCAPTCHA (easier & more reliable) -->
+            <div class="flex justify-center my-6">
+                <div class="g-recaptcha" data-sitekey="6LcQI34sAAAAALuDqFMT5cbiRy-CIVrxp477-5xz"></div>
+            </div>
 
             <button type="submit" id="search-btn"
                     class="w-full bg-emerald-600 hover:bg-emerald-700 py-5 rounded-3xl text-lg font-semibold transition-all">
@@ -54,12 +58,20 @@
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
         const email = document.getElementById('email').value.trim();
+        const recaptchaResponse = grecaptcha.getResponse();
+
+        if (!recaptchaResponse) {
+            alert("Please complete the 'I'm not a robot' checkbox.");
+            return;
+        }
         if (!email) {
             alert("Please enter a valid email address.");
             return;
         }
 
+        // Show loading
         modal.classList.remove('hidden');
         modalContent.innerHTML = `
             <div class="text-center py-12">
@@ -69,17 +81,11 @@
             </div>
         `;
 
-        grecaptcha.execute();
-    });
-
-    window.onSubmit = async () => {
-        const email = document.getElementById('email').value.trim();
-
         try {
             const res = await fetch('/api/check-leak', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email: email, recaptchaToken: grecaptcha.getResponse() })
+                body: JSON.stringify({ email: email, recaptchaToken: recaptchaResponse })
             });
 
             const data = await res.json();
@@ -115,14 +121,16 @@
             modalContent.innerHTML = html;
 
         } catch (err) {
+            console.error(err);
             modalContent.innerHTML = `
                 <div class="text-center py-12 text-red-400">
-                    <p class="text-xl">Sorry, something went wrong.</p>
+                    <p class="text-xl">Sorry, something went wrong with the search.</p>
+                    <p class="text-sm mt-2 text-zinc-500">Check the browser console (F12) for details.</p>
                     <button onclick="modal.classList.add('hidden')" class="mt-8 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">Close</button>
                 </div>
             `;
         }
-    };
+    });
 </script>
 </body>
 </html>
