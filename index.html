@@ -105,9 +105,7 @@
          UI POLISH
     ================================ -->
     <style>
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             -webkit-font-smoothing: antialiased;
@@ -127,19 +125,15 @@
         }
 
         #articlesContainer {
-            overflow-x: auto;
-            overflow-y: hidden;
             scrollbar-width: none;
             -ms-overflow-style: none;
         }
-
-        #articlesContainer::-webkit-scrollbar {
-            display: none;
-        }
+        #articlesContainer::-webkit-scrollbar { display: none; }
     </style>
 
 </head>
 <body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
+
 <!-- NAVBAR -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800">
     <div class="max-w-screen-2xl mx-auto px-6">
@@ -286,7 +280,7 @@
         <button onclick="closeContactModal()" class="absolute top-6 right-6 text-3xl text-zinc-400 hover:text-white">×</button>
         <h2 class="text-3xl font-semibold mb-2">This form is confidential</h2>
         <p class="text-emerald-400 mb-8">Our team aims to respond within hours for urgent matters.</p>
-     
+
         <form id="contact-form" onsubmit="submitContactForm(event)">
             <div class="grid grid-cols-2 gap-5">
                 <div>
@@ -325,96 +319,85 @@
 
     <div class="mb-16">
       <span class="text-emerald-500 text-sm font-semibold tracking-widest">INSIGHTS</span>
-      <h2 class="heading-font text-6xl tracking-tighter font-semibold mt-2">
-        Latest Insights
-      </h2>
+      <h2 class="heading-font text-6xl tracking-tighter font-semibold mt-2">Latest Insights</h2>
       <p class="mt-6 max-w-2xl text-lg text-zinc-400">
         Expert analysis on digital forensics, intelligence trends, and risk mitigation.
       </p>
     </div>
 
-  <!-- Carousel Wrapper (FIXED) -->
-<div class="relative">
+    <!-- Carousel Wrapper (CORRECT) -->
+    <div class="relative">
 
-  <!-- Left Arrow -->
-  <button id="scrollLeft"
-    class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-zinc-900/90 backdrop-blur border border-zinc-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-emerald-600 transition">
-    <i class="fa-solid fa-chevron-left"></i>
-  </button>
+      <!-- Left Arrow -->
+      <button id="scrollLeft"
+        class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-zinc-900/90 backdrop-blur border border-zinc-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-emerald-600 transition">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
 
-  <!-- Right Arrow -->
-  <button id="scrollRight"
-    class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-zinc-900/90 backdrop-blur border border-zinc-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-emerald-600 transition">
-    <i class="fa-solid fa-chevron-right"></i>
-  </button>
+      <!-- Right Arrow -->
+      <button id="scrollRight"
+        class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-zinc-900/90 backdrop-blur border border-zinc-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-emerald-600 transition">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
 
-  <!-- Scroll Container -->
-  <div id="articlesContainer"
-    class="flex gap-8 overflow-x-auto scroll-smooth px-16 py-2">
-    <!-- cards -->
+      <!-- Scroll Container (FORCE HORIZONTAL) -->
+      <div id="articlesContainer"
+        class="flex flex-nowrap gap-8 overflow-x-auto overflow-y-hidden scroll-smooth px-16 py-2">
+
+        <!-- CARD 1 -->
+        <a href="/articles/Defensible-Deletion-in-2026.html" class="flex-none w-[380px]">
+          <div class="insight-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+            <img src="/assets/images/full/Defensible_Deletion_in_2026.jpg" class="w-full h-56 object-cover" alt="">
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold">Defensible Deletion in 2026</h3>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 2 -->
+        <a href="/articles/The-Rise-of-Encrypted-Messaging-Forensics.html" class="flex-none w-[380px]">
+          <div class="insight-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+            <img src="/assets/images/full/The_Rise_of_Encrypted_Messaging_Forensics.jpg" class="w-full h-56 object-cover" alt="">
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold">The Rise of Encrypted Messaging in Forensics</h3>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 3 -->
+        <a href="/insights/cloud-forensics-in-a-zero-trust-world.html" class="flex-none w-[380px]">
+          <div class="insight-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+            <img src="/assets/images/cloud-forensics.jpg" class="w-full h-56 object-cover" alt="">
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold">Cloud Forensics in a Zero-Trust World</h3>
+            </div>
+          </div>
+        </a>
+
+        <!-- CARD 4 -->
+        <a href="/insights/unmasking-the-catfish-digital-tracing-online-fraud.html" class="flex-none w-[380px]">
+          <div class="insight-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+            <img src="/assets/images/catfish-investigation.jpg" class="w-full h-56 object-cover" alt="">
+            <div class="p-8">
+              <h3 class="text-2xl font-semibold">Unmasking the Catfish: How Digital Tracing Exposes Online Fraud</h3>
+            </div>
+          </div>
+        </a>
+
+        <!-- ADD MORE CARDS BELOW (same pattern):
+        <a href="..." class="flex-none w-[380px]"> ... </a>
+        -->
+
+      </div>
+    </div>
+
   </div>
+</section>
 
-</div>
-
-  <!-- CARD 1 -->
-  <a href="/articles/Defensible-Deletion-in-2026.html"
-     class="flex-shrink-0 w-[380px]">
-    <div class="insight-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-      <img src="/assets/images/full/Defensible_Deletion_in_2026.jpg" class="w-full h-56 object-cover">
-      <div class="p-8">
-        <h3 class="text-2xl font-semibold">
-          Defensible Deletion in 2026
-        </h3>
-      </div>
-    </div>
-  </a>
-
-  <!-- CARD 2 -->
-  <a href="/articles/The-Rise-of-Encrypted-Messaging-Forensics.html"
-     class="flex-shrink-0 w-[380px]">
-    <div class="insight-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-      <img src="/assets/images/full/The_Rise_of_Encrypted_Messaging_Forensics.jpg" class="w-full h-56 object-cover">
-      <div class="p-8">
-        <h3 class="text-2xl font-semibold">
-          The Rise of Encrypted Messaging in Forensics
-        </h3>
-      </div>
-    </div>
-  </a>
-
-  <!-- CARD 3 -->
-  <a href="/insights/cloud-forensics-in-a-zero-trust-world.html"
-     class="flex-shrink-0 w-[380px]">
-    <div class="insight-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-      <img src="/assets/images/cloud-forensics.jpg" class="w-full h-56 object-cover">
-      <div class="p-8">
-        <h3 class="text-2xl font-semibold">
-          Cloud Forensics in a Zero-Trust World
-        </h3>
-      </div>
-    </div>
-  </a>
-
-  <!-- CARD 4 -->
-  <a href="/insights/unmasking-the-catfish-digital-tracing-online-fraud.html"
-     class="flex-shrink-0 w-[380px]">
-    <div class="insight-card bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-      <img src="/assets/images/catfish-investigation.jpg" class="w-full h-56 object-cover">
-      <div class="p-8">
-        <h3 class="text-2xl font-semibold">
-          Unmasking the Catfish: How Digital Tracing Exposes Online Fraud
-        </h3>
-      </div>
-    </div>
-  </a>
-
-</div>
-        
-<!-- FOOTER - Links moved to bottom right -->
+<!-- FOOTER -->
 <footer class="bg-zinc-950 border-t border-zinc-800 mt-24">
   <div class="max-w-screen-2xl mx-auto px-6 py-10">
-    
-    <!-- Top Row: Logo + Address (left) -->
+
     <div class="flex justify-between items-start flex-wrap gap-6">
       <div>
         <img src="/assets/images/logo.png" alt="Aspen Meridian - Elite Digital Forensics" class="h-36 w-auto mb-4">
@@ -431,117 +414,98 @@
       </div>
     </div>
 
-    <!-- Bottom Row: Copyright (left) + Links (right) -->
     <div class="border-t border-zinc-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-y-4">
-      
-      <!-- Copyright -->
       <p class="text-zinc-500 text-xs">
         &copy; 2026 Aspen Meridian Ltd. All rights reserved.
       </p>
 
-      <!-- Links - Right side at the bottom -->
       <div class="flex items-center gap-x-8 text-sm">
-        <a href="/terms-of-use.html"
-           class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">
-          Terms of Use
-        </a>
-        <a href="/privacy.html"
-           class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">
-          Privacy Policy &amp; GDPR
-        </a>
+        <a href="/terms-of-use.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Terms of Use</a>
+        <a href="/privacy.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Privacy Policy &amp; GDPR</a>
       </div>
-
     </div>
 
-    <!-- Optional tagline -->
     <div class="text-center mt-6">
-      <p class="text-zinc-500 text-[10px] tracking-widest">
-        DISCREET • CONFIDENTIAL • PROFESSIONAL
-      </p>
+      <p class="text-zinc-500 text-[10px] tracking-widest">DISCREET • CONFIDENTIAL • PROFESSIONAL</p>
     </div>
 
   </div>
 </footer>
-    
-  <!-- Bottom Row -->
-<div class="border-t border-zinc-800 mt-10 pt-6">
-  <div class="max-w-screen-2xl mx-auto px-6 text-center">
-    <p class="text-zinc-500 text-xs">
-      &copy;  2026 Aspen Meridian Ltd. All rights reserved.
-    </p>
-    <p class="text-zinc-500 text-[10px] mt-3 tracking-widest">
-      DISCREET • CONFIDENTIAL • PROFESSIONAL
-    </p>
-  </div>
-</div>
 
 <script src="/assets/js/main.js"></script>
 <script>
-    let modalShown = false;
-    function smoothScrollTo(sectionId) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-            const navHeight = 100;
-            const offsetPosition = element.getBoundingClientRect().top + window.scrollY - navHeight;
-            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-        }
-    }
-    function openContactModal() {
-        modalShown = true;
-        document.getElementById('contact-modal').classList.remove('hidden');
-        document.getElementById('contact-modal').classList.add('flex');
-    }
-    function closeContactModal() {
-        document.getElementById('contact-modal').classList.add('hidden');
-        document.getElementById('contact-modal').classList.remove('flex');
-    }
-    function submitContactForm(e) {
-        e.preventDefault();
-        alert("✅ Inquiry received. Our team will contact you within hours.");
-        closeContactModal();
-        e.target.reset();
-    }
-    setTimeout(() => {
-        if (!modalShown) openContactModal();
-    }, 120000);
-    document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-        alert("Mobile menu coming soon");
-    });
+  let modalShown = false;
 
-    // CAROUSEL ARROWS
-    const carouselContainer = document.getElementById('articlesContainer');
-    const leftArrow = document.getElementById('scrollLeft');
-    const rightArrow = document.getElementById('scrollRight');
-    if (carouselContainer && leftArrow && rightArrow) {
-        const scrollStep = 440;
-        leftArrow.addEventListener('click', () => carouselContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' }));
-        rightArrow.addEventListener('click', () => carouselContainer.scrollBy({ left: scrollStep, behavior: 'smooth' }));
+  function smoothScrollTo(sectionId) {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const navHeight = 100;
+      const offsetPosition = element.getBoundingClientRect().top + window.scrollY - navHeight;
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
+  }
 
-// SEO SCHEMA MARKUP 
-    const schema = {
-        "@context": "https://schema.org",
-        "@type": "DetectiveAgency",
-        "name": "Aspen Meridian Ltd",
-        "description": "Elite digital forensics, discreet investigations, identity verification, OSINT, corporate due diligence and fraud recovery services.",
-        "url": "https://aspenmeridian.com",
-        "logo": "https://aspenmeridian.com/assets/images/logoweb.png",
-        "image": "https://aspenmeridian.com/assets/images/logoweb.png",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Aspen House, Malew Street",
-            "addressLocality": "Castletown",
-            "addressRegion": "Isle of Man",
-            "postalCode": "IM9 1AB",
-            "addressCountry": "IM"
-        },
-        "areaServed": ["United States", "United Kingdom", "Europe", "Hungary", "Sweden", "France", "Isle of Man"],
-        "serviceType": ["Digital Forensics", "OSINT Investigations", "Corporate Due Diligence", "Identity Verification", "Fraud Recovery"]
-    };
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(schema);
-    document.body.appendChild(script);
+  function openContactModal() {
+    modalShown = true;
+    document.getElementById('contact-modal').classList.remove('hidden');
+    document.getElementById('contact-modal').classList.add('flex');
+  }
+
+  function closeContactModal() {
+    document.getElementById('contact-modal').classList.add('hidden');
+    document.getElementById('contact-modal').classList.remove('flex');
+  }
+
+  function submitContactForm(e) {
+    e.preventDefault();
+    alert("✅ Inquiry received. Our team will contact you within hours.");
+    closeContactModal();
+    e.target.reset();
+  }
+
+  setTimeout(() => {
+    if (!modalShown) openContactModal();
+  }, 120000);
+
+  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+    alert("Mobile menu coming soon");
+  });
+
+  // CAROUSEL ARROWS
+  const carouselContainer = document.getElementById('articlesContainer');
+  const leftArrow = document.getElementById('scrollLeft');
+  const rightArrow = document.getElementById('scrollRight');
+  if (carouselContainer && leftArrow && rightArrow) {
+    const scrollStep = 440;
+    leftArrow.addEventListener('click', () => carouselContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' }));
+    rightArrow.addEventListener('click', () => carouselContainer.scrollBy({ left: scrollStep, behavior: 'smooth' }));
+  }
+
+  // SEO SCHEMA MARKUP (kept as you had it)
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "DetectiveAgency",
+    "name": "Aspen Meridian Ltd",
+    "description": "Elite digital forensics, discreet investigations, identity verification, OSINT, corporate due diligence and fraud recovery services.",
+    "url": "https://aspenmeridian.com",
+    "logo": "https://aspenmeridian.com/assets/images/logoweb.png",
+    "image": "https://aspenmeridian.com/assets/images/logoweb.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Aspen House, Malew Street",
+      "addressLocality": "Castletown",
+      "addressRegion": "Isle of Man",
+      "postalCode": "IM9 1AB",
+      "addressCountry": "IM"
+    },
+    "areaServed": ["United States", "United Kingdom", "Europe", "Hungary", "Sweden", "France", "Isle of Man"],
+    "serviceType": ["Digital Forensics", "OSINT Investigations", "Corporate Due Diligence", "Identity Verification", "Fraud Recovery"]
+  };
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(schema);
+  document.body.appendChild(script);
 </script>
+
 </body>
 </html>
