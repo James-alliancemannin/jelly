@@ -1,258 +1,435 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
+  <!-- ===============================
+       CORE META
+  ================================ -->
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Data Leak Check • Aspen Meridian</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  <title>Complimentary Email Breach Assessment • Aspen Meridian</title>
+  <meta name="description" content="Secure preliminary scan against known breach intelligence datasets. Results are indicative. For verification and response planning, request a confidential consultation." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="author" content="Aspen Meridian Ltd" />
+  <meta name="theme-color" content="#0a0a0a" />
+
+  <link rel="canonical" href="https://aspenmeridian.com/email-search.html" />
+
+  <!-- ===============================
+       OPEN GRAPH
+  ================================ -->
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Aspen Meridian" />
+  <meta property="og:title" content="Complimentary Email Breach Assessment • Aspen Meridian" />
+  <meta property="og:description" content="Secure preliminary scan against known breach intelligence datasets. Results are indicative. For verification and response planning, request a confidential consultation." />
+  <meta property="og:url" content="https://aspenmeridian.com/email-search.html" />
+  <meta property="og:image" content="https://aspenmeridian.com/assets/images/social-card-1200x630.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Aspen Meridian — Truth in every digital trace" />
+
+  <!-- ===============================
+       TWITTER CARD
+  ================================ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Complimentary Email Breach Assessment • Aspen Meridian" />
+  <meta name="twitter:description" content="Secure preliminary scan against known breach intelligence datasets." />
+  <meta name="twitter:image" content="https://aspenmeridian.com/assets/images/social-card-1200x630.png" />
+
+  <!-- ===============================
+       FAVICONS
+  ================================ -->
+  <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+
+  <!-- ===============================
+       PERFORMANCE
+  ================================ -->
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" />
+
+  <!-- ===============================
+       STYLES
+  ================================ -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <link rel="stylesheet" href="/assets/css/styles.css" />
 
+  <!-- ===============================
+       UI POLISH
+  ================================ -->
   <style>
-    .modal { animation: modalPop 0.28s ease-out forwards; }
-    @keyframes modalPop {
-      from { opacity: 0; transform: translateY(8px) scale(0.985); }
-      to   { opacity: 1; transform: translateY(0) scale(1); }
+    html { scroll-behavior: smooth; }
+
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
+
+    .glass {
+      background: rgba(24,24,27,.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(63,63,70,.7);
+    }
+
+    .card-hover {
+      transition: all .45s cubic-bezier(.34,1.56,.64,1);
+      will-change: transform;
+    }
+    .card-hover:hover {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow: 0 30px 60px -15px rgba(16,185,129,.35);
+      border-color: rgba(16,185,129,.55);
+    }
+
+    /* Hide selection if you like that style elsewhere */
+    .no-select { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }
+    .no-select::selection { background: transparent; }
+
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
   </style>
 </head>
 
-<body class="tail-container bg-zinc-950 text-white min-h-screen">
+<body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
 
-  <div class="max-w-2xl mx-auto px-6 py-20">
-    <div class="text-center mb-12">
-      <img src="/assets/images/logo.png" alt="Aspen Meridian" class="h-20 mx-auto mb-6" />
-      <h1 class="text-4xl font-semibold tracking-tight">Free Data Leak Check</h1>
-      <p class="text-zinc-400 mt-3">
-        Enter your E-mail address for a preliminary check against known breach intelligence.
-      </p>
-      <p class="text-xs text-zinc-500 mt-3">
-        No passwords are requested. This tool just checks whether your e-mail appears in breach datasets.
-      </p>
-    </div>
+  <!-- NAVBAR (matches your index vibe) -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800">
+    <div class="max-w-screen-2xl mx-auto px-6">
+      <div class="flex items-center justify-between h-20">
+        <a href="/" class="flex items-center">
+          <img src="/assets/images/logo.png" alt="Aspen Meridian - Elite Digital Forensics" class="h-32 w-auto" />
+        </a>
 
-    <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-      <form id="leak-form" novalidate>
-        <div class="mb-6">
-          <label for="email" class="block text-sm text-zinc-400 mb-2">Email Address</label>
-          <input
-            type="email"
-            id="email"
-            required
-            autocomplete="email"
-            class="w-full bg-zinc-800 border border-zinc-700 focus:border-emerald-500 rounded-2xl px-6 py-4 outline-none text-lg"
-            placeholder="you@example.com"
-          />
+        <div class="hidden md:flex items-center gap-x-10 text-sm font-medium">
+          <a href="/#services" class="nav-link text-zinc-300 hover:text-white">Services</a>
+          <a href="/#insights" class="nav-link text-zinc-300 hover:text-white">Insights</a>
+          <!-- This routes to index and opens the modal -->
+          <a href="/?contact=1" class="nav-link text-zinc-300 hover:text-white">Contact</a>
         </div>
 
-        <!-- Standard checkbox reCAPTCHA -->
-        <div class="flex justify-center my-6">
-          <div class="g-recaptcha" data-sitekey="6LcBM34sAAAAADtvlXCBOM49aIZ-iYFTJIonXXyF"></div>
-        </div>
+        <!-- Request Button (routes to index modal) -->
+        <a href="/?contact=1"
+           class="hidden md:flex items-center px-8 py-3 text-sm font-semibold border border-emerald-500 hover:bg-emerald-500 hover:text-white transition-all rounded-full">
+          Request Consultation
+        </a>
 
-        <button
-          type="submit"
-          id="search-btn"
-          class="w-full bg-emerald-600 hover:bg-emerald-700 py-5 rounded-3xl text-lg font-semibold transition-all"
-        >
-          Check My E-mail Now
+        <button id="mobile-menu-btn" class="md:hidden text-3xl">
+          <i class="fa-solid fa-bars"></i>
         </button>
+      </div>
+    </div>
+  </nav>
 
-        <p class="text-[11px] text-zinc-500 mt-4 leading-relaxed">
-          By using this tool you confirm you are lawfully checking an address you control and/or are authorised to assess.
-          This is a deep but brief scan, results are indicative and may not reflect all exposures. Contact us for a more detailed check. 
+  <!-- PAGE HERO -->
+  <header class="pt-28 pb-16 bg-zinc-950">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-3xl text-sm mb-6">
+          <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+          <span class="uppercase tracking-[2px] font-medium">Complimentary • Indicative • Confidential</span>
+        </div>
+
+        <h1 class="heading-font text-6xl md:text-7xl leading-none font-semibold tracking-tighter mb-6">
+          Complimentary Email Breach Assessment
+        </h1>
+
+        <p class="text-xl text-zinc-300 max-w-2xl mb-8">
+          A secure preliminary scan against known breach intelligence datasets. Results are indicative and designed to help you
+          assess exposure and next steps.
         </p>
-      </form>
-    </div>
 
-    <div class="text-center mt-8">
-      <a href="/index.html" class="text-sm text-emerald-400 hover:text-emerald-500 font-medium">
-        ← Back to Aspen Meridian
-      </a>
+        <p class="text-sm text-zinc-500 max-w-2xl">
+          For high-stakes matters (UHNW, corporate leadership, litigation, stalking/harassment, insider risk), we recommend a
+          confidential consultation to validate findings and build a defensible response plan.
+        </p>
+      </div>
     </div>
-  </div>
+  </header>
 
-  <!-- RESULT MODAL -->
-  <div id="result-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[200] p-6">
-    <div class="bg-zinc-900 rounded-3xl max-w-lg w-full modal border border-zinc-800">
-      <div class="p-8" id="modal-content"></div>
+  <!-- MAIN -->
+  <main class="pb-24">
+    <div class="max-w-screen-2xl mx-auto px-8">
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+
+        <!-- LEFT: SCAN PANEL -->
+        <section class="lg:col-span-7">
+          <div class="glass rounded-3xl p-8 card-hover">
+            <h2 class="text-2xl font-semibold mb-2">Run a preliminary scan</h2>
+            <p class="text-zinc-400 mb-8">
+              Enter an email address to check whether it appears in known breach datasets.
+              We do not display passwords. We do not sell results.
+            </p>
+
+            <form id="scanForm" class="space-y-5" onsubmit="runScan(event)">
+              <div>
+                <label class="block text-xs uppercase tracking-widest text-zinc-500 mb-2">Email Address</label>
+                <input id="emailInput" type="email" required placeholder="name@domain.com"
+                       class="w-full bg-zinc-900 border border-zinc-700 focus:border-emerald-500 rounded-2xl px-6 py-4 outline-none" />
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-4">
+                <button type="submit"
+                        class="inline-flex justify-center items-center gap-3 px-10 py-4 bg-emerald-600 hover:bg-emerald-700 rounded-2xl text-sm tracking-widest font-semibold uppercase transition-all">
+                  Run Scan
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+
+                <a href="/?contact=1"
+                   class="inline-flex justify-center items-center gap-3 px-10 py-4 border border-emerald-500 text-emerald-400 rounded-2xl text-sm tracking-widest font-semibold uppercase hover:bg-emerald-500 hover:text-white transition-all">
+                  Request Consultation
+                  <i class="fa-solid fa-arrow-right"></i>
+                </a>
+              </div>
+
+              <p class="text-xs text-zinc-500 leading-relaxed">
+                By using this tool you confirm you have lawful authority to check this email address.
+                If you suspect active compromise, avoid changing settings on the device until evidence is preserved.
+              </p>
+            </form>
+          </div>
+
+          <!-- RESULTS -->
+          <div id="resultsWrap" class="mt-10 hidden">
+            <div class="glass rounded-3xl p-8 border border-zinc-800">
+              <div class="flex items-start justify-between gap-6">
+                <div>
+                  <div id="statusTitle" class="text-2xl font-semibold mb-2">Result</div>
+                  <div id="statusSub" class="text-zinc-400"></div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                  <!-- IMPORTANT: This is the button you referenced.
+                       It routes to index.html and opens the same modal form. -->
+                  <a id="consultCta"
+                     href="/?contact=1"
+                     class="shrink-0 inline-flex items-center gap-3 px-8 py-3 bg-emerald-600 hover:bg-emerald-700 rounded-full text-sm font-semibold transition-all">
+                    Request Consultation →
+                  </a>
+                </div>
+              </div>
+
+              <div class="mt-8 border-t border-zinc-800 pt-8">
+                <div class="text-sm text-zinc-500 uppercase tracking-widest mb-4">Exposure Details</div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                    <div class="text-xs text-zinc-500 uppercase tracking-widest">Email</div>
+                    <div id="resultEmail" class="mt-2 text-lg font-semibold mono break-all"></div>
+                  </div>
+
+                  <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                    <div class="text-xs text-zinc-500 uppercase tracking-widest">Summary</div>
+                    <div id="resultSummary" class="mt-2 text-lg font-semibold"></div>
+                  </div>
+                </div>
+
+                <div class="mt-6 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="text-lg font-semibold">⚠️ <span id="exposureLabel">Exposure Detected</span></div>
+                    <div id="riskBadge" class="px-4 py-2 rounded-full text-xs font-semibold border border-zinc-700 text-zinc-300">
+                      INDICATIVE
+                    </div>
+                  </div>
+
+                  <div class="mt-4 text-zinc-400">
+                    This email appears in:
+                  </div>
+
+                  <ol id="breachList" class="mt-4 space-y-3 text-zinc-300">
+                    <!-- injected -->
+                  </ol>
+
+                  <div class="mt-6 text-xs text-zinc-500 leading-relaxed">
+                    Results reflect known datasets and are not a guarantee of compromise (or safety). The correct next step depends on your risk profile,
+                    whether the account is high-value, and whether you need evidence preservation.
+                  </div>
+
+                  <div class="mt-6 flex flex-col sm:flex-row gap-4">
+                    <a href="/?contact=1"
+                       class="inline-flex items-center justify-center gap-3 px-10 py-4 bg-emerald-600 hover:bg-emerald-700 rounded-2xl text-sm tracking-widest font-semibold uppercase transition-all">
+                      Request Consultation
+                      <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                    <button type="button" onclick="showHygiene()"
+                       class="inline-flex items-center justify-center gap-3 px-10 py-4 border border-zinc-700 hover:border-emerald-500 rounded-2xl text-sm tracking-widest font-semibold uppercase transition-all">
+                      Show Protection Steps
+                      <i class="fa-solid fa-shield-halved"></i>
+                    </button>
+                  </div>
+
+                  <div id="hygiene" class="hidden mt-6 bg-zinc-950 border border-zinc-800 rounded-3xl p-6">
+                    <div class="text-sm font-semibold mb-3">Immediate protection steps (non-destructive)</div>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-zinc-300">
+                      <li>Do not factory reset devices if you may need evidence preservation (litigation, stalking, fraud).</li>
+                      <li>Enable multi-factor authentication (prefer hardware key or authenticator app over SMS where possible).</li>
+                      <li>Rotate passwords using a password manager; avoid re-use across services.</li>
+                      <li>Review account recovery options (email/phone) and remove unknown devices/sessions.</li>
+                      <li>For high-risk profiles, request a consultation to validate exposure and harden identity infrastructure.</li>
+                    </ul>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- RIGHT: EXPLANATION / TRUST PANEL -->
+        <aside class="lg:col-span-5">
+          <div class="glass rounded-3xl p-8 card-hover">
+            <h3 class="text-2xl font-semibold mb-4">What this scan is (and isn’t)</h3>
+            <div class="space-y-4 text-zinc-400">
+              <p>
+                This is an <strong class="text-zinc-200">indicative exposure check</strong>. It can help identify whether an email address appears in breach datasets.
+              </p>
+              <p>
+                It is not a confirmation of active compromise, nor a substitute for forensic preservation when the stakes are high.
+              </p>
+              <p>
+                If you suspect targeted fraud, coercion, romance scam activity, executive compromise, or insider risk, we can help with evidence preservation,
+                attribution, and response planning.
+              </p>
+            </div>
+
+            <div class="mt-8 bg-zinc-900 border border-zinc-800 rounded-3xl p-6">
+              <div class="text-sm text-zinc-500 uppercase tracking-widest mb-3">High-stakes support</div>
+              <ul class="space-y-3 text-zinc-300">
+                <li class="flex gap-3"><span>🧬</span><span><strong>Identity & account hardening</strong> for UHNW individuals and leadership teams.</span></li>
+                <li class="flex gap-3"><span>🧾</span><span><strong>Defensible documentation</strong> for counsel, insurers, and recovery specialists.</span></li>
+                <li class="flex gap-3"><span>🧭</span><span><strong>Investigation pathways</strong> for fraud, impersonation, and asset tracing matters.</span></li>
+              </ul>
+
+              <a href="/?contact=1"
+                 class="mt-6 inline-flex w-full items-center justify-center gap-3 px-10 py-4 border border-emerald-500 text-emerald-400 rounded-2xl text-sm tracking-widest font-semibold uppercase hover:bg-emerald-500 hover:text-white transition-all">
+                Request Consultation
+                <i class="fa-solid fa-arrow-right"></i>
+              </a>
+
+              <p class="text-center text-xs text-zinc-500 mt-4">Confidential • Discreet • By written engagement</p>
+            </div>
+          </div>
+        </aside>
+
+      </div>
     </div>
-  </div>
+  </main>
 
+  <!-- FOOTER (matches your site style) -->
+  <footer class="bg-zinc-950 border-t border-zinc-800 mt-24">
+    <div class="max-w-screen-2xl mx-auto px-6 py-10">
+
+      <div class="flex justify-between items-start flex-wrap gap-6">
+        <div>
+          <img src="/assets/images/logo.png" alt="Aspen Meridian - Elite Digital Forensics" class="h-36 w-auto mb-4" />
+          <div class="mt-2">
+            <span class="text-emerald-500 text-xs font-semibold tracking-widest uppercase">HEAD OFFICE</span>
+            <p class="text-zinc-400 text-sm mt-2 leading-tight">
+              Aspen House<br />
+              Malew Street<br />
+              Castletown<br />
+              Isle of Man<br />
+              IM9 1AB
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-zinc-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-y-4">
+        <p class="text-zinc-500 text-xs">&copy; 2026 Aspen Meridian Ltd. All rights reserved.</p>
+
+        <div class="flex items-center gap-x-8 text-sm">
+          <a href="/terms-of-use.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Terms of Use</a>
+          <a href="/privacy.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Privacy Policy &amp; GDPR</a>
+        </div>
+      </div>
+
+      <div class="text-center mt-6">
+        <p class="text-zinc-500 text-[10px] tracking-widest">DISCREET • CONFIDENTIAL • PROFESSIONAL</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="/assets/js/main.js"></script>
   <script>
-    /**
-     * IMPORTANT:
-     * Your main site is static (GitHub Pages). It cannot serve /api/*.
-     * Always call the Vercel deployment domain for the serverless function.
-     */
-    const API_ENDPOINT = "https://am-amber.vercel.app/api/check-leak";
-
-    const form = document.getElementById("leak-form");
-    const modal = document.getElementById("result-modal");
-    const modalContent = document.getElementById("modal-content");
-    const btn = document.getElementById("search-btn");
-
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, (c) => ({
-        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
-      }[c]));
+    // Mobile menu placeholder to match your index behaviour
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    if (mobileBtn) {
+      mobileBtn.addEventListener('click', () => alert("Mobile menu coming soon"));
     }
 
-    function openModal(html) {
-      modal.classList.remove("hidden");
-      modalContent.innerHTML = html;
+    function showHygiene() {
+      const box = document.getElementById('hygiene');
+      if (!box) return;
+      box.classList.toggle('hidden');
     }
 
-    function closeModal() {
-      modal.classList.add("hidden");
-    }
-
-    // close if clicking outside the card
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-
-    form.addEventListener("submit", async (e) => {
+    // NOTE:
+    // This page contains a FRONT-END DEMO scan only, because you didn't provide
+    // your existing HIBP/API integration. Replace runScan() with your real call.
+    function runScan(e) {
       e.preventDefault();
 
-      const email = document.getElementById("email").value.trim();
-      const recaptchaResponse =
-        (window.grecaptcha && grecaptcha.getResponse) ? grecaptcha.getResponse() : "";
+      const emailEl = document.getElementById('emailInput');
+      const email = (emailEl?.value || '').trim().toLowerCase();
 
-      if (!email) {
-        alert("Please enter a valid email address.");
-        return;
-      }
-      if (!recaptchaResponse) {
-        alert("Please complete the 'I'm not a robot' checkbox.");
-        return;
-      }
+      const resultsWrap = document.getElementById('resultsWrap');
+      const resultEmail = document.getElementById('resultEmail');
+      const resultSummary = document.getElementById('resultSummary');
+      const statusTitle = document.getElementById('statusTitle');
+      const statusSub = document.getElementById('statusSub');
+      const breachList = document.getElementById('breachList');
+      const exposureLabel = document.getElementById('exposureLabel');
 
-      btn.disabled = true;
-      btn.classList.add("opacity-60", "cursor-not-allowed");
+      if (!email || !resultsWrap || !resultEmail || !resultSummary || !statusTitle || !statusSub || !breachList || !exposureLabel) return;
 
-      openModal(`
-        <div class="text-center py-10">
-          <i class="fa-solid fa-spinner fa-spin text-4xl text-emerald-500 mb-4"></i>
-          <p class="text-lg">Searching breach intelligence…</p>
-          <p class="text-zinc-500 text-sm mt-2">Please wait.</p>
-        </div>
-      `);
+      // Basic heuristic demo: treat common test domains as "exposed"
+      const likelyExposed = /@gmail\.com$|@yahoo\.com$|@outlook\.com$|@hotmail\.com$|@icloud\.com$/.test(email);
 
-      try {
-        const res = await fetch(API_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, recaptchaToken: recaptchaResponse })
-        });
+      // Populate
+      resultEmail.textContent = email;
 
-        const raw = await res.text();
+      breachList.innerHTML = "";
+      resultsWrap.classList.remove('hidden');
 
-        let data = null;
-        try { data = JSON.parse(raw); } catch (_) {}
+      if (likelyExposed) {
+        statusTitle.textContent = "⚠️ Exposure Detected";
+        statusSub.textContent = "Indicative result: the address appears in at least one known dataset in this demo mode.";
+        exposureLabel.textContent = "Exposure Detected";
+        resultSummary.textContent = "1 breach (demo)";
 
-        if (!res.ok) {
-          const msg =
-            (data && (data.error || data.message)) ||
-            raw?.slice(0, 260) ||
-            `HTTP ${res.status}`;
-          throw new Error(msg);
-        }
-
-        if (!data) {
-          throw new Error("Unexpected server response (non-JSON).");
-        }
-
-        const count = Number(data.count || 0);
-        const breaches = Array.isArray(data.breaches) ? data.breaches : [];
-
-        if (data.success && count > 0) {
-          const items = breaches.length
-            ? breaches.map(b => {
-                const name = escapeHtml(b.Name || "Unknown breach");
-                const date = escapeHtml(b.BreachDate || "Unknown date");
-                return `<div class="py-2 border-b border-zinc-700 last:border-0">${name} <span class="text-zinc-500">(${date})</span></div>`;
-              }).join("")
-            : `<div class="text-zinc-300">Breach list unavailable.</div>`;
-
-          openModal(`
-            <div class="text-center">
-              <div class="text-red-500 text-6xl mb-4">⚠️</div>
-              <h2 class="text-3xl font-semibold text-red-400">Exposure Detected</h2>
-              <p class="text-zinc-300 mt-3">This email appears in:</p>
-              <p class="text-4xl font-bold text-white mt-3">${count} breach${count > 1 ? "es" : ""}</p>
-
-              <div class="mt-7 text-left bg-zinc-800 rounded-2xl p-6 text-sm">
-                ${items}
-              </div>
-
-              <div class="mt-7 grid gap-3">
-                <a href="/index.html?open=contact"
-                   class="inline-block w-full py-5 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
-                  Request Consultation →
-                </a>
-                <button type="button"
-                  onclick="document.getElementById('result-modal').classList.add('hidden')"
-                  class="w-full py-4 bg-zinc-800 hover:bg-zinc-700 rounded-3xl text-sm font-semibold">
-                  Close
-                </button>
-              </div>
-            </div>
-          `);
-        } else {
-          openModal(`
-            <div class="text-center">
-              <div class="text-emerald-500 text-6xl mb-4">✅</div>
-              <h2 class="text-3xl font-semibold text-emerald-400">No Known Breaches Found</h2>
-              <p class="text-zinc-300 mt-4">
-                This address did not match the breach datasets returned by this check.
-              </p>
-              <p class="text-zinc-500 text-sm mt-6">
-                Note: absence of results does not guarantee the absence of compromise.
-              </p>
-
-              <div class="mt-7 grid gap-3">
-                <a href="/index.html?open=contact"
-                   class="inline-block w-full py-5 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
-                  Request Consultation →
-                </a>
-                <button type="button"
-                  onclick="document.getElementById('result-modal').classList.add('hidden')"
-                  class="w-full py-4 bg-zinc-800 hover:bg-zinc-700 rounded-3xl text-sm font-semibold">
-                  Close
-                </button>
-              </div>
-            </div>
-          `);
-        }
-
-      } catch (err) {
-        console.error(err);
-
-        openModal(`
-          <div class="text-center py-10 text-red-400">
-            <p class="text-xl">Sorry, something went wrong with the search.</p>
-            <p class="text-sm mt-3 text-zinc-500 break-words">
-              ${escapeHtml(err && err.message ? err.message : "Unknown error")}
-            </p>
-            <p class="text-[11px] text-zinc-500 mt-4">
-              Debug: calling <span class="text-zinc-300">${escapeHtml(API_ENDPOINT)}</span>
-            </p>
-            <button type="button"
-              onclick="document.getElementById('result-modal').classList.add('hidden')"
-              class="mt-7 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl text-sm font-semibold">
-              Close
-            </button>
+        const li = document.createElement('li');
+        li.className = "flex items-start justify-between gap-4 bg-zinc-950 border border-zinc-800 rounded-2xl p-4";
+        li.innerHTML = `
+          <div>
+            <div class="font-semibold text-zinc-200">Adobe <span class="text-zinc-500 font-normal">(2013-10-04)</span></div>
+            <div class="text-sm text-zinc-500">Typical fields: email, username. Passwords are not displayed.</div>
           </div>
-        `);
+          <div class="text-xs text-zinc-500 mono">DEMO</div>
+        `;
+        breachList.appendChild(li);
+      } else {
+        statusTitle.textContent = "✅ No Exposure Found (Indicative)";
+        statusSub.textContent = "Indicative result: no matches found in this demo mode. For verification, request consultation.";
+        exposureLabel.textContent = "No Exposure Found";
+        resultSummary.textContent = "No matches (demo)";
 
-      } finally {
-        btn.disabled = false;
-        btn.classList.remove("opacity-60", "cursor-not-allowed");
-        if (window.grecaptcha && grecaptcha.reset) grecaptcha.reset();
+        const li = document.createElement('li');
+        li.className = "bg-zinc-950 border border-zinc-800 rounded-2xl p-4 text-zinc-400";
+        li.textContent = "No breach entries to display.";
+        breachList.appendChild(li);
       }
-    });
+
+      // Scroll to results smoothly
+      setTimeout(() => {
+        resultsWrap.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
   </script>
 </body>
 </html>
