@@ -1,177 +1,257 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Data Leak Check • Aspen Meridian</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <style>
-        .modal { animation: modalPop 0.3s ease-out forwards; }
-        @keyframes modalPop { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Free Data Leak Check • Aspen Meridian</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  <style>
+    .modal { animation: modalPop 0.28s ease-out forwards; }
+    @keyframes modalPop {
+      from { opacity: 0; transform: translateY(8px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+  </style>
 </head>
+
 <body class="tail-container bg-zinc-950 text-white min-h-screen">
 
-<div class="max-w-2xl mx-auto px-6 py-20">
+  <div class="max-w-2xl mx-auto px-6 py-20">
     <div class="text-center mb-12">
-        <img src="/assets/images/logo.png" alt="Aspen Meridian" class="h-20 mx-auto mb-6">
-        <h1 class="text-4xl font-semibold tracking-tight">Free Data Leak Check</h1>
-        <p class="text-zinc-400 mt-3">Enter your email address below for a quick check against known breaches.</p>
+      <img src="/assets/images/logo.png" alt="Aspen Meridian" class="h-20 mx-auto mb-6" />
+      <h1 class="text-4xl font-semibold tracking-tight">Free Data Leak Check</h1>
+      <p class="text-zinc-400 mt-3">
+        Enter your email address for a preliminary check against known breach intelligence.
+      </p>
+      <p class="text-xs text-zinc-500 mt-3">
+        No passwords are requested. This tool checks whether an email appears in breach datasets.
+      </p>
     </div>
 
     <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
-        <form id="leak-form">
-            <div class="mb-6">
-                <label class="block text-sm text-zinc-400 mb-2">Email Address</label>
-                <input type="email" id="email" required
-                       class="w-full bg-zinc-800 border border-zinc-700 focus:border-emerald-500 rounded-2xl px-6 py-4 outline-none text-lg"
-                       placeholder="you@example.com">
-            </div>
+      <form id="leak-form" novalidate>
+        <div class="mb-6">
+          <label for="email" class="block text-sm text-zinc-400 mb-2">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            required
+            autocomplete="email"
+            class="w-full bg-zinc-800 border border-zinc-700 focus:border-emerald-500 rounded-2xl px-6 py-4 outline-none text-lg"
+            placeholder="you@example.com"
+          />
+        </div>
 
-            <!-- Standard checkbox reCAPTCHA -->
-            <div class="flex justify-center my-6">
-                <!-- UPDATED: new site key -->
-                <div class="g-recaptcha" data-sitekey="6LcBM34sAAAAADtvlXCBOM49aIZ-iYFTJIonXXyF"></div>
-            </div>
+        <!-- Standard checkbox reCAPTCHA -->
+        <div class="flex justify-center my-6">
+          <div class="g-recaptcha" data-sitekey="6LcBM34sAAAAADtvlXCBOM49aIZ-iYFTJIonXXyF"></div>
+        </div>
 
-            <button type="submit" id="search-btn"
-                    class="w-full bg-emerald-600 hover:bg-emerald-700 py-5 rounded-3xl text-lg font-semibold transition-all">
-                Check My Email Now
-            </button>
-        </form>
+        <button
+          type="submit"
+          id="search-btn"
+          class="w-full bg-emerald-600 hover:bg-emerald-700 py-5 rounded-3xl text-lg font-semibold transition-all"
+        >
+          Check My Email Now
+        </button>
+
+        <p class="text-[11px] text-zinc-500 mt-4 leading-relaxed">
+          By using this tool you confirm you are checking an address you control or are authorised to assess.
+          Results are indicative and may not reflect all exposures.
+        </p>
+      </form>
     </div>
-</div>
 
-<!-- RESULT MODAL -->
-<div id="result-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[200]">
-    <div class="bg-zinc-900 rounded-3xl max-w-lg w-full mx-4 modal">
-        <div class="p-8" id="modal-content"></div>
+    <div class="text-center mt-8">
+      <a href="/index.html" class="text-sm text-emerald-400 hover:text-emerald-500 font-medium">
+        ← Back to Aspen Meridian
+      </a>
     </div>
-</div>
+  </div>
 
-<script>
-    const form = document.getElementById('leak-form');
-    const modal = document.getElementById('result-modal');
-    const modalContent = document.getElementById('modal-content');
-    const btn = document.getElementById('search-btn');
+  <!-- RESULT MODAL -->
+  <div id="result-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[200] p-6">
+    <div class="bg-zinc-900 rounded-3xl max-w-lg w-full modal border border-zinc-800">
+      <div class="p-8" id="modal-content"></div>
+    </div>
+  </div>
+
+  <script>
+    // IMPORTANT:
+    // If your site is hosted on GitHub Pages and the API is on Vercel,
+    // you MUST call the full Vercel URL here (not /api/check-leak).
+    const API_ENDPOINT = "https://am-amber.vercel.app/api/check-leak"; // <-- CHANGE if your Vercel URL differs
+
+    const form = document.getElementById("leak-form");
+    const modal = document.getElementById("result-modal");
+    const modalContent = document.getElementById("modal-content");
+    const btn = document.getElementById("search-btn");
 
     function escapeHtml(s) {
-        return String(s).replace(/[&<>"']/g, (c) => ({
-            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
-        }[c]));
+      return String(s).replace(/[&<>"']/g, (c) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[c]));
     }
 
-    form.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    function openModal(html) {
+      modal.classList.remove("hidden");
+      modalContent.innerHTML = html;
+    }
 
-        const email = document.getElementById('email').value.trim();
-        const recaptchaResponse = (window.grecaptcha && grecaptcha.getResponse) ? grecaptcha.getResponse() : '';
+    function closeModal() {
+      modal.classList.add("hidden");
+    }
 
-        if (!recaptchaResponse) {
-            alert("Please complete the 'I'm not a robot' checkbox.");
-            return;
-        }
-        if (!email) {
-            alert("Please enter a valid email address.");
-            return;
-        }
-
-        // Show loading
-        modal.classList.remove('hidden');
-        btn.disabled = true;
-        btn.classList.add('opacity-60', 'cursor-not-allowed');
-        modalContent.innerHTML = `
-            <div class="text-center py-12">
-                <i class="fa-solid fa-spinner fa-spin text-4xl text-emerald-500 mb-4"></i>
-                <p class="text-lg">Searching known breach databases...</p>
-                <p class="text-zinc-500 text-sm mt-2">Please wait...</p>
-            </div>
-        `;
-
-        try {
-            const res = await fetch('/api/check-leak', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, recaptchaToken: recaptchaResponse })
-            });
-
-            // IMPORTANT: do not assume JSON (prevents JSON.parse crash)
-            const raw = await res.text();
-
-            let data = null;
-            try { data = JSON.parse(raw); } catch (_) {}
-
-            if (!res.ok) {
-                const msg =
-                    (data && (data.error || data.message)) ||
-                    raw?.slice(0, 240) ||
-                    `HTTP ${res.status}`;
-                throw new Error(msg);
-            }
-
-            if (!data) {
-                throw new Error("Server did not return JSON (unexpected response format).");
-            }
-
-            let html = '';
-
-            if (data.success && Number(data.count) > 0) {
-                const breaches = Array.isArray(data.breaches) ? data.breaches : [];
-                html = `
-                    <div class="text-center">
-                        <div class="text-red-500 text-6xl mb-4">⚠️</div>
-                        <h2 class="text-3xl font-semibold text-red-400">Warning: Your email was found in breaches</h2>
-                        <p class="text-4xl font-bold text-white mt-4">${data.count} breach${data.count > 1 ? 'es' : ''}</p>
-                        <div class="mt-8 text-left bg-zinc-800 rounded-2xl p-6 text-sm">
-                            ${breaches.length
-                                ? breaches.map(b => `<div class="py-2 border-b border-zinc-700 last:border-0">${escapeHtml(b.Name || 'Unknown breach')} (${escapeHtml(b.BreachDate || 'Unknown date')})</div>`).join('')
-                                : `<div class="text-zinc-300">Breach list unavailable.</div>`
-                            }
-                        </div>
-                        <a href="/index.html?open=contact" class="mt-8 inline-block w-full py-6 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
-                            Request Consultation →
-                        </a>
-                    </div>
-                `;
-            } else {
-                html = `
-                    <div class="text-center">
-                        <div class="text-emerald-500 text-6xl mb-4">✅</div>
-                        <h2 class="text-3xl font-semibold text-emerald-400">Good news!</h2>
-                        <p class="text-2xl mt-4">No known breaches found for this email.</p>
-                        <p class="mt-8 text-zinc-400">However, this is only a preliminary check.</p>
-                        <a href="/index.html?open=contact" class="mt-8 inline-block w-full py-6 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
-                            Request Consultation →
-                        </a>
-                    </div>
-                `;
-            }
-
-            modalContent.innerHTML = html;
-
-        } catch (err) {
-            console.error(err);
-            modalContent.innerHTML = `
-                <div class="text-center py-12 text-red-400">
-                    <p class="text-xl">Sorry, something went wrong with the search.</p>
-                    <p class="text-sm mt-3 text-zinc-500 break-words">
-                        ${escapeHtml(err && err.message ? err.message : 'Unknown error')}
-                    </p>
-                    <button onclick="document.getElementById('result-modal').classList.add('hidden')"
-                            class="mt-8 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">
-                        Close
-                    </button>
-                </div>
-            `;
-        } finally {
-            // reset UI and captcha so user can retry
-            btn.disabled = false;
-            btn.classList.remove('opacity-60', 'cursor-not-allowed');
-            if (window.grecaptcha && grecaptcha.reset) grecaptcha.reset();
-        }
+    // click outside to close
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
     });
-</script>
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value.trim();
+      const recaptchaResponse =
+        (window.grecaptcha && grecaptcha.getResponse) ? grecaptcha.getResponse() : "";
+
+      if (!email) {
+        alert("Please enter a valid email address.");
+        return;
+      }
+      if (!recaptchaResponse) {
+        alert("Please complete the 'I'm not a robot' checkbox.");
+        return;
+      }
+
+      // Loading UI
+      btn.disabled = true;
+      btn.classList.add("opacity-60", "cursor-not-allowed");
+
+      openModal(`
+        <div class="text-center py-10">
+          <i class="fa-solid fa-spinner fa-spin text-4xl text-emerald-500 mb-4"></i>
+          <p class="text-lg">Searching breach intelligence…</p>
+          <p class="text-zinc-500 text-sm mt-2">Please wait.</p>
+        </div>
+      `);
+
+      try {
+        const res = await fetch(API_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email, recaptchaToken: recaptchaResponse })
+        });
+
+        const raw = await res.text();
+        let data = null;
+        try { data = JSON.parse(raw); } catch (_) {}
+
+        if (!res.ok) {
+          const msg =
+            (data && (data.error || data.message)) ||
+            raw?.slice(0, 260) ||
+            `HTTP ${res.status}`;
+          throw new Error(msg);
+        }
+
+        if (!data) {
+          throw new Error("Unexpected server response (non-JSON).");
+        }
+
+        // Render results
+        const count = Number(data.count || 0);
+        const breaches = Array.isArray(data.breaches) ? data.breaches : [];
+
+        if (data.success && count > 0) {
+          const items = breaches.length
+            ? breaches.map(b => {
+                const name = escapeHtml(b.Name || "Unknown breach");
+                const date = escapeHtml(b.BreachDate || "Unknown date");
+                return `<div class="py-2 border-b border-zinc-700 last:border-0">${name} <span class="text-zinc-500">(${date})</span></div>`;
+              }).join("")
+            : `<div class="text-zinc-300">Breach list unavailable.</div>`;
+
+          openModal(`
+            <div class="text-center">
+              <div class="text-red-500 text-6xl mb-4">⚠️</div>
+              <h2 class="text-3xl font-semibold text-red-400">Exposure Detected</h2>
+              <p class="text-zinc-300 mt-3">This email appears in:</p>
+              <p class="text-4xl font-bold text-white mt-3">${count} breach${count > 1 ? "es" : ""}</p>
+
+              <div class="mt-7 text-left bg-zinc-800 rounded-2xl p-6 text-sm">
+                ${items}
+              </div>
+
+              <div class="mt-7 grid gap-3">
+                <a href="/index.html?open=contact"
+                   class="inline-block w-full py-5 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
+                  Request Consultation →
+                </a>
+                <button
+                  type="button"
+                  onclick="document.getElementById('result-modal').classList.add('hidden')"
+                  class="w-full py-4 bg-zinc-800 hover:bg-zinc-700 rounded-3xl text-sm font-semibold">
+                  Close
+                </button>
+              </div>
+            </div>
+          `);
+
+        } else {
+          openModal(`
+            <div class="text-center">
+              <div class="text-emerald-500 text-6xl mb-4">✅</div>
+              <h2 class="text-3xl font-semibold text-emerald-400">No Known Breaches Found</h2>
+              <p class="text-zinc-300 mt-4">
+                This address did not match the breach datasets returned by this check.
+              </p>
+              <p class="text-zinc-500 text-sm mt-6">
+                Note: absence of results does not guarantee the absence of compromise.
+              </p>
+
+              <div class="mt-7 grid gap-3">
+                <a href="/index.html?open=contact"
+                   class="inline-block w-full py-5 bg-emerald-600 hover:bg-emerald-700 rounded-3xl text-lg font-semibold">
+                  Request Consultation →
+                </a>
+                <button
+                  type="button"
+                  onclick="document.getElementById('result-modal').classList.add('hidden')"
+                  class="w-full py-4 bg-zinc-800 hover:bg-zinc-700 rounded-3xl text-sm font-semibold">
+                  Close
+                </button>
+              </div>
+            </div>
+          `);
+        }
+
+      } catch (err) {
+        console.error(err);
+        openModal(`
+          <div class="text-center py-10 text-red-400">
+            <p class="text-xl">Sorry, something went wrong with the search.</p>
+            <p class="text-sm mt-3 text-zinc-500 break-words">
+              ${escapeHtml(err && err.message ? err.message : "Unknown error")}
+            </p>
+            <button
+              type="button"
+              onclick="document.getElementById('result-modal').classList.add('hidden')"
+              class="mt-8 px-10 py-4 bg-zinc-800 hover:bg-zinc-700 rounded-2xl">
+              Close
+            </button>
+          </div>
+        `);
+
+      } finally {
+        btn.disabled = false;
+        btn.classList.remove("opacity-60", "cursor-not-allowed");
+        if (window.grecaptcha && grecaptcha.reset) grecaptcha.reset();
+      }
+    });
+  </script>
 </body>
 </html>
