@@ -45,7 +45,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <!-- ===============================
-         UI POLISH + AUTHENTIC 80S MATRIX TYPEWRITER
+         UI POLISH + AUTHENTIC 80S MATRIX TYPEWRITER + NO-SELECT
     ================================ -->
     <style>
         html { scroll-behavior: smooth; }
@@ -68,18 +68,17 @@
             -ms-overflow-style: none;
         }
         #articlesContainer::-webkit-scrollbar { display: none; }
-
         /* ====================== AUTHENTIC 80S MATRIX TERMINAL ====================== */
         #decode-text {
             font-family: ui-monospace, 'Courier New', monospace;
             font-size: 0.875rem;
             letter-spacing: 2px;
             color: #10b981;
-            text-shadow: 
+            text-shadow:
                 0 0 4px #10b981,
                 0 0 12px #10b981,
                 0 0 30px rgba(16,185,129,0.6);
-            min-width: 620px;           /* EXACT SPACE RESERVED – ZERO LAYOUT SHIFT */
+            min-width: 620px;
             display: inline-block;
             position: relative;
             overflow: hidden;
@@ -107,7 +106,7 @@
             animation: matrixFlicker 2.8s infinite alternate ease-in-out;
         }
         @keyframes matrixFlicker {
-            0%   { opacity: 0.96; }
+            0% { opacity: 0.96; }
             100% { opacity: 1; }
         }
         /* CRT scanline */
@@ -127,13 +126,29 @@
             animation: scanMove 6s linear infinite;
         }
         @keyframes scanMove {
-            0%   { background-position: 0 0; }
+            0% { background-position: 0 0; }
             100% { background-position: 0 200px; }
+        }
+        /* Disclosure modal style */
+        #disclosure-modal {
+            transition: opacity 0.3s ease;
+        }
+        #disclosure-modal:not(.hidden) {
+            opacity: 1;
+        }
+        /* NEW: Prevent text selection & copying */
+        .no-select {
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none;     /* IE 10+ / Edge */
+            user-select: none;         /* Standard + Firefox */
+        }
+        /* Optional: make cursor default (not text) to reinforce non-selectable feel */
+        .no-select * {
+            cursor: default !important;
         }
     </style>
 </head>
 <body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
-
 <!-- NAVBAR -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800">
     <div class="max-w-screen-2xl mx-auto px-6">
@@ -155,7 +170,6 @@
         </div>
     </div>
 </nav>
-
 <!-- HERO -->
 <header id="hero" class="hero-bg h-screen flex items-center relative">
     <div class="max-w-screen-2xl mx-auto px-8 pt-20">
@@ -180,7 +194,6 @@
         </div>
     </div>
 </header>
-
 <!-- SERVICES -->
 <section id="services" class="py-28 bg-zinc-950">
     <div class="max-w-screen-2xl mx-auto px-8">
@@ -262,7 +275,6 @@
         </div>
     </div>
 </section>
-
 <!-- CONTACT MODAL -->
 <div id="contact-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[200] p-6">
     <div class="bg-zinc-900 rounded-3xl max-w-md w-full max-h-[92vh] overflow-y-auto p-8 relative">
@@ -300,7 +312,6 @@
         <p class="text-center text-xs text-zinc-500 mt-6">End-to-end encrypted • NDA protected</p>
     </div>
 </div>
-
 <!-- INSIGHTS -->
 <section id="insights" class="py-28 bg-zinc-950">
   <div class="max-w-screen-2xl mx-auto px-8">
@@ -379,14 +390,14 @@
     </div>
   </div>
 </section>
-
 <!-- FOOTER -->
 <footer class="bg-zinc-950 border-t border-zinc-800 mt-24">
-  <div class="max-w-screen-2xl mx-auto px-6 py-10">
-    <div class="flex justify-between items-start flex-wrap gap-6">
-      <div>
-        <img src="/assets/images/logo.png" alt="Aspen Meridian - Elite Digital Forensics" class="h-36 w-auto mb-4">
-        <div class="mt-2">
+  <div class="max-w-screen-2xl mx-auto px-6 py-12">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-10 md:gap-6 flex-wrap">
+      <!-- Left: Logo + Address -->
+      <div class="flex flex-col">
+        <img src="/assets/images/logo.png" alt="Aspen Meridian - Elite Digital Forensics" class="h-36 w-auto mb-6">
+        <div>
           <span class="text-emerald-500 text-xs font-semibold tracking-widest uppercase">HEAD OFFICE</span>
           <p class="text-zinc-400 text-sm mt-2 leading-tight">
             Aspen House<br>
@@ -397,69 +408,86 @@
           </p>
         </div>
       </div>
+
+      <!-- Right: Certifications logos + disclosure link -->
+      <div class="flex flex-col items-end">
+        <div class="flex items-center gap-6 md:gap-10 mb-4">
+          <img src="/assets/images/ceh_logo.jpg" alt="CEH Certified" class="h-16 w-auto object-contain">
+          <img src="/assets/images/cissp_logo.jpg" alt="CISSP Certified" class="h-16 w-auto object-contain">
+          <img src="/assets/images/crest_logo.jpg" alt="CREST Member" class="h-16 w-auto object-contain">
+        </div>
+        <a href="#" onclick="openDisclosureModal(); return false;" 
+           class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-500 font-medium text-sm transition-colors">
+          Learn more →
+        </a>
+      </div>
     </div>
+
+    <!-- Bottom copyright + links row -->
     <div class="border-t border-zinc-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-y-4">
       <p class="text-zinc-500 text-xs">
-        &copy; 2026 Aspen Meridian Ltd. All rights reserved.
+        © 2026 Aspen Meridian Ltd. All rights reserved.
       </p>
       <div class="flex items-center gap-x-8 text-sm">
         <a href="/terms-of-use.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Terms of Use</a>
-        <a href="/privacy.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Privacy Policy &amp; GDPR</a>
+        <a href="/privacy.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Privacy Policy & GDPR</a>
       </div>
     </div>
+
     <div class="text-center mt-6">
       <p class="text-zinc-500 text-[10px] tracking-widest">DISCREET • CONFIDENTIAL • PROFESSIONAL</p>
     </div>
   </div>
 </footer>
 
+<!-- DISCLOSURE MODAL -->
+<div id="disclosure-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[200] p-6 opacity-0">
+  <div class="bg-zinc-900 rounded-3xl max-w-lg w-full p-8 relative border border-zinc-700">
+    <button onclick="closeDisclosureModal()" class="absolute top-5 right-6 text-3xl text-zinc-400 hover:text-white transition">×</button>
+    <h2 class="text-2xl font-semibold mb-6 text-emerald-400">Professional Certifications – Disclosure</h2>
+    <div class="no-select text-zinc-300 leading-relaxed space-y-4 text-sm">
+      <p>Aspen Meridian maintains high professional standards and, where appropriate, suitably qualified specialists may be engaged to assist with specific technical, investigative, or forensic aspects of an engagement.</p>
+      <p>The certifications referenced on this website are held by individual specialists who may be engaged in connection with particular matters. They do not constitute certification, accreditation, or membership of Aspen Meridian itself.</p>
+      <p>Where specialist expertise is required, appropriately qualified professionals may be engaged under strict confidentiality obligations to assist with specific aspects of an investigation or technical analysis.</p>
+    </div>
+  </div>
+</div>
+
 <script src="/assets/js/main.js"></script>
 <script>
-  // ====================== AUTHENTIC 80S MATRIX TYPEWRITER (CURSOR STAYS FLASHING) ======================
+  // ====================== AUTHENTIC 80S MATRIX TYPEWRITER ======================
   function startMatrixTyping() {
       const container = document.getElementById('decode-text');
       if (!container) return;
-
       const fullText = "DIGITAL FORENSICS • INVESTIGATIONS • BACKGROUND CHECKS";
-
       container.innerHTML = `<span class="typed"></span><span class="cursor">█</span>`;
-
       const typedSpan = container.querySelector('.typed');
       const cursor = container.querySelector('.cursor');
-
       let index = 0;
-
       function typeNextChar() {
           if (index < fullText.length) {
               typedSpan.textContent += fullText[index];
-
               index++;
-
               let delay = 48 + Math.random() * 28;
               const prev = fullText[index - 1];
-              if (prev === '•') delay = 630;           // long human pause after bullet
-              else if (prev === ' ') delay = 140;      // pause after space
-              else if (index % 7 === 0) delay += 95;   // occasional natural pause
-
+              if (prev === '•') delay = 630;
+              else if (prev === ' ') delay = 140;
+              else if (index % 7 === 0) delay += 95;
               setTimeout(typeNextChar, delay);
           } else {
-              // Finished typing – cursor stays flashing forever
               cursor.style.animation = 'matrixCursorBlink 0.55s step-end infinite';
               cursor.style.opacity = '1';
               container.classList.add('complete');
-
-              // Restart every 3 minutes
               setTimeout(() => {
                   container.classList.remove('complete');
                   startMatrixTyping();
               }, 180000);
           }
       }
-
       typeNextChar();
   }
 
-  // ====================== ORIGINAL PAGE SCRIPT ======================
+  // ====================== PAGE FUNCTIONS ======================
   let modalShown = false;
   function smoothScrollTo(sectionId) {
     const element = document.getElementById(sectionId);
@@ -501,6 +529,34 @@
     rightArrow.addEventListener('click', () => carouselContainer.scrollBy({ left: scrollStep, behavior: 'smooth' }));
   }
 
+  // DISCLOSURE MODAL
+  function openDisclosureModal() {
+    const modal = document.getElementById('disclosure-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    setTimeout(() => { modal.style.opacity = '1'; }, 10);
+    setTimeout(() => {
+      if (!modal.classList.contains('hidden')) {
+        closeDisclosureModal();
+      }
+    }, 5000);
+  }
+
+  function closeDisclosureModal() {
+    const modal = document.getElementById('disclosure-modal');
+    modal.style.opacity = '0';
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }, 300);
+  }
+
+  document.getElementById('disclosure-modal')?.addEventListener('click', (e) => {
+    if (e.target === document.getElementById('disclosure-modal')) {
+      closeDisclosureModal();
+    }
+  });
+
   // SEO SCHEMA
   const schema = {
     "@context": "https://schema.org",
@@ -526,7 +582,7 @@
   scriptEl.textContent = JSON.stringify(schema);
   document.body.appendChild(scriptEl);
 
-  // ====================== START THE MATRIX TYPEWRITER ======================
+  // START MATRIX TYPEWRITER
   window.addEventListener('load', () => {
       setTimeout(startMatrixTyping, 450);
   });
