@@ -5,18 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy & GDPR • Aspen Meridian</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zinc: {
+                            300: '#d4d4d8', 400: '#a1a1aa', 500: '#71717a',
+                            700: '#3f3f46', 800: '#27272a', 900: '#18181b', 950: '#09090b'
+                        },
+                        emerald: { 400: '#34d399', 600: '#059669', 700: '#047857' }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <style>
+        .prose p { margin-bottom: 1.25em; line-height: 1.75; }
+        .prose h2 { margin-top: 2em; margin-bottom: 1em; }
+        .prose ul { margin: 1em 0; padding-left: 1.5em; list-style-type: disc; }
+        .prose li { margin-bottom: 0.5em; }
+        .prose strong { font-weight: 600; color: #fff; }
+        .prose em { font-style: italic; }
+        .prose-invert { color: #d4d4d8; }
         .policy-text {
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
         }
-        .policy-text::selection {
-            background: transparent;
-        }
+        .policy-text::selection { background: transparent; }
         .scroll-progress {
             height: 3px;
             background: linear-gradient(to right, #10b981 var(--scroll), transparent 0);
@@ -29,7 +49,8 @@
     </style>
 </head>
 <body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
-<!-- NAVBAR - Logo only -->
+
+<!-- NAVBAR -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800">
     <div class="max-w-screen-2xl mx-auto px-6">
         <div class="flex items-center h-20">
@@ -39,181 +60,230 @@
         </div>
     </div>
 </nav>
+
 <div class="scroll-progress" id="progress-bar"></div>
-<!-- HEADER WITH SCROLL INSTRUCTION -->
+
+<!-- HEADER -->
 <header class="pt-28 pb-12 bg-zinc-900 border-b border-zinc-800">
     <div class="max-w-3xl mx-auto px-6 text-center">
         <h1 class="heading-font text-5xl md:text-6xl font-semibold tracking-tighter">Privacy Policy &amp; GDPR</h1>
         <p class="mt-6 text-emerald-400 font-medium text-lg">
-            Please scroll to the bottom of the page to read the full Privacy Policy &amp; GDPR and accept.
+            Please scroll to the bottom of the page to read the full Privacy Policy &amp; GDPR Notice and accept.
         </p>
         <p class="mt-3 text-zinc-400 text-sm">Last updated: 28 February 2026</p>
     </div>
 </header>
+
 <!-- POLICY BODY -->
 <div class="max-w-3xl mx-auto px-6 py-16 policy-text">
     <div class="prose prose-invert max-w-none text-zinc-300 leading-relaxed text-[15.5px]">
+
         <h2 class="text-white text-3xl font-semibold mb-8">1. Introduction</h2>
-        <p>Welcome to Aspen Meridian Ltd trading as “Aspen Meridian” (we, us or our), a private company limited by shares registered in the Isle of Man. We are committed to protecting your privacy and the personal data of all individuals whose information comes into our possession. This Privacy Policy &amp; GDPR Notice (Policy) explains how we collect, process, use, store, disclose, transfer and safeguard personal data when you visit our website (Website), submit an enquiry, request a search, engage our elite digital forensics, background intelligence, identity verification, asset tracing or investigative support services (Services), or otherwise interact with us.</p>
-        <p>This Policy is issued in accordance with the Isle of Man Data Protection Act 2018, the UK GDPR as applicable in the Isle of Man, the EU GDPR (where relevant), and all other applicable data protection and privacy laws (collectively Privacy Laws). It forms part of our Public General Terms of Use and must be read in conjunction with them. By accessing the Website, submitting any enquiry or request (free, promotional or paid), or otherwise engaging with us, you acknowledge that you have read, understood and agree to this Policy. If you do not agree, you must immediately cease using the Website and refrain from submitting any enquiries or requests.</p>
-        <p>We do not sell, rent or trade personal data for marketing purposes. We process personal data only for legitimate, lawful and proportionate purposes connected with the provision of our Services or the operation of the Website. We take our obligations under Privacy Laws extremely seriously and have implemented appropriate technical and organisational measures to protect the personal data we process.</p>
+        <p>This Privacy Policy and GDPR Notice (<strong>Policy</strong>) is issued by Barry James, trading as Aspen Meridian and Aspen Meridian Services, an independent consultant (<strong>we</strong>, <strong>us</strong>, or <strong>our</strong>). It explains how we collect, process, use, store, disclose, transfer, and safeguard personal data when you visit our website (<strong>Website</strong>), submit an enquiry, request a search, engage our specialist digital forensic, intelligence research, identity verification, asset tracing, or investigative support services (<strong>Services</strong>), or otherwise interact with us in any capacity.</p>
+
+        <p>This Policy is issued in compliance with the Isle of Man Data Protection Act 2018, the UK GDPR as applicable within the Isle of Man, the EU General Data Protection Regulation (EU) 2016/679 where applicable to data subjects situated within the European Union or European Economic Area, and all other applicable data protection, privacy, and surveillance legislation in any relevant jurisdiction (collectively, <strong>Privacy Laws</strong>). This Policy forms part of, and must be read in conjunction with, our Public General Terms of Use. In the event of any conflict between this Policy and the Terms of Use, the Terms of Use shall prevail.</p>
+
+        <p>By accessing the Website, submitting any enquiry or request (whether free, promotional, or paid), or otherwise engaging with us in any capacity, you acknowledge that you have read, understood, and agree to this Policy in its entirety. If you do not agree, you must immediately cease using the Website and refrain from submitting any enquiries or requests.</p>
+
+        <p>We do not sell, rent, or trade personal data for marketing purposes. Personal data is processed only for legitimate, lawful, and proportionate purposes directly connected with the provision of our Services or the operation of the Website. We take our obligations under Privacy Laws seriously and have implemented appropriate technical and organisational measures commensurate with the nature and sensitivity of the data we process.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">2. Data Controller and Contact Details</h2>
-        <p>Aspen Meridian Ltd is the data controller responsible for the personal data we process under this Policy. Our registered office is Aspen House, Malew Street, Castletown, Isle of Man IM9 1AB (Company No. 000000A). For any questions, requests or complaints regarding this Policy or the processing of your personal data, please contact our Data Protection Officer via the secure web form at support.aspenmeridian.com or by email at admin@aspenmeridian.com. We will respond to all valid requests without undue delay and in any event within one month (extendable by two further months where necessary).</p>
+
+        <p>For the purposes of applicable Privacy Laws, Barry James, trading as Aspen Meridian and Aspen Meridian Services, is the data controller responsible for the personal data processed under this Policy. Correspondence addresses are maintained in the Isle of Man and the United Kingdom solely for the receipt of formal communications; neither address constitutes a place of business, operational premises, or public office, and neither shall be construed as submitting the data controller to the exclusive jurisdiction of any supervisory authority or court other than as expressly provided herein.</p>
+
+        <p>The principal correspondence address for the purposes of data protection matters is: Aspen House, Malew Street, Castletown, Isle of Man, IM9 1AB. For any questions, requests, or complaints regarding this Policy or the processing of your personal data, please contact us via the secure web form at <strong>support.aspenmeridian.com</strong> or by email at <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9ffefbf2f6f1dffeeceffaf1f2faedf6fbf6fef1b1fcf0f2">[email&#160;protected]</a></strong>. We will respond to all valid requests without undue delay and, in any event, within one calendar month of receipt (extendable by a further two months where the request is complex or numerous, with notification to you).</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">3. Information We Collect</h2>
-        <p>We collect and process only the personal data that is necessary, lawful and proportionate for the purposes set out in this Policy. The categories of personal data we may collect include:</p>
+
+        <p>We collect and process only such personal data as is necessary, adequate, and proportionate for the purposes set out in this Policy. The categories of personal data we may collect include:</p>
+
         <ul class="list-disc pl-6 space-y-3 mt-4">
-            <li><strong>Contact and identification data:</strong> name, email address, telephone number, postal address, company name and job title provided when you submit an enquiry or request Services;</li>
-            <li><strong>Case-related data:</strong> any information you voluntarily provide in a case summary, supporting documents or instructions, which may include personal data relating to you or third parties (e.g. subjects of investigations);</li>
-            <li><strong>Technical and usage data:</strong> IP address, browser type and version, device type, operating system, referring URLs, pages visited, time and date of visit, clickstream data and other information collected automatically through cookies and similar technologies;</li>
-            <li><strong>Payment and billing data:</strong> where applicable, billing address and payment details processed securely via third-party providers (we do not store full card details);</li>
-            <li><strong>Correspondence data:</strong> records of communications between you and us;</li>
-            <li><strong>Third-party breach and intelligence data:</strong> where you engage us for Services, we may lawfully obtain and process data from reputable third-party sources including (without limitation) Have I Been Pwned (HIBP), DeHashed, SpyCloud, LeakCheck, Intelligence X and similar platforms. You acknowledge that such data may contain personal data of third parties and that you are solely responsible for ensuring you have a valid lawful basis to instruct us to process it.</li>
+            <li><strong>Contact and identification data:</strong> name, email address, telephone number, postal address, company name, and job title, where provided when submitting an enquiry or requesting Services;</li>
+            <li><strong>Case-related data:</strong> any information you voluntarily provide in a case summary, supporting documentation, or instructions, which may include personal data relating to yourself or to third parties (including subjects of investigations or due diligence enquiries);</li>
+            <li><strong>Technical and usage data:</strong> IP address, browser type and version, device type, operating system, referring URLs, pages visited, time and date of visit, clickstream data, and other information collected automatically through cookies and similar technologies when you access the Website;</li>
+            <li><strong>Payment and billing data:</strong> where applicable, billing address and payment details processed securely via third-party payment providers; we do not store, retain, or have access to full card or account details;</li>
+            <li><strong>Correspondence data:</strong> records of all communications between you and us, however transmitted;</li>
+            <li><strong>Third-party breach and intelligence data:</strong> where you engage us for Services, we may lawfully obtain and process data from reputable third-party sources including, without limitation, Have I Been Pwned (HIBP), DeHashed, SpyCloud, LeakCheck, Intelligence X, and comparable breach intelligence and data aggregation platforms. You acknowledge that such data may contain personal data of third parties and that you are solely responsible for ensuring that you hold a valid and documented lawful basis to instruct us to process it on your behalf.</li>
         </ul>
-        <p>We do not knowingly collect special category (sensitive) personal data unless you expressly provide it and we have a lawful basis (e.g. explicit consent or substantial public interest). We do not collect data about children under 18; if you are under 18 you must not use the Website or submit enquiries.</p>
+
+        <p>We do not knowingly collect special category personal data (as defined under applicable Privacy Laws) unless you expressly provide it and we have identified a lawful basis and condition for processing, such as explicit consent or a substantial public interest ground. We do not collect personal data from children under the age of 18. If you are under 18, you must not access the Website, submit enquiries, or otherwise interact with us. If we become aware that personal data of a child has been collected without appropriate consent, we will delete it promptly.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">4. Legal Basis for Processing</h2>
-        <p>We process your personal data only where we have a valid legal basis under applicable Privacy Laws, which may include:</p>
+
+        <p>We process personal data only where we have identified and documented a valid legal basis under applicable Privacy Laws. The legal bases upon which we rely may include:</p>
+
         <ul class="list-disc pl-6 space-y-3 mt-4">
-            <li>Performance of a contract with you or to take steps at your request prior to entering a contract;</li>
-            <li>Compliance with a legal or regulatory obligation;</li>
-            <li>Our legitimate interests (or those of a third party) that are not overridden by your interests or fundamental rights and freedoms (e.g. operating and improving the Website, preventing fraud, providing and enhancing our Services, defending legal claims);</li>
-            <li>Your explicit consent (where required and only for specified purposes – you may withdraw consent at any time);</li>
-            <li>Protection of the vital interests of you or another natural person (in exceptional circumstances).</li>
+            <li><strong>Performance of a contract:</strong> where processing is necessary to perform a contract to which you are a party, or to take steps at your request prior to entering into a contract;</li>
+            <li><strong>Legal obligation:</strong> where processing is necessary for compliance with a legal or regulatory obligation to which we are subject;</li>
+            <li><strong>Legitimate interests:</strong> where processing is necessary for our legitimate interests (or those of a relevant third party), provided that such interests are not overridden by your interests, rights, or fundamental freedoms — including, without limitation, operating and securing the Website, preventing and detecting fraud, providing and improving our Services, managing client relationships, and defending legal claims;</li>
+            <li><strong>Consent:</strong> where you have given explicit, freely given, specific, informed, and unambiguous consent to processing for a specified purpose; consent may be withdrawn at any time without detriment, although withdrawal will not affect the lawfulness of any processing carried out prior to withdrawal;</li>
+            <li><strong>Vital interests:</strong> in exceptional circumstances, where processing is necessary to protect the vital interests of you or another natural person.</li>
         </ul>
-        <p>When we process personal data of third parties on your instructions, you represent and warrant that you have provided all necessary notices and obtained all required consents or other lawful bases, and that our processing on your behalf is lawful.</p>
+
+        <p>Where we process personal data of third parties on your instructions as data controller, you represent, warrant, and undertake that you have provided all required notices to and obtained all necessary consents or other lawful bases from the relevant data subjects, and that instructing us to process that data on your behalf is and shall remain lawful throughout the duration of the engagement.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">5. How We Use Your Personal Data</h2>
-        <p>We use your personal data solely for the following purposes (and only to the extent necessary):</p>
+
+        <p>We process personal data solely for the following purposes and only to the minimum extent necessary:</p>
+
         <ul class="list-disc pl-6 space-y-3 mt-4">
-            <li>To respond to your enquiries and provide the Services you request;</li>
-            <li>To perform our obligations under any engagement letter or contract with you;</li>
-            <li>To conduct internal due diligence, conflict checks, client onboarding and risk assessments;</li>
-            <li>To utilise reputable third-party intelligence platforms (including HIBP and others) strictly in accordance with your lawful instructions and our Terms of Use;</li>
-            <li>To manage and improve the Website, Services and our internal operations;</li>
-            <li>To prevent, detect and investigate fraud, security incidents or misuse of the Website or Services;</li>
-            <li>To comply with legal and regulatory obligations, including responding to lawful requests from courts, regulators or law enforcement;</li>
-            <li>To exercise or defend our legal rights or those of our clients;</li>
-            <li>To communicate with you about important updates, changes to this Policy or our Terms, or matters relating to our engagement;</li>
-            <li>For statistical analysis and service improvement (using anonymised or aggregated data where possible).</li>
+            <li>To respond to your enquiries and to provide, perform, and manage the Services you have requested;</li>
+            <li>To fulfil our obligations under any engagement letter, non-disclosure agreement, or contract with you;</li>
+            <li>To conduct internal due diligence, conflict screening, client onboarding, and risk assessment procedures prior to accepting any engagement;</li>
+            <li>To engage reputable third-party intelligence platforms (including, without limitation, HIBP and those listed in Section 3) strictly in accordance with your lawful instructions and in compliance with our Terms of Use;</li>
+            <li>To manage, operate, secure, and improve the Website and our Services;</li>
+            <li>To prevent, detect, investigate, and respond to fraud, security incidents, and misuse of the Website or Services;</li>
+            <li>To comply with applicable legal and regulatory obligations, including responding to lawful requests from courts, regulatory authorities, or law enforcement agencies;</li>
+            <li>To establish, exercise, or defend our legal rights or those of our clients;</li>
+            <li>To communicate with you regarding material updates, changes to this Policy or our Terms of Use, or matters arising in connection with any engagement;</li>
+            <li>For internal statistical analysis and service improvement, using anonymised or aggregated data wherever practicable.</li>
         </ul>
-        <p>We will never use your personal data for automated decision-making (including profiling) that produces legal effects or similarly significant effects on you, unless you have given explicit consent or it is otherwise permitted by law.</p>
+
+        <p>We will not use your personal data for automated decision-making (including profiling) that produces legal effects or similarly significant effects upon you, unless you have given explicit consent, or it is otherwise required or permitted by applicable law, in which case we will inform you and implement appropriate safeguards.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">6. Cookies and Tracking Technologies</h2>
-        <p>Our Website uses essential cookies and similar technologies to enable core functionality, security and performance. We may also use analytics cookies (anonymised) to understand how visitors use the site. You can manage your cookie preferences through your browser settings. By continuing to use the Website you consent to the use of essential cookies. Full details are set out in our separate Cookie Policy (available on the Website).</p>
+
+        <p>The Website employs essential cookies and comparable technologies to enable core functionality, maintain security, and support performance. We may additionally deploy anonymised analytics cookies to understand and improve how visitors navigate the Website. You may manage or restrict the placement of cookies through your browser settings at any time, noting that disabling essential cookies may impair the functionality of the Website. Continued use of the Website following the display of our cookie notice constitutes consent to the placement of essential cookies. Comprehensive details regarding our use of cookies, the types deployed, their duration, and your options are set out in our separate Cookie Policy, available on the Website.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">7. Sharing and Disclosure of Personal Data</h2>
-        <p>We do not sell, rent or trade personal data. We may disclose personal data only in the following limited circumstances:</p>
-        <ul class="list-disc pl-6 space-y-3 mt-4">
-            <li>To trusted third-party service providers (processors) who provide IT, hosting, payment processing, email, analytics or professional services under strict data processing agreements and confidentiality obligations;</li>
-            <li>To third-party intelligence platforms (e.g. HIBP) solely when you instruct us to query them and only to the extent necessary for the Services;</li>
-            <li>To our professional advisers (lawyers, accountants, insurers) where necessary for the protection of our legitimate interests;</li>
-            <li>Where required by law, court order, regulatory authority or governmental request;</li>
-            <li>In the event of a merger, acquisition or sale of assets, subject to appropriate safeguards;</li>
-            <li>To protect the rights, property or safety of Aspen Meridian, our clients or others.</li>
-        </ul>
-        <p>Any third-party recipient is contractually bound to process data only on our instructions and to implement appropriate security measures.</p>
 
-        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">8. International Transfers</h2>
-        <p>Some of our service providers or third-party intelligence platforms may be located outside the UK/Isle of Man/EU. Where personal data is transferred to a country that does not provide an adequate level of protection, we implement appropriate safeguards such as Standard Contractual Clauses (SCCs), the UK International Data Transfer Agreement, Binding Corporate Rules (where applicable) or other mechanisms approved under Privacy Laws. You may request a copy of the relevant safeguards by contacting us.</p>
+        <p>We do not sell, rent, or trade personal data to any third party. Personal data may be disclosed only in the following limited and documented circumstances:</p>
+
+        <ul class="list-disc pl-6 space-y-3 mt-4">
+            <li>To trusted third-party service providers acting as data processors (including IT infrastructure, hosting, payment processing, email delivery, and analytics providers), under written data processing agreements imposing obligations of confidentiality and security no less protective than those in this Policy;</li>
+            <li>To third-party intelligence and breach data platforms (including, without limitation, HIBP, DeHashed, SpyCloud, LeakCheck, and Intelligence X), solely to the extent strictly necessary to perform the Services you have instructed and in accordance with those platforms' own terms;</li>
+            <li>To our professional advisers, including legal counsel, accountants, and insurers, where disclosure is necessary for the protection of our legitimate interests and subject to professional duties of confidentiality;</li>
+            <li>Where required or compelled by applicable law, court order, regulatory direction, or governmental request, to the extent strictly required and, where permissible, with prior notice to you;</li>
+            <li>In connection with any merger, acquisition, restructuring, or sale of assets, subject to appropriate confidentiality and data protection safeguards;</li>
+            <li>Where necessary to protect the rights, property, safety, or legitimate interests of Aspen Meridian, our clients, or third parties.</li>
+        </ul>
+
+        <p>All third-party recipients acting as processors are contractually required to process personal data only on our documented instructions and to implement and maintain appropriate technical and organisational security measures.</p>
+
+
+        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">8. International Transfers of Personal Data</h2>
+
+        <p>Some of our service providers or third-party intelligence platforms are situated outside the United Kingdom, the Isle of Man, or the European Economic Area. Where personal data is transferred to a jurisdiction that has not been deemed to afford an adequate level of data protection, we implement appropriate and documented safeguards prior to transfer, including Standard Contractual Clauses approved under applicable Privacy Laws, the UK International Data Transfer Agreement (IDTA) where applicable, Binding Corporate Rules (where relevant), or such other mechanism as may be approved or required under applicable Privacy Laws from time to time. You may request details of the specific safeguards applicable to any transfer by contacting us at the address set out in Section 2.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">9. Data Security</h2>
-        <p>We implement appropriate technical and organisational security measures designed to protect personal data against accidental or unlawful destruction, loss, alteration, unauthorised disclosure or access. These include encryption, access controls, secure servers, regular security audits and staff training. However, no system is completely secure and we cannot guarantee absolute security. You are responsible for keeping your own credentials and any data you provide to us secure.</p>
+
+        <p>We implement and maintain appropriate technical and organisational security measures designed to protect personal data against accidental or unlawful destruction, loss, alteration, unauthorised disclosure, or unauthorised access. Such measures include, without limitation, encryption in transit and at rest, access controls and authentication, secure server infrastructure, regular security assessments, and confidentiality obligations imposed on all personnel who handle personal data. Notwithstanding the foregoing, no information security system can be guaranteed to be entirely free from risk, and we cannot warrant absolute security. You remain responsible for maintaining the confidentiality of any credentials we issue to you and for securing any personal data you provide to or receive from us.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">10. Data Retention</h2>
-        <p>We retain personal data only for as long as necessary to fulfil the purposes for which it was collected, to comply with legal or regulatory obligations, to resolve disputes or to enforce our rights. Retention periods vary by data type and purpose (typically between 1 and 7 years after the end of our engagement or as required by law). Once no longer required, personal data is securely deleted or anonymised.</p>
+
+        <p>Personal data is retained only for as long as is necessary to fulfil the purposes for which it was collected, to comply with applicable legal, regulatory, or professional obligations, to resolve disputes, or to establish, exercise, or defend legal rights and claims. Specific retention periods vary by data category and processing purpose; as a general guide, engagement-related records are typically retained for a period of between one and seven years following the conclusion of the relevant engagement, or such longer period as may be required by law. Upon expiry of the applicable retention period, personal data is securely and irreversibly deleted or rendered permanently anonymous in accordance with our data retention schedule.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">11. Your Data Protection Rights</h2>
-        <p>Subject to applicable law and certain exemptions, you have the following rights in respect of your personal data:</p>
+
+        <p>Subject to applicable Privacy Laws and certain lawful exemptions (including those applicable in the context of law enforcement, legal proceedings, and the prevention of crime), you have the following rights in respect of your personal data held by us:</p>
+
         <ul class="list-disc pl-6 space-y-3 mt-4">
-            <li>Right to be informed about how we process your data;</li>
-            <li>Right of access to your personal data;</li>
-            <li>Right to rectification of inaccurate or incomplete data;</li>
-            <li>Right to erasure (“right to be forgotten”) where there is no longer a lawful basis;</li>
-            <li>Right to restriction of processing in certain circumstances;</li>
-            <li>Right to data portability (where processing is based on consent or contract);</li>
-            <li>Right to object to processing based on legitimate interests or for direct marketing;</li>
-            <li>Right to withdraw consent at any time (where consent is the legal basis);</li>
-            <li>Right not to be subject to automated decision-making (including profiling) in certain circumstances;</li>
-            <li>Right to lodge a complaint with the Isle of Man Information Commissioner’s Office (or your local supervisory authority).</li>
+            <li><strong>Right to be informed:</strong> to receive clear, transparent information about how we process your personal data, as set out in this Policy;</li>
+            <li><strong>Right of access:</strong> to obtain confirmation of whether we process your personal data and, if so, to receive a copy of it;</li>
+            <li><strong>Right to rectification:</strong> to require correction of inaccurate or completion of incomplete personal data without undue delay;</li>
+            <li><strong>Right to erasure:</strong> to request deletion of your personal data where there is no longer a lawful basis for continued processing, subject to applicable legal and professional retention obligations;</li>
+            <li><strong>Right to restriction:</strong> to request that we restrict processing of your personal data in certain defined circumstances;</li>
+            <li><strong>Right to data portability:</strong> to receive your personal data in a structured, commonly used, and machine-readable format where processing is based on consent or the performance of a contract;</li>
+            <li><strong>Right to object:</strong> to object to processing based on our legitimate interests or to processing for direct marketing purposes;</li>
+            <li><strong>Right to withdraw consent:</strong> to withdraw consent at any time where consent is the lawful basis for processing, without affecting the lawfulness of processing carried out prior to withdrawal;</li>
+            <li><strong>Right not to be subject to automated decision-making:</strong> not to be subject to a decision based solely on automated processing, including profiling, that produces legal or similarly significant effects, except in the limited circumstances permitted by law;</li>
+            <li><strong>Right to complain:</strong> to lodge a complaint with the Isle of Man Information Commissioner's Office or, where applicable, with the supervisory authority in your jurisdiction of residence or place of work.</li>
         </ul>
-        <p>To exercise any of these rights, please email admin@aspenmeridian.com with sufficient information to verify your identity. We may charge a reasonable fee or refuse manifestly unfounded or excessive requests. We will respond within one month (extendable where necessary).</p>
 
-        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">12. Children’s Privacy</h2>
-        <p>Our Website and Services are not intended for or directed at children under the age of 18. We do not knowingly collect personal data from children. If we become aware that we have collected data from a child without parental consent, we will delete it promptly.</p>
+        <p>To exercise any of the above rights, please contact us via the secure web form at <strong>support.aspenmeridian.com</strong> or by email at <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2c4d484145426c4d5f5c494241495e4548454d42024f4341">[email&#160;protected]</a></strong>, providing sufficient information to verify your identity. We reserve the right to charge a reasonable fee or decline to act on requests that are manifestly unfounded, repetitive, or excessive. We will respond within one calendar month of receipt of a valid request (extendable by a further two months where the request is complex or numerous, with notification to you).</p>
 
-        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">13. Third-Party Links</h2>
-        <p>The Website may contain links to third-party websites. We are not responsible for the privacy practices or content of those sites. You should review their privacy policies before providing any personal data.</p>
 
-        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">14. Changes to this Privacy Policy</h2>
-        <p>We may update this Policy from time to time to reflect changes in our practices, legal requirements or technology. The “Last updated” date at the top will be revised accordingly. We will endeavour to notify you of material changes via the Website or email. Continued use of the Website or submission of enquiries after the effective date of any changes constitutes your acceptance of the revised Policy.</p>
+        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">12. Children's Privacy</h2>
+
+        <p>The Website and Services are not directed at, intended for, or designed to be accessed by children under the age of 18. We do not knowingly collect, solicit, or process personal data from children. If we become aware or have reason to believe that personal data of a child under 18 has been provided to us, whether directly or through third-party data sources, we will take immediate steps to delete such data and, where appropriate, notify the relevant parties. If you believe we may have inadvertently received data relating to a child, please notify us promptly via the contact details in Section 2.</p>
+
+
+        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">13. Third-Party Links and External Services</h2>
+
+        <p>The Website may contain hyperlinks to third-party websites, platforms, or resources. Such links are provided for convenience and informational purposes only. We exercise no control over and accept no responsibility for the content, privacy practices, security measures, or data handling of any third-party website or service. You should review the privacy policies of any third-party site before providing personal data to it. The existence of a hyperlink does not constitute or imply any endorsement, recommendation, or affiliation on our part.</p>
+
+
+        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">14. Changes to this Policy</h2>
+
+        <p>We reserve the right to update or amend this Policy at any time to reflect changes in our data processing activities, applicable law, regulatory guidance, or technology. The "Last updated" date at the head of this page will be revised accordingly. We will endeavour to notify you of material amendments via the Website or by email to the address you have supplied. Continued use of the Website or submission of any enquiry following the effective date of any amendment shall constitute your unconditional acceptance of the revised Policy. We recommend that you review this Policy periodically.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">15. Governing Law and Jurisdiction</h2>
-        <p>This Policy is governed by and construed in accordance with the laws of the Isle of Man. You irrevocably submit to the exclusive jurisdiction of the courts of the Isle of Man for any dispute arising out of or in connection with this Policy.</p>
 
-         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">16. Contacting us</h2>
-        <p>To contact us regarding this Privacy Policy, your personal data, or to exercise any of your rights under the UK / Isle of Man GDPR (such as access, rectification, erasure, or objection), please submit a confidential inquiry via our contact form. We aim to respond to valid requests within one month</p>
-        
+        <p>This Policy is governed by and shall be construed exclusively in accordance with the laws of the Isle of Man. The parties irrevocably submit to the exclusive jurisdiction of the courts of the Isle of Man in respect of any dispute or claim arising out of or in connection with this Policy or our processing of personal data, save that nothing herein shall prevent us from seeking urgent or interim relief before any competent court of any jurisdiction. Nothing in this Policy constitutes a submission to the jurisdiction of any court or supervisory authority outside the Isle of Man by reason only of the maintenance of a correspondence address elsewhere, the nationality or habitual residence of any data subject, or the delivery of Services to clients in other jurisdictions.</p>
+
+
+        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">16. Contacting Us</h2>
+
+        <p>For any matter relating to this Policy, the exercise of your data protection rights, or any concern regarding our processing of your personal data, please contact us via the confidential web form at <strong>support.aspenmeridian.com</strong> or by email at <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5b3a3f3632351b3a282b3e35363e29323f323a3575383436">[email&#160;protected]</a></strong>. We aim to acknowledge all valid requests within five working days and to respond substantively within one calendar month.</p>
+
+
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">17. Limitation of Liability</h2>
-        <p>To the fullest extent permitted by applicable law, Aspen Meridian Ltd and its directors, officers, employees, agents and representatives shall not be liable for any indirect, incidental, special, consequential, punitive or exemplary damages (including loss of data, profit, goodwill or business) arising out of or in connection with this Policy or our processing of personal data, even if advised of the possibility of such damages. Our total aggregate liability shall not exceed the total fees (if any) paid by you to us in the twelve months preceding the claim.</p>
 
-<h2 class="text-white text-3xl font-semibold mt-16 mb-8">18. Complaints</h2>
-<p>If you have any concerns about how we have processed your personal data or believe we have breached data protection law, you have the right to make a complaint directly to us.</p>
-<p>Please submit your complaint via our confidential contact form.</p>
-<p>We will acknowledge receipt of your complaint within 30 days and aim to investigate and respond without undue delay, keeping you informed of the outcome.</p>
-<p>If you are not satisfied with our response, you can escalate the matter to the <strong>Isle of Man Information Commissioner</strong> this is the independent supervisory authority for data protection in the Isle of Man, a link to their website is <a href="https://www.inforights.im/complaint-handling/how-to-make-a-complaint-to-the-information-commissioner/" class="text-emerald-400 hover:text-emerald-500 underline" target="_blank" rel="noopener noreferrer">www.inforights.im/complaint-handling/how-to-make-a-complaint-to-the-information-commissioner/</a>.</p>
-<p>If your complaint relates specifically to processing in the United Kingdom or if you happen to be based in the UK, you may also contact the UK Information Commissioner’s Office (ICO) at <a href="https://www.ico.org.uk/make-a-complaint/" class="text-emerald-400 hover:text-emerald-500 underline" target="_blank" rel="noopener noreferrer">www.ico.org.uk/make-a-complaint/</a>.</p>
-        
-        <div class="mt-20 pt-12 border-t border-zinc-700 text-xs text-zinc-500">
-            Aspen Meridian Ltd • Registered in the Isle of Man (Company No. 000000A) • Registered Office: Aspen House, Malew Street, Castletown, Isle of Man IM9 1AB<br><br>
-            All client engagements are governed by separate Non-Disclosure Agreements and formal engagement letters. This Privacy Policy &amp; GDPR Notice is for informational purposes only, does not create any additional contractual rights, and does not form part of any client engagement unless expressly incorporated.
+        <p>To the fullest extent permitted by the laws of the Isle of Man and any other applicable jurisdiction, neither Aspen Meridian nor its directors, officers, employees, agents, or representatives shall be liable for any indirect, incidental, special, consequential, punitive, or exemplary loss or damage (including loss of data, revenue, profit, goodwill, or business opportunity) arising out of or in connection with this Policy or our processing of personal data, even where we have been advised of the possibility of such loss or damage. Subject only to liability that cannot lawfully be excluded, our total aggregate liability arising out of or in connection with this Policy shall not exceed the total fees (if any) actually paid by you to us in the twelve months immediately preceding the event giving rise to the claim.</p>
+
+
+        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">18. Complaints</h2>
+
+        <p>If you have concerns about how we have handled your personal data or believe we have breached applicable Privacy Laws, you have the right to raise a complaint directly with us in the first instance. Please submit your complaint via the confidential contact form at <strong>support.aspenmeridian.com</strong>. We will acknowledge receipt of your complaint within 30 calendar days and will investigate and respond without undue delay, keeping you reasonably informed of progress and outcome.</p>
+
+        <p>If you remain dissatisfied with our response, or if you wish to escalate your complaint without first contacting us, you may refer the matter to the <strong>Isle of Man Information Commissioner</strong>, the independent supervisory authority responsible for data protection in the Isle of Man. Details of how to make a complaint are available at <a href="https://www.inforights.im/complaint-handling/how-to-make-a-complaint-to-the-information-commissioner/" class="text-emerald-400 hover:text-emerald-500 underline" target="_blank" rel="noopener noreferrer">www.inforights.im</a>.</p>
+
+        <p>Where your complaint relates specifically to the processing of personal data of individuals habitually resident in the United Kingdom, or where you yourself are based in the United Kingdom, you may alternatively or additionally contact the <strong>UK Information Commissioner's Office (ICO)</strong> at <a href="https://www.ico.org.uk/make-a-complaint/" class="text-emerald-400 hover:text-emerald-500 underline" target="_blank" rel="noopener noreferrer">www.ico.org.uk</a>.</p>
+
+        <p>Where your complaint relates to the processing of personal data of individuals habitually resident in a member state of the European Union or European Economic Area, you may have the right to lodge a complaint with the relevant national supervisory authority in that member state. We will cooperate with any such authority in accordance with our obligations under applicable Privacy Laws.</p>
+
+
+        <div class="mt-20 pt-12 border-t border-zinc-700 text-xs text-zinc-500 leading-relaxed">
+            <p>Aspen Meridian and Aspen Meridian Services are trading designations as detailed above. The correspondence address is maintained exclusively for the receipt of formal business and legal communications. It does not constitute a public office, place of business, operational premises, or location open to visitors, attendance, or unsolicited contact of any kind. No person is invited or authorised to attend without prior written arrangement confirmed by us. Any unauthorised attendance, drop-off, or in-person approach is strictly prohibited and may be reported as trespass or harassment as appropriate. All interactions must be arranged in advance via written confirmation from enquiries@aspenmeridian.com; no exceptions will be made.</p>
+            <p class="mt-3">All client engagements are governed by separate Non-Disclosure Agreements and formal engagement letters executed prior to the commencement of any Services. Such agreements, together with any applicable data processing addenda, constitute the entire basis upon which personal data is processed in the context of a client engagement. This Privacy Policy and GDPR Notice is provided for transparency and compliance purposes in accordance with applicable Privacy Laws. It does not create contractual rights additional to or inconsistent with those set out in our Terms of Use, and does not, of itself, constitute or form part of any client engagement, impose any obligation upon us to accept instructions, or give rise to any duty of care beyond that imposed by applicable law. Where a conflict exists between this Policy and the terms of a signed engagement letter or data processing agreement, the latter shall prevail to the extent of that conflict.</p>
         </div>
+
     </div>
 </div>
+
 <!-- ACCEPTANCE SECTION -->
 <div class="max-w-3xl mx-auto px-6 pb-24">
     <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
         <div class="flex items-start gap-4">
             <input type="checkbox" id="accept-checkbox" class="mt-1 w-6 h-6 accent-emerald-600 cursor-pointer" disabled>
             <label for="accept-checkbox" class="text-zinc-300 cursor-pointer select-none">
-                I have read, understood, and agree to the Privacy Policy &amp; GDPR terms above.
+                I have read, understood, and agree unconditionally to the Privacy Policy &amp; GDPR Notice above.
             </label>
         </div>
-      
         <button id="accept-button" onclick="acceptPolicy()" disabled
                 class="mt-8 w-full py-6 bg-emerald-600 hover:bg-emerald-700 disabled:bg-zinc-700 rounded-3xl text-lg font-semibold transition-all">
             I Accept &amp; Return to Homepage
         </button>
     </div>
 </div>
-<script>
-    // Progress bar
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Scroll progress bar
     window.addEventListener('scroll', () => {
         const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
         document.getElementById("progress-bar").style.setProperty('--scroll', scrolled + "%");
     });
-    // Enable checkbox only after scrolling near bottom
+
     const checkbox = document.getElementById('accept-checkbox');
-    const button = document.getElementById('accept-button');
+    const button   = document.getElementById('accept-button');
+
+    // Enable checkbox only once user has scrolled near the bottom
     window.addEventListener('scroll', () => {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 350) {
             checkbox.disabled = false;
         }
     });
-    checkbox.addEventListener('change', () => {
-        button.disabled = !checkbox.checked;
-    });
-    function acceptPolicy() {
-        if (checkbox.checked) {
-            alert("✅ Thank you. You have accepted our Privacy Policy.");
-            window.location.href = "/";
-        }
-    }
-    // Disable right-click on policy text
-    document.querySelector('.policy-text').addEventListener('contextmenu', e => e.preventDefault());
-</script>
-</body>
-</html>
+
+    checkbox.addE
