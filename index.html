@@ -44,9 +44,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
-    <!-- ===============================
-         UI POLISH + AUTHENTIC 80S MATRIX TYPEWRITER + NO-SELECT
-    ================================ -->
+    <!-- CUSTOM STYLES -->
     <style>
         html { scroll-behavior: smooth; }
         body {
@@ -68,7 +66,7 @@
             -ms-overflow-style: none;
         }
         #articlesContainer::-webkit-scrollbar { display: none; }
-        /* ====================== AUTHENTIC 80S MATRIX TERMINAL ====================== */
+        /* MATRIX TYPING */
         #decode-text {
             font-family: ui-monospace, 'Courier New', monospace;
             font-size: 0.875rem;
@@ -78,7 +76,6 @@
                 0 0 4px #10b981,
                 0 0 12px #10b981,
                 0 0 30px rgba(16,185,129,0.6);
-            min-width: 620px;
             display: inline-block;
             position: relative;
             overflow: hidden;
@@ -109,7 +106,6 @@
             0% { opacity: 0.96; }
             100% { opacity: 1; }
         }
-        /* CRT scanline */
         #decode-text::before {
             content: '';
             position: absolute;
@@ -129,26 +125,30 @@
             0% { background-position: 0 0; }
             100% { background-position: 0 200px; }
         }
-        /* Disclosure modal style */
-        #disclosure-modal {
-            transition: opacity 0.3s ease;
+        /* MOBILE RESPONSIVE FIXES */
+        @media (max-width: 768px) {
+            #decode-text {
+                min-width: unset !important;
+                width: auto;
+                max-width: 100%;
+                font-size: 0.75rem;
+                letter-spacing: 1.5px;
+                white-space: normal;
+                word-break: break-word;
+            }
+            .hero-bg {
+                background-size: cover;
+                background-position: center;
+            }
         }
-        #disclosure-modal:not(.hidden) {
-            opacity: 1;
-        }
-        /* NEW: Prevent text selection & copying */
-        .no-select {
-            -webkit-user-select: none; /* Safari */
-            -ms-user-select: none;     /* IE 10+ / Edge */
-            user-select: none;         /* Standard + Firefox */
-        }
-        /* Optional: make cursor default (not text) to reinforce non-selectable feel */
-        .no-select * {
-            cursor: default !important;
+        /* MOBILE MENU */
+        #mobile-menu {
+            transition: transform 0.3s ease-in-out;
         }
     </style>
 </head>
-<body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
+<body class="bg-zinc-950 text-white overflow-x-hidden">
+
 <!-- NAVBAR -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800">
     <div class="max-w-screen-2xl mx-auto px-6">
@@ -164,27 +164,40 @@
             <a href="#" onclick="openContactModal()" class="hidden md:flex items-center px-8 py-3 text-sm font-semibold border border-emerald-500 hover:bg-emerald-500 hover:text-white transition-all rounded-full">
                 Request Consultation
             </a>
-            <button id="mobile-menu-btn" class="md:hidden text-3xl">
+            <button id="mobile-menu-btn" class="md:hidden text-3xl text-white">
                 <i class="fa-solid fa-bars"></i>
             </button>
         </div>
     </div>
 </nav>
+
+<!-- MOBILE MENU PANEL -->
+<div id="mobile-menu" class="fixed inset-0 bg-zinc-950 z-40 transform translate-x-full md:hidden">
+    <div class="flex flex-col h-full p-8">
+        <div class="flex justify-end mb-10">
+            <button onclick="closeMobileMenu()" class="text-5xl text-zinc-300 hover:text-white">&times;</button>
+        </div>
+        <a href="#services" onclick="smoothScrollTo('services'); closeMobileMenu()" class="text-3xl py-6 border-b border-zinc-800 text-white hover:text-emerald-400">Services</a>
+        <a href="#insights" onclick="smoothScrollTo('insights'); closeMobileMenu()" class="text-3xl py-6 border-b border-zinc-800 text-white hover:text-emerald-400">Insights</a>
+        <a href="#" onclick="openContactModal(); closeMobileMenu()" class="text-3xl py-6 text-white hover:text-emerald-400">Contact</a>
+    </div>
+</div>
+
 <!-- HERO -->
-<header id="hero" class="hero-bg h-screen flex items-center relative">
-    <div class="max-w-screen-2xl mx-auto px-8 pt-20">
+<header id="hero" class="hero-bg h-[100dvh] flex items-center relative">
+    <div class="max-w-screen-2xl mx-auto px-8 pt-24 md:pt-20">
         <div class="max-w-3xl">
             <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-5 py-2 rounded-3xl text-sm mb-6">
                 <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
                 <span id="decode-text" class="uppercase tracking-[2px] font-medium"></span>
             </div>
-            <h1 class="heading-font text-7xl md:text-8xl leading-none font-semibold tracking-tighter mb-6">
+            <h1 class="heading-font text-6xl sm:text-7xl md:text-8xl leading-none font-semibold tracking-tighter mb-6">
                 Truth in every<br>digital trace.
             </h1>
-            <p class="text-2xl text-zinc-300 max-w-lg mb-8">
+            <p class="text-xl sm:text-2xl text-zinc-300 max-w-lg mb-8">
                 Elite digital forensics. Discreet investigations. Reliable evidence.
             </p>
-            <a href="/email-search.html" class="inline-flex items-center gap-3 px-10 py-5 border border-emerald-500 text-emerald-400 rounded-full text-sm tracking-widest font-semibold uppercase hover:bg-emerald-500 hover:text-white transition-all">
+            <a href="/email-search.html" class="inline-flex items-center gap-3 px-8 sm:px-10 py-4 sm:py-5 border border-emerald-500 text-emerald-400 rounded-full text-sm tracking-widest font-semibold uppercase hover:bg-emerald-500 hover:text-white transition-all">
                 Complimentary Email Breach Assessment
                 <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -194,20 +207,21 @@
         </div>
     </div>
 </header>
+
 <!-- SERVICES -->
-<section id="services" class="py-28 bg-zinc-950">
-    <div class="max-w-screen-2xl mx-auto px-8">
-        <div class="mb-16">
+<section id="services" class="py-24 md:py-28 bg-zinc-950">
+    <div class="max-w-screen-2xl mx-auto px-6 sm:px-8">
+        <div class="mb-12 md:mb-16">
             <span class="text-emerald-500 text-sm font-semibold tracking-widest">WHAT WE DO</span>
-            <h2 class="heading-font text-6xl tracking-tighter font-semibold mt-2">Precision intelligence.<br>Truths others never find.</h2>
+            <h2 class="heading-font text-5xl md:text-6xl tracking-tighter font-semibold mt-2">Precision intelligence.<br>Truths others never find.</h2>
             <p class="mt-6 max-w-2xl text-lg text-zinc-400">
                 Detailed forensic profiling for the relationships and decisions that matter most to you.
                 We help verify biographies, identities, recover-even-hidden footprints, and deliver government grade intelligence.
             </p>
         </div>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             <!-- CARD 1 -->
-            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-10 group">
+            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 group">
                 <div class="text-5xl mb-6">🔍</div>
                 <h3 class="text-2xl font-semibold mb-4">Deep Background Intelligence & Identity Verification</h3>
                 <p class="text-zinc-400">
@@ -218,7 +232,7 @@
                 </p>
             </div>
             <!-- CARD 2 -->
-            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-10 group">
+            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 group">
                 <div class="text-5xl mb-6">🧠</div>
                 <h3 class="text-2xl font-semibold mb-4">Elite OSINT & Digital Intelligence</h3>
                 <p class="text-zinc-400">
@@ -229,7 +243,7 @@
                 </p>
             </div>
             <!-- CARD 3 -->
-            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-10 group">
+            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 group">
                 <div class="text-5xl mb-6">🏢</div>
                 <h3 class="text-2xl font-semibold mb-4">High-Stakes Corporate Due Diligence</h3>
                 <p class="text-zinc-400">
@@ -240,7 +254,7 @@
                 </p>
             </div>
             <!-- CARD 4 -->
-            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-10 group">
+            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 group">
                 <div class="text-5xl mb-6">💳</div>
                 <h3 class="text-2xl font-semibold mb-4">Advanced Fraud & Scam Forensics</h3>
                 <p class="text-zinc-400">
@@ -251,7 +265,7 @@
                 </p>
             </div>
             <!-- CARD 5 -->
-            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-10 group">
+            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 group">
                 <div class="text-5xl mb-6">🌐</div>
                 <h3 class="text-2xl font-semibold mb-4">Confidential Risk Intelligence</h3>
                 <p class="text-zinc-400">
@@ -262,7 +276,7 @@
                 </p>
             </div>
             <!-- CARD 6 -->
-            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-10 group">
+            <div onclick="openContactModal()" class="service-card cursor-pointer bg-zinc-900 border border-zinc-800 rounded-3xl p-8 md:p-10 group">
                 <div class="text-5xl mb-6">⚖️</div>
                 <h3 class="text-2xl font-semibold mb-4">Litigation Support & Expert Services</h3>
                 <p class="text-zinc-400">
@@ -275,6 +289,7 @@
         </div>
     </div>
 </section>
+
 <!-- CONTACT MODAL -->
 <div id="contact-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[200] p-6">
     <div class="bg-zinc-900 rounded-3xl max-w-md w-full max-h-[92vh] overflow-y-auto p-8 relative">
@@ -312,283 +327,275 @@
         <p class="text-center text-xs text-zinc-500 mt-6">End-to-end encrypted • NDA protected</p>
     </div>
 </div>
+
 <!-- INSIGHTS -->
-<section id="insights" class="py-28 bg-zinc-950">
-  <div class="max-w-screen-2xl mx-auto px-8">
-    <div class="mb-16">
-      <span class="text-emerald-500 text-sm font-semibold tracking-widest">INSIGHTS</span>
-      <h2 class="heading-font text-6xl tracking-tighter font-semibold mt-2">Latest Insights</h2>
-      <p class="mt-6 max-w-2xl text-lg text-zinc-400">
-        Expert analysis on digital forensics, intelligence trends, and risk mitigation.
-      </p>
+<section id="insights" class="py-24 md:py-28 bg-zinc-950">
+    <div class="max-w-screen-2xl mx-auto px-6 sm:px-8">
+        <div class="mb-12 md:mb-16">
+            <span class="text-emerald-500 text-sm font-semibold tracking-widest">INSIGHTS</span>
+            <h2 class="heading-font text-5xl md:text-6xl tracking-tighter font-semibold mt-2">Latest Insights</h2>
+            <p class="mt-6 max-w-2xl text-lg text-zinc-400">
+                Expert analysis on digital forensics, intelligence trends, and risk mitigation.
+            </p>
+        </div>
+        <div class="relative">
+            <button id="scrollLeft" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-zinc-900/90 backdrop-blur border border-zinc-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-emerald-600 transition">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button id="scrollRight" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-zinc-900/90 backdrop-blur border border-zinc-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-emerald-600 transition">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            <div id="articlesContainer" class="flex flex-nowrap gap-6 md:gap-8 overflow-x-auto overflow-y-hidden scroll-smooth px-4 md:px-16 py-2">
+                <a href="/articles/Romance-Scam-Digital-Forensics-Case" class="flex-none w-[340px] md:w-[380px]">
+                    <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+                        <img src="/assets/images/full/Romance_Scam_2026.jpg" class="w-full h-48 md:h-56 object-cover" alt="">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-xl md:text-2xl font-semibold">Unmasking the Catfish: How Digital Tracing Exposes Online Fraud</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="/articles/Defensible-Deletion-in-2026.html" class="flex-none w-[340px] md:w-[380px]">
+                    <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+                        <img src="/assets/images/full/Defensible_Deletion_in_2026.jpg" class="w-full h-48 md:h-56 object-cover" alt="">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-xl md:text-2xl font-semibold">Defensible Deletion in 2026</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="/articles/The-Rise-of-Encrypted-Messaging-Forensics.html" class="flex-none w-[340px] md:w-[380px]">
+                    <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+                        <img src="/assets/images/full/The_Rise_of_Encrypted_Messaging_Forensics.jpg" class="w-full h-48 md:h-56 object-cover" alt="">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-xl md:text-2xl font-semibold">The Rise of Encrypted Messaging in Forensics</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="/articles/How-Generative-AI-is-Changing-Digital-Evidence-Recovery-in-2026.html" class="flex-none w-[340px] md:w-[380px]">
+                    <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+                        <img src="/assets/images/full/How_Generative_AI_is_Changing_Digital_Evidence_Recovery_in_2026.jpg" class="w-full h-48 md:h-56 object-cover" alt="">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-xl md:text-2xl font-semibold">How Generative AI is Changing Digital Evidence Recovery in 2026</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="/articles/phantom_director.html" class="flex-none w-[340px] md:w-[380px]">
+                    <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+                        <img src="/assets/images/full/phanton_ceo.jpg" class="w-full h-48 md:h-56 object-cover" alt="">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-xl md:text-2xl font-semibold">Phantom Director: fraud by false representation</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="/articles/mr_perfect.html" class="flex-none w-[340px] md:w-[380px]">
+                    <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+                        <img src="/assets/images/full/mr_perfect.jpg" class="w-full h-48 md:h-56 object-cover" alt="">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-xl md:text-2xl font-semibold">The Perfect Profile: Why Even the Smartest People Fall for Sophisticated Deception</h3>
+                        </div>
+                    </div>
+                </a>
+                <a href="/articles/pig_butchering.html" class="flex-none w-[340px] md:w-[380px]">
+                    <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
+                        <img src="/assets/images/full/pig_butchering.jpg" class="w-full h-48 md:h-56 object-cover" alt="">
+                        <div class="p-6 md:p-8">
+                            <h3 class="text-xl md:text-2xl font-semibold">The Seaview Butcher: How a Pig Butchering Ring Operated from a tax haven</h3>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
     </div>
-    <div class="relative">
-      <button id="scrollLeft" class="absolute left-2 top-1/2 -translate-y-1/2 z-30 bg-zinc-900/90 backdrop-blur border border-zinc-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-emerald-600 transition">
-        <i class="fa-solid fa-chevron-left"></i>
-      </button>
-      <button id="scrollRight" class="absolute right-2 top-1/2 -translate-y-1/2 z-30 bg-zinc-900/90 backdrop-blur border border-zinc-700 w-12 h-12 rounded-full flex items-center justify-center hover:bg-emerald-600 transition">
-        <i class="fa-solid fa-chevron-right"></i>
-      </button>
-      <div id="articlesContainer" class="flex flex-nowrap gap-8 overflow-x-auto overflow-y-hidden scroll-smooth px-16 py-2">
-        <a href="/articles/Romance-Scam-Digital-Forensics-Case" class="flex-none w-[380px]">
-          <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-            <img src="/assets/images/full/Romance_Scam_2026.jpg" class="w-full h-56 object-cover" alt="">
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold">Unmasking the Catfish: How Digital Tracing Exposes Online Fraud</h3>
-            </div>
-          </div>
-        </a>
-        <a href="/articles/Defensible-Deletion-in-2026.html" class="flex-none w-[380px]">
-          <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-            <img src="/assets/images/full/Defensible_Deletion_in_2026.jpg" class="w-full h-56 object-cover" alt="">
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold">Defensible Deletion in 2026</h3>
-            </div>
-          </div>
-        </a>
-        <a href="/articles/The-Rise-of-Encrypted-Messaging-Forensics.html" class="flex-none w-[380px]">
-         <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-            <img src="/assets/images/full/The_Rise_of_Encrypted_Messaging_Forensics.jpg" class="w-full h-56 object-cover" alt="">
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold">The Rise of Encrypted Messaging in Forensics</h3>
-            </div>
-          </div>
-        </a>
-        <a href="/articles/How-Generative-AI-is-Changing-Digital-Evidence-Recovery-in-2026.html" class="flex-none w-[380px]">
-          <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-            <img src="/assets/images/full/How_Generative_AI_is_Changing_Digital_Evidence_Recovery_in_2026.jpg" class="w-full h-56 object-cover" alt="">
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold">How Generative AI is Changing Digital Evidence Recovery in 2026</h3>
-            </div>
-          </div>
-        </a>
-        <a href="/articles/phantom_director.html" class="flex-none w-[380px]">
-         <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-            <img src="/assets/images/full/phanton_ceo.jpg" class="w-full h-56 object-cover" alt="">
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold">Phantom Director: fraud by false representation</h3>
-            </div>
-          </div>
-        </a>
-        <a href="/articles/mr_perfect.html" class="flex-none w-[380px]">
-          <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-            <img src="/assets/images/full/mr_perfect.jpg" class="w-full h-56 object-cover" alt="">
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold">The Perfect Profile: Why Even the Smartest People Fall for Sophisticated Deception</h3>
-            </div>
-          </div>
-        </a>
-        <a href="/articles/pig_butchering.html" class="flex-none w-[380px]">
-          <div class="insight-card flex flex-col h-full bg-zinc-900 border border-zinc-800 rounded-3xl overflow-hidden hover:border-emerald-500 transition">
-            <img src="/assets/images/full/pig_butchering.jpg" class="w-full h-56 object-cover" alt="">
-            <div class="p-8">
-              <h3 class="text-2xl font-semibold">The Seaview Butcher: How a Pig Butchering Ring Operated from a tax haven</h3>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </div>
 </section>
+
 <!-- FOOTER -->
-<div class="flex flex-col items-start">
-
-  <img
-    src="/assets/images/logo.png"
-    alt="Aspen Meridian - Elite Digital Forensics"
-    class="h-24 w-auto max-w-[220px] object-contain mb-3"
-  >
-
-  <div class="space-y-2">
-    <span class="text-emerald-500 text-[11px] font-semibold tracking-[0.18em] uppercase">
-      Head Office
-    </span>
-
-    <p class="text-zinc-400 text-sm leading-relaxed">
-      Aspen Meridian<br>
-      Digital Forensics • OSINT Research • Investigative Analysis<br>
-      enquiries@aspenmeridian.com
-    </p>
-  </div>
-
-
-      <!-- Right: Certifications logos + disclosure link -->
-      <div class="flex flex-col items-end">
-      <div class="flex items-center gap-6 md:gap-10 mb-4">
-  <img src="/assets/images/ceh_logo.jpg"   alt="CEH Certified"   class="h-16 w-auto object-contain">
-  <img src="/assets/images/cissp_logo.png" alt="CISSP Certified" class="h-16 w-auto object-contain">  
-  <img src="/assets/images/crest_logo.jpg" alt="CREST Member"    class="h-16 w-auto object-contain">
-</div>
-        <a href="#" onclick="openDisclosureModal(); return false;" 
-           class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-500 font-medium text-sm transition-colors">
-          Learn more →
-        </a>
-      </div>
+<footer class="bg-zinc-950 border-t border-zinc-800 py-12 px-6">
+    <div class="max-w-screen-2xl mx-auto">
+        <div class="flex flex-col items-start md:flex-row md:justify-between md:items-start gap-8">
+            <div>
+                <img
+                    src="/assets/images/logo.png"
+                    alt="Aspen Meridian - Elite Digital Forensics"
+                    class="h-24 w-auto max-w-[220px] object-contain mb-4"
+                >
+                <div class="space-y-2">
+                    <span class="text-emerald-500 text-[11px] font-semibold tracking-[0.18em] uppercase">
+                        Head Office
+                    </span>
+                    <p class="text-zinc-400 text-sm leading-relaxed">
+                        Aspen Meridian<br>
+                        Digital Forensics • OSINT Research • Investigative Analysis<br>
+                        enquiries@aspenmeridian.com
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col items-start md:items-end">
+                <div class="flex items-center gap-6 md:gap-10 mb-6">
+                    <img src="/assets/images/ceh_logo.jpg" alt="CEH Certified" class="h-16 w-auto object-contain">
+                    <img src="/assets/images/cissp_logo.png" alt="CISSP Certified" class="h-16 w-auto object-contain">
+                    <img src="/assets/images/crest_logo.jpg" alt="CREST Member" class="h-16 w-auto object-contain">
+                </div>
+                <a href="#" onclick="openDisclosureModal(); return false;"
+                   class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-500 font-medium text-sm transition-colors">
+                    Learn more →
+                </a>
+            </div>
+        </div>
+        <div class="border-t border-zinc-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-y-4">
+            <p class="text-zinc-500 text-xs">
+                © 2026 Aspen Meridian - All rights reserved.
+            </p>
+            <div class="flex items-center gap-x-8 text-sm">
+                <a href="/terms-of-use.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Terms of Use</a>
+                <a href="/privacy.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Privacy Policy & GDPR</a>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <p class="text-zinc-500 text-[10px] tracking-widest">DISCREET • CONFIDENTIAL • PROFESSIONAL</p>
+        </div>
     </div>
-
-    <!-- Bottom copyright + links row -->
-    <div class="border-t border-zinc-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-y-4">
-      <p class="text-zinc-500 text-xs">
-        © 2026 Aspen Meridian - All rights reserved.
-      </p>
-      <div class="flex items-center gap-x-8 text-sm">
-        <a href="/terms-of-use.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Terms of Use</a>
-        <a href="/privacy.html" class="text-emerald-400 hover:text-emerald-500 font-medium transition-colors">Privacy Policy & GDPR</a>
-      </div>
-    </div>
-
-    <div class="text-center mt-6">
-      <p class="text-zinc-500 text-[10px] tracking-widest">DISCREET • CONFIDENTIAL • PROFESSIONAL</p>
-    </div>
-  </div>
 </footer>
 
 <!-- DISCLOSURE MODAL -->
 <div id="disclosure-modal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[200] p-6 opacity-0">
-  <div class="bg-zinc-900 rounded-3xl max-w-lg w-full p-8 relative border border-zinc-700">
-    <button onclick="closeDisclosureModal()" class="absolute top-5 right-6 text-3xl text-zinc-400 hover:text-white transition">×</button>
-    <h2 class="text-2xl font-semibold mb-6 text-emerald-400">Professional Certifications – Disclosure</h2>
-    <div class="no-select text-zinc-300 leading-relaxed space-y-4 text-sm">
-      <p>Aspen Meridian maintains high professional standards and, where appropriate, suitably qualified specialists may be engaged to assist with specific technical, investigative, or forensic aspects of an engagement.</p>
-      <p>The certifications referenced on this website are held by individual specialists who may be engaged in connection with particular matters. They do not constitute certification, accreditation, or membership of Aspen Meridian itself.</p>
-      <p>Where specialist expertise is required, appropriately qualified professionals may be engaged under strict confidentiality obligations to assist with specific aspects of an investigation or technical analysis.</p>
+    <div class="bg-zinc-900 rounded-3xl max-w-lg w-full p-8 relative border border-zinc-700">
+        <button onclick="closeDisclosureModal()" class="absolute top-5 right-6 text-3xl text-zinc-400 hover:text-white transition">×</button>
+        <h2 class="text-2xl font-semibold mb-6 text-emerald-400">Professional Certifications – Disclosure</h2>
+        <div class="no-select text-zinc-300 leading-relaxed space-y-4 text-sm">
+            <p>Aspen Meridian maintains high professional standards and, where appropriate, suitably qualified specialists may be engaged to assist with specific technical, investigative, or forensic aspects of an engagement.</p>
+            <p>The certifications referenced on this website are held by individual specialists who may be engaged in connection with particular matters. They do not constitute certification, accreditation, or membership of Aspen Meridian itself.</p>
+            <p>Where specialist expertise is required, appropriately qualified professionals may be engaged under strict confidentiality obligations to assist with specific aspects of an investigation or technical analysis.</p>
+        </div>
     </div>
-  </div>
 </div>
 
-<script src="/assets/js/main.js"></script>
 <script>
-  // ====================== AUTHENTIC 80S MATRIX TYPEWRITER ======================
-  function startMatrixTyping() {
-      const container = document.getElementById('decode-text');
-      if (!container) return;
-      const fullText = "DIGITAL FORENSICS • INVESTIGATIONS • BACKGROUND CHECKS";
-      container.innerHTML = `<span class="typed"></span><span class="cursor">█</span>`;
-      const typedSpan = container.querySelector('.typed');
-      const cursor = container.querySelector('.cursor');
-      let index = 0;
-      function typeNextChar() {
-          if (index < fullText.length) {
-              typedSpan.textContent += fullText[index];
-              index++;
-              let delay = 48 + Math.random() * 28;
-              const prev = fullText[index - 1];
-              if (prev === '•') delay = 630;
-              else if (prev === ' ') delay = 140;
-              else if (index % 7 === 0) delay += 95;
-              setTimeout(typeNextChar, delay);
-          } else {
-              cursor.style.animation = 'matrixCursorBlink 0.55s step-end infinite';
-              cursor.style.opacity = '1';
-              container.classList.add('complete');
-              setTimeout(() => {
-                  container.classList.remove('complete');
-                  startMatrixTyping();
-              }, 180000);
-          }
-      }
-      typeNextChar();
-  }
+// MATRIX TYPING
+function startMatrixTyping() {
+    const container = document.getElementById('decode-text');
+    if (!container) return;
+    const fullText = "DIGITAL FORENSICS • INVESTIGATIONS • BACKGROUND CHECKS";
+    container.innerHTML = `<span class="typed"></span><span class="cursor">█</span>`;
+    const typedSpan = container.querySelector('.typed');
+    const cursor = container.querySelector('.cursor');
+    let index = 0;
+    function typeNextChar() {
+        if (index < fullText.length) {
+            typedSpan.textContent += fullText[index];
+            index++;
+            let delay = 48 + Math.random() * 28;
+            const prev = fullText[index - 1];
+            if (prev === '•') delay = 630;
+            else if (prev === ' ') delay = 140;
+            else if (index % 7 === 0) delay += 95;
+            setTimeout(typeNextChar, delay);
+        } else {
+            cursor.style.animation = 'matrixCursorBlink 0.55s step-end infinite';
+            container.classList.add('complete');
+            setTimeout(() => {
+                container.classList.remove('complete');
+                startMatrixTyping();
+            }, 180000);
+        }
+    }
+    typeNextChar();
+}
 
-  // ====================== PAGE FUNCTIONS ======================
-  let modalShown = false;
-  function smoothScrollTo(sectionId) {
+// PAGE FUNCTIONS
+let modalShown = false;
+
+function smoothScrollTo(sectionId) {
     const element = document.getElementById(sectionId);
     if (element) {
-      const navHeight = 100;
-      const offsetPosition = element.getBoundingClientRect().top + window.scrollY - navHeight;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        const navHeight = 80;
+        const offsetPosition = element.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
-  }
-  function openContactModal() {
+    closeMobileMenu();
+}
+
+function openContactModal() {
     modalShown = true;
     document.getElementById('contact-modal').classList.remove('hidden');
     document.getElementById('contact-modal').classList.add('flex');
-  }
-  function closeContactModal() {
+}
+
+function closeContactModal() {
     document.getElementById('contact-modal').classList.add('hidden');
     document.getElementById('contact-modal').classList.remove('flex');
-  }
-  function submitContactForm(e) {
+}
+
+function submitContactForm(e) {
     e.preventDefault();
     alert("✅ Inquiry received. Our team will contact you within hours.");
     closeContactModal();
     e.target.reset();
-  }
-  setTimeout(() => {
-    if (!modalShown) openContactModal();
-  }, 120000);
-  document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-    alert("Mobile menu coming soon");
-  });
+}
 
-  // CAROUSEL
-  const carouselContainer = document.getElementById('articlesContainer');
-  const leftArrow = document.getElementById('scrollLeft');
-  const rightArrow = document.getElementById('scrollRight');
-  if (carouselContainer && leftArrow && rightArrow) {
-    const scrollStep = 440;
+// MOBILE MENU
+const menuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.remove('translate-x-full');
+        mobileMenu.classList.add('translate-x-0');
+    });
+}
+
+function closeMobileMenu() {
+    if (mobileMenu) {
+        mobileMenu.classList.remove('translate-x-0');
+        mobileMenu.classList.add('translate-x-full');
+    }
+}
+
+// CAROUSEL
+const carouselContainer = document.getElementById('articlesContainer');
+const leftArrow = document.getElementById('scrollLeft');
+const rightArrow = document.getElementById('scrollRight');
+if (carouselContainer && leftArrow && rightArrow) {
+    const scrollStep = window.innerWidth < 768 ? 360 : 420;
     leftArrow.addEventListener('click', () => carouselContainer.scrollBy({ left: -scrollStep, behavior: 'smooth' }));
     rightArrow.addEventListener('click', () => carouselContainer.scrollBy({ left: scrollStep, behavior: 'smooth' }));
-  }
+}
 
-  // DISCLOSURE MODAL
-  function openDisclosureModal() {
+// DISCLOSURE MODAL
+function openDisclosureModal() {
     const modal = document.getElementById('disclosure-modal');
+    if (!modal) return;
     modal.classList.remove('hidden');
     modal.classList.add('flex');
     setTimeout(() => { modal.style.opacity = '1'; }, 10);
     setTimeout(() => {
-      if (!modal.classList.contains('hidden')) {
-        closeDisclosureModal();
-      }
+        if (!modal.classList.contains('hidden')) closeDisclosureModal();
     }, 5000);
-  }
+}
 
-  function closeDisclosureModal() {
+function closeDisclosureModal() {
     const modal = document.getElementById('disclosure-modal');
+    if (!modal) return;
     modal.style.opacity = '0';
     setTimeout(() => {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
     }, 300);
-  }
+}
 
-  document.getElementById('disclosure-modal')?.addEventListener('click', (e) => {
+document.getElementById('disclosure-modal')?.addEventListener('click', (e) => {
     if (e.target === document.getElementById('disclosure-modal')) {
-      closeDisclosureModal();
+        closeDisclosureModal();
     }
-  });
+});
 
-  // SEO SCHEMA
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "DetectiveAgency",
-    "name": "Aspen Meridian",
-    "description": "Elite digital forensics, discreet investigations, identity verification, OSINT, corporate due diligence and fraud recovery services.",
-    "url": "https://aspenmeridian.com",
-    "logo": "https://aspenmeridian.com/assets/images/logoweb.png",
-    "image": "https://aspenmeridian.com/assets/images/logoweb.png",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Aspen House, Malew Street",
-      "addressLocality": "Castletown",
-      "addressRegion": "Isle of Man",
-      "postalCode": "IM9 1AB",
-      "addressCountry": "IM"
-    },
-    "areaServed": ["United States", "United Kingdom", "Europe", "Hungary", "Sweden", "France", "Isle of Man"],
-    "serviceType": ["Digital Forensics", "OSINT Investigations", "Corporate Due Diligence", "Identity Verification", "Fraud Recovery"]
-  };
-  const scriptEl = document.createElement('script');
-  scriptEl.type = 'application/ld+json';
-  scriptEl.textContent = JSON.stringify(schema);
-  document.body.appendChild(scriptEl);
+// AUTO OPEN CONTACT AFTER 2 MIN
+setTimeout(() => {
+    if (!modalShown) openContactModal();
+}, 120000);
 
-  // START MATRIX TYPEWRITER
-  window.addEventListener('load', () => {
-      setTimeout(startMatrixTyping, 450);
-  });
+// START MATRIX TYPING
+window.addEventListener('load', () => {
+    setTimeout(startMatrixTyping, 450);
+});
 </script>
 </body>
 </html>
