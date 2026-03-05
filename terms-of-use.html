@@ -5,21 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Use • Aspen Meridian</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        zinc: {
+                            300: '#d4d4d8', 400: '#a1a1aa', 500: '#71717a',
+                            700: '#3f3f46', 800: '#27272a', 900: '#18181b', 950: '#09090b'
+                        },
+                        emerald: { 400: '#34d399', 600: '#059669', 700: '#047857' }
+                    }
+                }
+            }
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
     <style>
+        .prose p { margin-bottom: 1.25em; line-height: 1.75; }
+        .prose h2 { margin-top: 2em; margin-bottom: 1em; }
+        .prose ul { margin: 1em 0; padding-left: 1.5em; list-style-type: disc; }
+        .prose li { margin-bottom: 0.5em; }
+        .prose strong { font-weight: 600; color: #fff; }
+        .prose em { font-style: italic; }
+        .prose-invert { color: #d4d4d8; }
         .policy-text {
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
         }
-        .policy-text::selection {
-            background: transparent;
-        }
+        .policy-text::selection { background: transparent; }
     </style>
 </head>
 <body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
+
 <!-- NAVBAR -->
 <nav class="fixed top-0 left-0 right-0 z-50 bg-zinc-950/95 backdrop-blur-lg border-b border-zinc-800">
     <div class="max-w-screen-2xl mx-auto px-6">
@@ -30,6 +51,7 @@
         </div>
     </div>
 </nav>
+
 <!-- HEADER -->
 <header class="pt-28 pb-12 bg-zinc-900 border-b border-zinc-800">
     <div class="max-w-3xl mx-auto px-6 text-center">
@@ -37,141 +59,200 @@
         <p class="mt-6 text-emerald-400 font-medium text-lg">Last updated: 28 February 2026</p>
     </div>
 </header>
-<!-- FRIENDLY INTRODUCTION -->
+
+<!-- PREFATORY NOTE -->
 <div class="max-w-3xl mx-auto px-6 py-16">
     <div class="prose prose-invert max-w-none text-zinc-300 leading-relaxed">
-        <p>Thank you for your interest in Aspen Meridian’s intelligence and digital forensics services.</p>
-        <p>Further down this page you will find the formal Terms of Use, which you must agree to and accept prior to using our services.</p>
-        <p>
-            Aspen Meridian exists to help clients respond to modern risks: hidden identities, deleted footprints, sophisticated fraud, and complex cross-border disputes.
-            Where appropriate, and strictly for lawful and legitimate purposes, we may utilise reputable third-party data sources and intelligence platforms to assist our work.
-            For transparency, those sources may include, without limitation, services such as HIBP, DeHashed, SpyCloud, LeakCheck and Intelligence X, as well as similar breach intelligence and data aggregation services.
-        </p>
-        <p>
-            We do not accept work intended to harass, intimidate, exploit victims, or otherwise cause harm. If you engage us, you must use any information we provide responsibly and in compliance with applicable law.
-        </p>
-        <p>
-            Some of what you will read below is necessarily formal. The purpose is straightforward: to set clear expectations, protect clients, and ensure our services are used properly.
-        </p>
+        <p>Thank you for your interest in Aspen Meridian's specialist intelligence and digital forensics services.</p>
+        <p>The formal Terms of Use governing access to this Website and our Services are set out below. You are required to read, understand, and accept them in full before submitting any enquiry or engaging our Services in any capacity.</p>
+        <p>Aspen Meridian exists to assist clients in navigating complex, high-stakes matters: concealed or assumed identities, deleted and obfuscated digital footprints, sophisticated fraud, asset concealment, and intricate cross-border disputes. Where appropriate, and strictly in furtherance of lawful and legitimate purposes, we may engage reputable third-party data sources and intelligence platforms in support of our work. For transparency, those sources may include, without limitation, Have I Been Pwned (HIBP), DeHashed, SpyCloud, LeakCheck, and Intelligence X, together with comparable breach intelligence and data aggregation services.</p>
+        <p>We do not accept instructions intended to harass, intimidate, exploit, or otherwise cause harm to any individual or organisation. Any client engaging our Services assumes full responsibility for the lawful and proper use of any information or Outputs we provide.</p>
+        <p>The terms that follow are necessarily formal. Their purpose is straightforward: to establish clear expectations, to protect our clients and ourselves, and to ensure that our Services are engaged only for legitimate purposes and in accordance with the law.</p>
         <p class="font-medium mt-8">
             The Aspen Meridian Team<br>
-            Elite Digital Forensics • Isle of Man
+            <span class="text-zinc-400 font-normal">Specialist Digital Forensics &amp; Intelligence&ensp;•&ensp;Isle of Man</span>
         </p>
     </div>
 </div>
+
 <!-- FORMAL TERMS -->
 <div class="max-w-3xl mx-auto px-6 pb-24 policy-text">
     <div class="prose prose-invert max-w-none text-zinc-300 leading-relaxed text-[15.5px]">
+
         <h2 class="text-white text-3xl font-semibold mb-8">PUBLIC GENERAL TERMS OF USE</h2>
-        <p>Welcome to Aspen Meridian Ltd trading as “Aspen Meridian” (we or us), a private company limited by shares registered in the Isle of Man. We provide elite digital forensics, background intelligence, identity verification, asset tracing, investigative support services and an online resource which facilitates the submission of enquiries, requests for searches and requests for our professional Services, allowing users to quickly assess whether we may be able to assist with matters involving compromised accounts, hidden identities, deleted digital footprints, sophisticated fraud, complex cross-border disputes or other legitimate investigative needs.</p>
-        <p>These Terms of Use (Terms) (last updated 28 February 2026) set out the terms on which we offer our users and prospective clients (referred to as you or your) access to our Website and Services. These Terms set out your rights and responsibilities when using our Website, submitting enquiries or requests for searches, or otherwise interacting with us. They also govern any information or Outputs we may provide to you in response to an enquiry.</p>
-        <p>You may access and submit enquiries through our website (Website). By accessing our Website, submitting any enquiry, requesting any search (free, promotional or otherwise) or otherwise interacting with us, you agree to be bound by these Terms. If you do not agree with these Terms, you are not entitled to access the Website, submit enquiries or receive any Services from us. If you have any questions, complaints, or comments about our Website or Services, please contact us via the web form on support.aspenmeridian.com.</p>
+
+        <p>These Terms of Use (<strong>Terms</strong>) govern access to and use of the website operated under the trading designation <em>Aspen Meridian</em> (the <strong>Website</strong>), together with the professional services made available through it (the <strong>Services</strong>). The Website and Services are provided by Barry James, trading as Aspen Meridian and Aspen Meridian Services, an independent consultant (<strong>we</strong>, <strong>us</strong>, or <strong>our</strong>). For the purposes of these Terms, the principal place of business and the jurisdiction in which the consultant is registered for the purposes of these Terms is the Isle of Man. Correspondence addresses are maintained in both the Isle of Man and the United Kingdom solely for the receipt of formal communications; neither address constitutes a place of business, public office, or operational premises, and neither shall be construed as submitting the consultant to the exclusive jurisdiction of any court other than as expressly provided herein.</p>
+
+        <p>Aspen Meridian provides specialist digital investigative, forensic analytical, and intelligence research services to a private client base comprising individuals, legal practitioners, and institutional and corporate entities. Our Services encompass, without limitation, digital forensics, background and due diligence intelligence, identity verification, asset tracing, and investigative support in connection with matters including but not limited to compromised accounts, concealed or assumed identities, deleted or obfuscated digital footprints, sophisticated fraud, and complex cross-border disputes. Services are provided to clients situated within the Isle of Man, the United Kingdom, the Crown Dependencies (including Jersey and Guernsey), the European Union and European Economic Area, and internationally, subject in all cases to the eligibility and compliance requirements set out herein and to applicable law in each relevant jurisdiction.</p>
+
+        <p>The Website facilitates the submission of initial enquiries and requests for assessment of potential engagements. It does not constitute a public directory, open marketplace, or general information resource, and access is provided solely on the terms set out herein.</p>
+
+        <p>These Terms (last updated 28 February 2026) set out the basis on which we permit access to the Website and the conditions applicable to any interaction with us, including the submission of enquiries, requests for searches (whether free, promotional, or otherwise), and the receipt of any information, findings, or outputs provided in response (<strong>Outputs</strong>). Please read these Terms carefully before accessing or using the Website in any capacity.</p>
+
+        <p>By accessing the Website, submitting any enquiry or request, or otherwise interacting with us, you confirm that you have read, understood, and agree to be bound by these Terms in their entirety, together with our Privacy Policy and any supplemental terms applicable to specific Services. If you do not accept these Terms unconditionally, you are not authorised to access or use the Website, submit enquiries, or receive Services. For questions, complaints, or communications of a support nature, please direct your correspondence to the designated web form at <strong>support.aspenmeridian.com</strong>.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">USE OF OUR WEBSITE AND SERVICES</h2>
-        <p><strong>Access to our Website and Services.</strong> Anyone can access our Website for general information purposes. However, the submission of enquiries, requests for searches or access to any Services (including any Outputs or reports) is strictly at our sole discretion and is subject to internal review, onboarding, due diligence, conflict checks, client acceptance procedures and written confirmation from us. We do not allow enquiries or accounts to be established by automated means (i.e. bots, scripts or scraping tools). If we reasonably believe that an enquiry or access attempt has been made by automated means we may immediately block that access and refuse any future interaction. We reserve the absolute right to decline any enquiry or request for any reason or no reason, without notice and without incurring any liability whatsoever.</p>
-        <p><strong>Changes to our Website and Services.</strong> From time to time we may update, modify, enhance, remove or add features or functionality to our Website or Services to reflect developments in technology, legal requirements, industry practice or our internal policies. We will post any material updates on our Website. If a change is material (Material Change) we will endeavour to provide you with written notice via the email address you supplied. If you do not agree with any changes you may immediately cease using our Website and refrain from submitting any further enquiries. Continued use after the date of any change constitutes your acceptance of the updated Terms or Services.</p>
+
+        <p><strong>Access to our Website and Services.</strong> The Website may be accessed for general information purposes by any person. However, the submission of enquiries, requests for searches, or access to any Services (including any Outputs or reports) is strictly at our sole and absolute discretion and is subject to internal review, onboarding, due diligence, conflict screening, client acceptance procedures, and written confirmation from us. We do not permit enquiries or accounts to be established by automated means, including bots, scripts, or scraping tools. Where we reasonably believe that an enquiry or access attempt has been made by automated or non-human means, we may immediately and without notice block that access and decline any future interaction. We reserve the unqualified right to decline any enquiry or request, for any reason or no reason, without notice and without incurring any liability whatsoever.</p>
+
+        <p><strong>Changes to our Website and Services.</strong> We may, from time to time, update, modify, enhance, remove, or add features or functionality to the Website or Services, whether to reflect developments in technology, changes in law or regulation, evolving industry standards, or our own internal policies and operational requirements. Material updates will be posted on the Website. Where a change is, in our reasonable opinion, material (<strong>Material Change</strong>), we will endeavour to provide written notice via the email address you have supplied to us. If you do not accept any such change, you may immediately cease use of the Website and refrain from submitting further enquiries. Continued use of the Website or submission of any enquiry following the effective date of any change shall constitute your acceptance of the updated Terms or revised Services.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">YOUR GENERAL OBLIGATIONS</h2>
+
         <p>You are not permitted to access or use our Website or Services:</p>
         <ul class="list-disc pl-6 space-y-3 mt-4">
-            <li>for any purpose other than the Permitted Purpose (defined below as submitting genuine, lawful enquiries for legitimate investigative or compliance purposes);</li>
-            <li>unless otherwise agreed in writing by us, for the benefit of any third party (including any related entity, client, affiliate or for the purpose of reselling, sublicensing, white-labelling or otherwise commercially exploiting any Outputs or information we provide);</li>
-            <li>to provide an outsourced or white-label service without our prior written consent and without expressly identifying us as the source of any data or Outputs while strictly complying with any brand usage guidelines we may issue from time to time;</li>
-            <li>to query, search or otherwise target email addresses, domains, individuals or organisations in any way that would disadvantage them, be construed as solicitation, harassment, “ambulance chasing”, doxxing, targeted marketing or unlawful surveillance;</li>
-            <li>in any way that has the potential to, or will, damage our goodwill, reputation or business interests in any manner whatsoever;</li>
-            <li>to interfere with or disrupt the integrity or performance of our Website or Services in any way, including attempting to gain unauthorised access to our systems or networks, introducing malicious programs (viruses, worms, trojan horses, ransomware, scripts or e-mail bombs), modifying, reproducing, reverse engineering, decompiling, disassembling, creating derivative works from, or distributing any part of our Website, Services or Outputs, or redistributing any login details, reports or data;</li>
-            <li>in a manner that could harm or impair anyone else’s use of our Website or Services;</li>
-            <li>to submit personal data or instructions to us that you do not have a lawful basis to provide or that would cause us to breach any law or third-party terms (including the terms of HIBP, DeHashed, SpyCloud, LeakCheck, Intelligence X or any other third-party data source we may utilise).</li>
+            <li>for any purpose other than the Permitted Purpose, defined herein as the submission of genuine, lawful enquiries for legitimate investigative, compliance, or due diligence purposes;</li>
+            <li>unless otherwise agreed in writing by us, for the benefit of any third party, including any related entity, client, or affiliate, or for the purposes of reselling, sublicensing, white-labelling, or otherwise commercially exploiting any Outputs or information we provide;</li>
+            <li>to provide an outsourced or white-label service without our prior written consent and without expressly identifying us as the source of any data or Outputs, and in all cases in strict compliance with any brand usage guidelines we may issue from time to time;</li>
+            <li>to query, search, or otherwise target email addresses, domains, individuals, or organisations in any manner that would disadvantage them or that could be construed as solicitation, harassment, doxxing, targeted marketing, or unlawful surveillance;</li>
+            <li>in any manner that has the potential to, or does in fact, damage our goodwill, reputation, or business interests;</li>
+            <li>to interfere with or disrupt the integrity or performance of the Website or Services, including any attempt to gain unauthorised access to our systems or networks, to introduce malicious code or programs (including viruses, worms, ransomware, or scripts), to reverse engineer, decompile, disassemble, or create derivative works from any part of the Website, Services, or Outputs, or to redistribute any login credentials, reports, or data;</li>
+            <li>in a manner that could harm or impair the use of the Website or Services by any other person; or</li>
+            <li>to submit personal data or instructions to us that you lack a lawful basis to provide, or that would cause us to breach any applicable law or third-party terms, including the terms of HIBP, DeHashed, SpyCloud, LeakCheck, Intelligence X, or any other third-party data source we may engage.</li>
         </ul>
-        <p>Unless otherwise agreed in writing by us, you must not give any third party access to any Outputs, reports, dashboards or credentials we provide. You are solely responsible for maintaining the confidentiality and security of any account, credentials or Outputs we supply and for all activities that occur under them. You are also responsible for obtaining and maintaining all computer hardware, software, network, internet, telecommunications and any other equipment or services required to access our Website or Services.</p>
-        <p>You must ensure that your access to and use of our Website and Services does not contravene any applicable laws, regulations, court orders or regulatory requirements in any jurisdiction and that you have obtained all necessary approvals, licences, consents and permissions relevant to the activities you are undertaking (including all required data protection consents and lawful bases for processing personal data).</p>
+
+        <p>Unless otherwise agreed in writing, you must not permit any third party to access any Outputs, reports, dashboards, or credentials we provide. You are solely responsible for maintaining the confidentiality and security of any account, credentials, or Outputs supplied by us, and for all activities conducted under or by reference to them. You are also responsible for procuring and maintaining all hardware, software, network, telecommunications, and other infrastructure required to access the Website or Services.</p>
+
+        <p>You must ensure that your access to and use of the Website and Services complies at all times with applicable laws, regulations, court orders, and regulatory requirements in every relevant jurisdiction, and that you have obtained all necessary approvals, licences, consents, and permissions pertinent to the activities you are undertaking, including all required data protection consents and lawful bases for the processing of personal data.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">REQUESTING AND RECEIVING SERVICES</h2>
-        <p>All requests for Services or searches are subject to our absolute discretion. No client relationship or engagement arises unless and until we confirm acceptance in writing and (where applicable) a formal engagement letter and/or non-disclosure agreement has been executed. We may decline or cease providing Services at any time, with or without reason, subject only to applicable law and any separate signed engagement terms. We provide no guarantee that any particular information will be located, that any subject can be identified, that assets can be traced, or that any results will be admissible in legal proceedings.</p>
-        <p>Where we utilise third-party data sources (including without limitation Have I Been Pwned (HIBP), DeHashed, SpyCloud, LeakCheck and Intelligence X) you acknowledge and agree that we do not control those datasets. Such data may be incomplete, outdated, inaccurate, duplicated, fabricated, lawfully restricted or subject to change at any time without notice. We give no warranty and accept no liability whatsoever for the accuracy, completeness, reliability, legality or continued availability of any third-party data.</p>
+
+        <p>All requests for Services or searches are subject to our absolute discretion. No client relationship, engagement, or obligation of any kind arises unless and until we confirm acceptance in writing and, where applicable, a formal engagement letter and/or non-disclosure agreement has been duly executed by both parties. We reserve the right to decline or cease providing Services at any time, with or without reason, subject only to applicable law and the terms of any separate signed engagement. We provide no guarantee that any particular information will be located, that any subject can be identified, that assets will be traced or recovered, or that any findings will be admissible in legal or regulatory proceedings.</p>
+
+        <p>Where we engage third-party data sources (including without limitation Have I Been Pwned (HIBP), DeHashed, SpyCloud, LeakCheck, and Intelligence X), you acknowledge and agree that we exercise no control over those datasets. Such data may be incomplete, outdated, inaccurate, duplicated, fabricated, lawfully restricted, or subject to change at any time without notice. We give no warranty and accept no liability whatsoever in respect of the accuracy, completeness, reliability, legality, or continued availability of any third-party data.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">INTELLECTUAL PROPERTY RIGHTS</h2>
-        <p>You acknowledge and agree that we and our licensors own all right, title and interest in all Intellectual Property Rights in the Website, Services, methodologies, workflows, templates, formats, reports, Outputs and any improvements, enhancements or modifications thereto. Nothing in these Terms transfers any ownership rights to you.</p>
-        <p>Subject to full compliance with these Terms and (where applicable) full payment of any fees, we grant you a limited, non-exclusive, non-transferable, revocable, non-sublicensable licence to use the Outputs solely for your own internal, legitimate, lawful purposes strictly in connection with the specific matter for which the Services were requested. Any other use is strictly prohibited. You must not copy, reproduce, modify, adapt, publish, transmit, distribute, sell, sublicense, commercially exploit or create derivative works from any Outputs without our prior written consent.</p>
-        <p>You grant us a worldwide, perpetual, irrevocable, royalty-free, non-exclusive licence to use any feedback, suggestions, comments or improvements you provide to us in relation to the Website or Services for any purpose, including to improve our Services or develop new offerings.</p>
+
+        <p>You acknowledge and agree that we and our licensors own all right, title, and interest in and to all Intellectual Property Rights subsisting in the Website, the Services, our methodologies, workflows, templates, report formats, Outputs, and any improvements, enhancements, or modifications thereto. Nothing in these Terms transfers, assigns, or licences any ownership rights to you.</p>
+
+        <p>Subject to your full compliance with these Terms and, where applicable, full payment of any agreed fees, we grant you a limited, non-exclusive, non-transferable, revocable, and non-sublicensable licence to use any Outputs solely for your own internal, legitimate, and lawful purposes, strictly in connection with the specific matter for which the relevant Services were requested. Any use beyond those strictly defined parameters is prohibited. You must not copy, reproduce, modify, adapt, publish, transmit, distribute, sell, sublicense, commercially exploit, or create derivative works from any Outputs without our prior written consent.</p>
+
+        <p>You grant us a worldwide, perpetual, irrevocable, royalty-free, non-exclusive licence to use any feedback, suggestions, or commentary you provide in relation to the Website or Services for any purpose we determine appropriate, including service improvement and the development of new capabilities.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">DATA PROTECTION AND SECURITY</h2>
-        <p>We process personal data in accordance with the Isle of Man Data Protection Act 2018, the UK GDPR (as applicable via the Isle of Man) and all other applicable Privacy Laws. Full details are set out in our Privacy Policy (available on the Website). You agree that we may process any personal data you provide to us to perform the Services, manage our relationship with you, comply with legal obligations and improve our Services.</p>
-        <p>You represent and warrant that you have all necessary lawful bases, consents, notices and permissions to provide any personal data to us and to instruct us to process it as part of the Services. You are solely responsible for establishing, maintaining and enforcing appropriate information security controls over any data you supply to us or receive from us. You must obtain all required consents from data subjects whose personal information is included in any material you supply to us.</p>
+
+        <p>We process personal data in accordance with the Isle of Man Data Protection Act 2018, the UK GDPR as applicable within the Isle of Man, and all other applicable Privacy Laws. Full details are set out in our Privacy Policy, available on the Website. You agree that we may process any personal data you provide in order to perform the Services, manage our relationship with you, comply with our legal and regulatory obligations, and improve our capabilities.</p>
+
+        <p>You represent and warrant that you hold all necessary lawful bases, consents, notices, and permissions to provide any personal data to us and to instruct us to process it in the course of the Services. You are solely responsible for establishing and maintaining appropriate information security controls over all data you supply to us or receive from us, and for obtaining all required consents from data subjects whose personal information is included in any material you provide.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">WARRANTIES AND DISCLAIMER</h2>
-        <p>The Website and Services are provided on an “as is” and “as available” basis. To the maximum extent permitted by law, we disclaim all representations, warranties and conditions (express, implied, statutory or otherwise), including without limitation any warranties of accuracy, completeness, fitness for a particular purpose, non-infringement, availability, reliability, timeliness, security or uninterrupted operation. We do not warrant that the Website or Services will meet your requirements, that any information will be accurate or complete, or that any third-party data sources will remain available or unchanged.</p>
-        <p>You are solely responsible for the accuracy, legality, quality and appropriateness of any information you provide to us and for your use of any Outputs or Services. We provide no advice or recommendations of any kind. You assume entire risk as to the suitability and results obtained from use of the Website or Services. We are in no way responsible for any decisions, actions or omissions you make based on any information we provide. You agree to hold us harmless from any liability to third parties arising from your use of the Services or Outputs.</p>
+
+        <p>The Website and Services are provided strictly on an "as is" and "as available" basis. To the maximum extent permitted by applicable law, we disclaim all representations, warranties, and conditions, whether express, implied, statutory, or otherwise, including without limitation any warranty of accuracy, completeness, fitness for a particular purpose, non-infringement, availability, reliability, timeliness, security, or uninterrupted operation. We do not warrant that the Website or Services will meet your specific requirements, that any information will be accurate or complete, or that any third-party data source will remain available, current, or unchanged.</p>
+
+        <p>You are solely responsible for the accuracy, legality, quality, and appropriateness of all information you provide to us, and for your use of any Outputs or Services. We provide no advice, opinion, or recommendation of any kind, whether legal, financial, regulatory, or otherwise. You assume entire risk as to the suitability, quality, and results obtained through use of the Website or Services. We accept no responsibility for decisions, actions, or omissions taken or made by you in reliance on any information we provide, and you agree to hold us harmless from any liability to third parties arising from your use of the Services or Outputs.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">LIMITATION OF LIABILITY</h2>
-        <p>To the fullest extent permitted by Isle of Man law, neither Aspen Meridian nor its directors, officers, employees, agents, contractors, affiliates or licensors shall be liable for any indirect, incidental, special, consequential, punitive or exemplary damages, or for any loss of profits, revenue, business, goodwill, reputation, opportunity, anticipated savings, data or information, even if we have been advised of the possibility of such damages.</p>
-        <p>Subject only to any liability that cannot lawfully be excluded, our total aggregate liability to you (whether in contract, tort (including negligence), breach of statutory duty or otherwise) arising out of or in connection with these Terms, the Website or any Services shall not exceed the total fees (if any) actually paid by you to us for the specific search or engagement giving rise to the claim in the twelve (12) months preceding the claim.</p>
+
+        <p>To the fullest extent permitted by the laws of the Isle of Man, Aspen Meridian and its directors, officers, employees, agents, contractors, affiliates, and licensors shall not be liable for any indirect, incidental, special, consequential, punitive, or exemplary damages, or for any loss of profits, revenue, business, goodwill, reputation, opportunity, anticipated savings, data, or information, whether or not such loss was foreseeable or we had been advised of its possibility.</p>
+
+        <p>Subject only to liability that cannot lawfully be excluded or limited, our total aggregate liability to you, whether in contract, tort (including negligence), breach of statutory duty, or otherwise, arising out of or in connection with these Terms, the Website, or any Services, shall not exceed the total fees (if any) actually paid by you to us in respect of the specific search or engagement giving rise to the claim during the twelve (12) months immediately preceding the relevant claim.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">INDEMNITY</h2>
-        <p>You agree to indemnify, defend and hold harmless Aspen Meridian, its directors, officers, employees, agents, contractors, affiliates and licensors from and against any and all claims, demands, liabilities, damages, losses, costs and expenses (including reasonable legal fees on a full indemnity basis) arising out of or in connection with: (i) your access to or use of the Website or Services; (ii) any breach by you of these Terms; (iii) any violation by you of applicable laws or third-party rights (including privacy or intellectual property rights); (iv) any negligent, fraudulent or wilful act or omission by you; or (v) any claim by a third party that our use of any material you supplied to us is unlawful or infringes third-party rights.</p>
+
+        <p>You agree to indemnify, defend, and hold harmless Aspen Meridian and its directors, officers, employees, agents, contractors, affiliates, and licensors from and against all claims, demands, liabilities, damages, losses, costs, and expenses (including reasonable legal fees assessed on a full indemnity basis) arising out of or in connection with: (i) your access to or use of the Website or Services; (ii) any breach by you of these Terms; (iii) any violation by you of applicable laws or the rights of any third party, including privacy or intellectual property rights; (iv) any negligent, fraudulent, or wilful act or omission by you; or (v) any claim by a third party that our processing of material you supplied to us is unlawful or infringes third-party rights.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">TERMINATION AND SUSPENSION</h2>
-        <p>We may, at our sole discretion and with or without notice, limit, suspend or terminate your access to the Website or any Services if we reasonably believe you have breached these Terms, if we determine continued interaction is not in our best interests, or for any other reason. Upon termination you must immediately cease all use of the Website, Services and any Outputs and destroy or return all copies of Outputs in your possession. Termination does not affect any accrued rights or surviving provisions of these Terms.</p>
+
+        <p>We may, at our sole and absolute discretion and with or without notice, limit, suspend, or terminate your access to the Website or any Services if we reasonably believe you have breached these Terms, if we conclude that continued interaction is not consistent with our interests or obligations, or for any other reason we consider appropriate. Upon termination, you must immediately cease all use of the Website, Services, and Outputs, and destroy or return all copies of Outputs in your possession or under your control. Termination shall not affect any accrued rights or obligations, nor any provisions of these Terms which are intended by their nature to survive termination.</p>
+
+
+        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">GOVERNING LAW AND JURISDICTION</h2>
+
+        <p>These Terms are governed by and shall be construed exclusively in accordance with the laws of the Isle of Man. The parties irrevocably submit to the exclusive jurisdiction of the courts of the Isle of Man in respect of any dispute or claim arising out of or in connection with these Terms, the Website, or any Services, save that nothing herein shall prevent us from seeking urgent or interim relief in any competent court of any jurisdiction.</p>
+
+        <p>Nothing in these Terms is intended to, and nothing shall be construed as, submitting us to the jurisdiction of the courts of England and Wales, Scotland, Northern Ireland, any Crown Dependency, any member state of the European Union, or any other jurisdiction by reason only of the maintenance of a correspondence address, the nationality or location of any client, or the delivery of Services to clients in those jurisdictions. You acknowledge that the maintenance of a correspondence address within the United Kingdom does not constitute the carrying on of business within the United Kingdom for the purposes of any applicable statute or regulation, and does not confer upon any court other than the courts of the Isle of Man jurisdiction over any dispute arising hereunder.</p>
+
+        <p>Where you are situated in, or where the subject matter of any engagement relates to, the European Union or European Economic Area, you acknowledge that applicable EU or member state laws (including the General Data Protection Regulation (EU) 2016/679) may independently impose obligations upon you. Compliance with such obligations is your sole responsibility. We observe applicable data protection requirements as set out in the Data Protection and Security section of these Terms; however, nothing herein constitutes a submission to EU jurisdiction or an acknowledgement that EU law governs these Terms or our relationship with you.</p>
+
+        <p>Where you are situated in, or where the subject matter of any engagement relates to, any other international jurisdiction, you are solely responsible for ensuring that your access to and use of the Website and Services complies with all applicable local laws, regulations, and licensing requirements in that jurisdiction. We make no representation that the Website or Services are appropriate for access or use in any particular jurisdiction outside the Isle of Man.</p>
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">GENERAL</h2>
-        <p>These Terms are governed by and construed in accordance with the laws of the Isle of Man. You irrevocably submit to the exclusive jurisdiction of the courts of the Isle of Man in respect of any dispute or claim arising out of or in connection with these Terms. These Terms constitute the entire agreement between you and us concerning the subject matter and supersede all prior agreements. We shall not be liable for any failure or delay in performance caused by events beyond our reasonable control (force majeure). If any provision is held invalid, the remainder shall continue in full force.</p>
+
+        <p>These Terms constitute the entire agreement between you and us with respect to their subject matter and supersede all prior representations, agreements, and understandings, whether written or oral. We shall not be liable for any failure or delay in performance resulting from circumstances beyond our reasonable control. If any provision of these Terms is held to be invalid, unlawful, or unenforceable by a court of competent jurisdiction, the remaining provisions shall continue in full force and effect. No failure or delay by us in exercising any right or remedy shall constitute a waiver of that right or remedy.</p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">CHANGES TO THESE TERMS</h2>
-        <p>We may amend these Terms from time to time. We will endeavour to notify you of material changes via the Website or email. Continued use of the Website or submission of any enquiry after the effective date of any amendment constitutes your acceptance of the revised Terms.</p>
+
+        <p>We reserve the right to amend these Terms at any time. We will endeavour to notify you of material amendments via the Website or by email to the address you have provided. Continued use of the Website or submission of any enquiry following the effective date of any amendment shall constitute your unconditional acceptance of the revised Terms.</p>
+
+
+        <h2 class="text-white text-3xl font-semibold mt-16 mb-8">REGISTERED PARTICULARS AND CORRESPONDENCE</h2>
+
+        <p>Aspen Meridian and Aspen Meridian Services constitute the trading designations of Barry James, an independent consultant operating in an individual capacity. The aforementioned trading designations are utilised in connection with the provision of digital investigative, analytical, and research consultancy services rendered to private individuals, legal practitioners, and corporate or institutional entities, including but not limited to those domiciled within the Crown Dependencies, the United Kingdom, the European Union and European Economic Area, and internationally. All engagements are undertaken in strict accordance with applicable statutory provisions, regulatory frameworks, and prevailing professional standards in each relevant jurisdiction.</p>
+
+        <p>For the purposes of formal and legal correspondence, a business correspondence address is maintained at Aspen House, Malew Street, Castletown, Isle of Man, IM9 1AB. A further correspondence address is maintained within the United Kingdom for the receipt of formal communications. It is expressly recorded that both aforementioned addresses are maintained solely for the receipt of formal business communications and shall not be construed as constituting public-facing offices, places of business, or operational premises open to attendance without prior arrangement, nor shall the existence of either address be taken as an indication that business is carried on from those premises, or that the consultant submits to the jurisdiction of any court by reason only of their location. All enquiries of a business nature should be directed in the first instance to the designated electronic correspondence address at enquiries@aspenmeridian.com. For support and operational matters, correspondence should be directed via the web form at support.aspenmeridian.com.</p>
+
+        <p><em>Nota bene: any attendance at or communication directed to either correspondence address otherwise than by prior written arrangement is neither invited nor sanctioned.</em></p>
+
 
         <h2 class="text-white text-3xl font-semibold mt-16 mb-8">DEFINITIONS AND INTERPRETATION</h2>
-        <p>In these Terms the following terms have the meanings set out below:</p>
-        <p><strong>Intellectual Property Rights</strong> means all intellectual property rights throughout the world, including patents, copyrights, trade marks, trade secrets, database rights and all other proprietary rights.</p>
-        <p><strong>Outputs</strong> means all reports, findings, data extracts, search results, analyses, deliverables and other materials we provide to you.</p>
-        <p><strong>Permitted Purpose</strong> means submitting genuine, lawful enquiries for legitimate investigative, compliance or due-diligence purposes in strict compliance with all applicable laws.</p>
-        <p><strong>Privacy Laws</strong> means the Isle of Man Data Protection Act 2018, the UK GDPR as applicable in the Isle of Man, and all other applicable data protection and privacy legislation.</p>
-        <p><strong>Services</strong> means our digital forensics, intelligence, verification, tracing and investigative services and any related outputs.</p>
-        <p><strong>Website</strong> means the website located at aspenmeridian.com (and any subdomains or successor sites).</p>
-        <p>Headings are for convenience only. “Include” means include without limitation. These Terms are binding on you and us and our respective successors and permitted assigns.</p>
 
-        <div class="mt-20 pt-12 border-t border-zinc-700 text-xs text-zinc-500">
-            Aspen Meridian Ltd • Registered in the Isle of Man (Company No. 000000A) • Registered Office: Aspen House, Malew Street, Castletown, Isle of Man IM9 1AB<br><br>
-            All client engagements are governed by separate Non-Disclosure Agreements and formal engagement letters. This Terms of Use page governs use of this website and the submission of enquiries/requests only and does not, by itself, create a client relationship or impose any obligation on Aspen Meridian to accept work.
+        <p>In these Terms the following expressions have the meanings ascribed to them below:</p>
+
+        <p><strong>Intellectual Property Rights</strong> means all intellectual property rights subsisting anywhere in the world, including patents, copyright, trade marks, trade secrets, database rights, design rights, and all other proprietary rights of whatever nature, whether registered or unregistered.</p>
+
+        <p><strong>Outputs</strong> means all reports, findings, data extracts, search results, analyses, briefings, deliverables, and other materials or information provided to you by us in connection with the Services.</p>
+
+        <p><strong>Permitted Purpose</strong> means the submission of genuine, lawful enquiries for legitimate investigative, compliance, or due diligence purposes, conducted in strict compliance with all applicable laws and these Terms.</p>
+
+        <p><strong>Privacy Laws</strong> means the Isle of Man Data Protection Act 2018, the UK GDPR (as applicable within the Isle of Man and, where relevant, the United Kingdom), the EU General Data Protection Regulation (EU) 2016/679 (where applicable to any EU or EEA data subject), and all other applicable data protection, privacy, and surveillance legislation in any relevant jurisdiction.</p>
+
+        <p><strong>Services</strong> means our digital forensics, intelligence research, identity verification, asset tracing, and investigative consultancy services, together with any related Outputs and ancillary activities.</p>
+
+        <p><strong>Website</strong> means the website accessible at aspenmeridian.com, including any subdomains and any successor or replacement sites we may operate from time to time.</p>
+
+        <p>Section headings are included for ease of reference only and shall not affect the construction or interpretation of these Terms. References to "including" or "include" shall be construed as meaning including without limitation. These Terms bind you and us and our respective successors and permitted assigns.</p>
+
+
+        <div class="mt-20 pt-12 border-t border-zinc-700 text-xs text-zinc-500 leading-relaxed">
+            <p>Aspen Meridian &amp; Aspen Meridian Services are the trading designations of Barry James, an independent consultant. Correspondence address: Aspen House, Malew Street, Castletown, Isle of Man, IM9 1AB. The correspondence address is maintained for formal business communications only and does not constitute a public office.</p>
+            <p class="mt-3">All client engagements are governed by separate Non-Disclosure Agreements and formal engagement letters executed prior to commencement of any Services. These Terms of Use govern access to and use of this Website and the submission of enquiries only. They do not, of themselves, create any client relationship or impose any obligation upon Aspen Meridian to accept instructions or provide Services.</p>
         </div>
+
     </div>
 </div>
+
 <!-- ACCEPTANCE BOX -->
 <div class="max-w-3xl mx-auto px-6 pb-24">
     <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-10">
         <div class="flex items-start gap-4">
             <input type="checkbox" id="accept-checkbox" class="mt-1 w-6 h-6 accent-emerald-600 cursor-pointer" disabled>
             <label for="accept-checkbox" class="text-zinc-300 cursor-pointer select-none">
-                I have read, understood, and agree to the Terms of Use above.
+                I have read, understood, and agree unconditionally to the Terms of Use above.
             </label>
         </div>
-      
         <button id="accept-button" onclick="acceptTerms()" disabled
                 class="mt-8 w-full py-6 bg-emerald-600 hover:bg-emerald-700 disabled:bg-zinc-700 rounded-3xl text-lg font-semibold transition-all">
             I Accept &amp; Return to Homepage
         </button>
     </div>
 </div>
-<script>
-    // Enable checkbox after scrolling near bottom
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     const checkbox = document.getElementById('accept-checkbox');
-    const button = document.getElementById('accept-button');
-   
+    const button   = document.getElementById('accept-button');
+
+    // Enable checkbox only once user has scrolled near the bottom
     window.addEventListener('scroll', () => {
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 350) {
             checkbox.disabled = false;
         }
     });
+
     checkbox.addEventListener('change', () => {
         button.disabled = !checkbox.checked;
     });
+
     function acceptTerms() {
         if (checkbox.checked) {
             alert("✅ Thank you. You have accepted our Terms of Use.");
-            window.location.href = "/";
-        }
-    }
-    // Disable right-click and selection on policy text
-    document.querySelector('.policy-text').addEventListener('contextmenu', e => e.preventDefault());
-</script>
-</body>
-</html>
+            
