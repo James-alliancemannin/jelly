@@ -1,0 +1,62 @@
+# robots.txt – Aspen Meridian
+# https://aspenmeridian.com/robots.txt
+# Last updated: 2026-03-11
+# Purpose: Allow legitimate search indexing while restricting AI training & unauthorised scraping
+
+# ── GENERAL CRAWLERS ──────────────────────────────────────────
+User-agent: *
+Allow: /
+Allow: /sitemap.xml
+Allow: /.well-known/security.txt
+Disallow: /api/
+Disallow: /assets/private/
+Disallow: /admin/
+Disallow: /login/
+Disallow: /config/
+Disallow: /backup/
+Disallow: /test/
+# Block URL parameters (prevents duplicate content indexing)
+Disallow: /*?*
+
+# ── AI TRAINING OPT-OUTS (2025–2026 standard signals) ─────────
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: GrokBot
+Disallow: /
+
+User-agent: xAI-Grok
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# ── SITEMAP ───────────────────────────────────────────────────
+Sitemap: https://aspenmeridian.com/sitemap.xml
+
+# ── NOTICE ────────────────────────────────────────────────────
+# We welcome good-faith crawlers for search indexing.
+# Unauthorised commercial scraping, AI model training,
+# or data aggregation is strictly prohibited.
+# All content © 2026 Aspen Meridian – enquiries@aspenmeridian.com
