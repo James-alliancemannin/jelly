@@ -1,0 +1,19 @@
+Canonical: https://aspenmeridian.com/.well-known/security.txt
+Contact: mailto:security@aspenmeridian.com
+Expires: 2027-03-11T00:00:00Z
+Preferred-Languages: en
+
+# Responsible Disclosure
+# We value discreet, good-faith security research.
+# Reports concerning our public perimeter are reviewed promptly.
+
+# Scope
+# In scope:  public web properties (*.aspenmeridian.com)
+# Out of scope: social engineering, DoS, physical security, low-impact findings
+
+# Process
+# Acknowledgment: within 72 hours
+# Updates: provided under NDA where appropriate
+
+Aspen Meridian
+https://aspenmeridian.com
