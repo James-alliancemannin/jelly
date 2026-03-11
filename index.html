@@ -666,7 +666,6 @@
         </div>
     </div>
 </section>
-
 <!-- ═══════════════════════════════
      FOOTER
 ════════════════════════════════ -->
@@ -674,35 +673,48 @@
     <div class="max-w-screen-2xl mx-auto">
         <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-10">
 
+            <!-- LEFT: LOGO + CONTACT -->
             <div class="max-w-xs">
                 <img src="/assets/images/logo.png" alt="Aspen Meridian - Elite Digital Forensics"
                      class="h-24 w-auto max-w-[200px] object-contain mb-6">
                 <div class="space-y-1">
-                    <span class="text-emerald-500 text-[10px] font-semibold tracking-[0.2em] uppercase block mb-2">Head Office</span>
+                    <span class="text-emerald-500 text-[10px] font-semibold tracking-[0.2em] uppercase block mb-3">Head Office</span>
                     <p class="text-zinc-500 text-sm leading-relaxed">
                         Aspen Meridian<br>
                         Digital Forensics · OSINT Research · Investigative Analysis
                     </p>
+                    <a href="tel:+447576373795"
+                       class="inline-flex items-center gap-2 text-zinc-400 hover:text-emerald-400 text-sm transition-colors block mt-3">
+                        <i class="fa-solid fa-phone text-xs text-emerald-600"></i>
+                        UK Office &nbsp;+44 7576 373795
+                    </a>
                     <a href="mailto:enquiries@aspenmeridian.com"
-                       class="text-emerald-400 hover:text-emerald-300 text-sm transition-colors block mt-2">
+                       class="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm transition-colors block mt-1">
+                        <i class="fa-solid fa-envelope text-xs text-emerald-600"></i>
                         enquiries@aspenmeridian.com
                     </a>
                 </div>
             </div>
 
+            <!-- RIGHT: CERTIFICATIONS -->
             <div class="flex flex-col items-start md:items-end gap-6">
-                <div class="flex items-center gap-6">
-                    <img src="/assets/images/ceh_logo.png" alt="CEH Certified" class="h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="/assets/images/cissp_logo.png" alt="CISSP Certified" class="h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
-                    <img src="/assets/images/crest_logo.jpg" alt="CREST Member" class="h-14 w-auto object-contain opacity-70 hover:opacity-100 transition-opacity">
+                <div>
+                    <span class="text-emerald-500 text-[10px] font-semibold tracking-[0.2em] uppercase block mb-4 md:text-right">Certifications</span>
+                    <div class="flex items-center gap-6">
+                        <img src="/assets/images/ceh_logo.png" alt="CEH Certified" class="h-14 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="/assets/images/cissp_logo.png" alt="CISSP Certified" class="h-14 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                        <img src="/assets/images/crest_logo.jpg" alt="CREST Member" class="h-14 w-auto object-contain opacity-60 hover:opacity-100 transition-opacity">
+                    </div>
                 </div>
                 <a href="#" onclick="openDisclosureModal(); return false;"
                    class="inline-flex items-center gap-2 text-zinc-500 hover:text-emerald-400 text-xs tracking-wide transition-colors">
                     Professional certifications disclosure <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </a>
             </div>
+
         </div>
 
+        <!-- BOTTOM BAR -->
         <div class="border-t border-zinc-800/60 mt-14 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="text-zinc-600 text-xs">© 2026 Aspen Meridian. All rights reserved.</p>
             <div class="flex items-center gap-6 text-xs">
@@ -714,9 +726,9 @@
         <div class="text-center mt-6">
             <p class="text-zinc-700 text-[9px] tracking-[0.25em] uppercase">Discreet &nbsp;•&nbsp; Confidential &nbsp;•&nbsp; Professional</p>
         </div>
+
     </div>
 </footer>
-
 <!-- ═══════════════════════════════
      DISCLOSURE MODAL
 ════════════════════════════════ -->
