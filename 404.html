@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>404 — Page Not Found | Aspen Meridian</title>
+    <meta name="robots" content="noindex,nofollow">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            background: #050505;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .heading-font { font-family: 'Playfair Display', serif; }
+
+        /* background grid */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(16,185,129,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(16,185,129,0.035) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+            pointer-events: none;
+            animation: gridDrift 25s linear infinite;
+        }
+        @keyframes gridDrift {
+            0%   { background-position: 0 0; }
+            100% { background-position: 60px 60px; }
+        }
+
+        /* noise */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            background-size: 180px;
+            opacity: 0.5;
+        }
+
+        /* glowing 404 */
+        .four-o-four {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(7rem, 20vw, 14rem);
+            font-weight: 600;
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(16,185,129,0.25);
+            position: relative;
+            user-select: none;
+        }
+        .four-o-four::after {
+            content: '404';
+            position: absolute;
+            inset: 0;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(16,185,129,0.08);
+            filter: blur(18px);
+            animation: glowPulse 4s ease-in-out infinite alternate;
+        }
+        @keyframes glowPulse {
+            0%   { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        /* scan line */
+        .scan-line {
+            position: absolute;
+            left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(16,185,129,0.4), transparent);
+            animation: scanDown 4s linear infinite;
+        }
+        @keyframes scanDown {
+            0%   { top: 0%; opacity: 1; }
+            90%  { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: #10b981;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .btn-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border: 1px solid rgba(16,185,129,0.6);
+            color: #10b981;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            background: rgba(16,185,129,0.06);
+            position: relative;
+        }
+        .btn-home:hover {
+            background: #10b981;
+            color: #000;
+            box-shadow: 0 0 40px rgba(16,185,129,0.3);
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background: rgba(16,185,129,0.3);
+            margin: 2rem auto;
+        }
+
+        /* fade in on load */
+        .content {
+            animation: fadeUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-white">
+
+    <div class="content text-center px-6 relative z-10 max-w-xl mx-auto">
+
+        <!-- logo -->
+        <a href="/" class="inline-block mb-8 opacity-70 hover:opacity-100 transition-opacity">
+            <img src="/assets/images/logo.png" alt="Aspen Meridian" class="h-16 w-auto mx-auto">
+        </a>
+
+        <!-- badge -->
+        <div class="badge">
+            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse inline-block"></span>
+            Signal Lost
+        </div>
+
+        <!-- 404 number -->
+        <div class="relative inline-block">
+            <div class="scan-line"></div>
+            <div class="four-o-four">404</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- message -->
+        <h1 class="heading-font text-3xl sm:text-4xl font-semibold mb-4 leading-snug">
+            This trace goes cold here.
+        </h1>
+        <p class="text-zinc-500 text-sm leading-relaxed max-w-sm mx-auto mb-10">
+            The page you're looking for has moved, been removed, or never existed.
+            Every digital trail has an end — this one ends here.
+        </p>
+
+        <!-- actions -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="/" class="btn-home">
+                <i class="fa-solid fa-arrow-left text-xs"></i>
+                Return to Home
+            </a>
+            <a href="/#services" class="text-zinc-500 hover:text-emerald-400 text-sm transition-colors tracking-wide">
+                View Services →
+            </a>
+        </div>
+
+        <!-- footer note -->
+        <p class="text-zinc-700 text-[10px] tracking-[0.2em] uppercase mt-16">
+            Aspen Meridian &nbsp;•&nbsp; Discreet &nbsp;•&nbsp; Confidential &nbsp;•&nbsp; Professional
+        </p>
+
+    </div>
+
+</body>
+</html>
