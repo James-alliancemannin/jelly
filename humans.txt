@@ -1,0 +1,57 @@
+# humans.txt – Aspen Meridian
+# https://aspenmeridian.com/humans.txt
+# Last updated: 2026-03-11
+
+Organisation
+  Aspen Meridian
+
+About
+  Discreet provider of elite digital forensics, OSINT intelligence
+  and admissible investigative services for high-stakes decisions.
+
+Primary location
+  Head Office: Isle of Man (United Kingdom jurisdiction)
+
+Contact
+  General / Business:   enquiries@aspenmeridian.com
+  Urgent / Security:    security@aspenmeridian.com (PGP preferred)
+  Telephone (UK office): +44 7576 373795 – urgent matters only
+
+Operational footprint
+  • United Kingdom (Head Office – Isle of Man)
+  • Hungary
+  • France
+  • Sweden
+  • Cross-border reach: EU, USA, Crown Dependencies, Monaco,
+    selected offshore jurisdictions & tax havens
+
+Languages supported
+  • English (primary)
+  • Hungarian
+  • Russian
+  • French
+  • Italian
+  • Swedish
+
+Core services
+  • Deep background intelligence & identity verification
+  • Elite OSINT & digital intelligence gathering
+  • High-stakes corporate due diligence & UBO mapping
+  • Advanced fraud & scam forensics (romance, crypto, investment)
+  • Confidential risk intelligence & pre-exposure audits
+  • Litigation support, admissible evidence & expert testimony
+
+Technical footprint (as of last update)
+  Last modified: 2026-03-11
+  Markup:        HTML5
+  Styling:       CSS3 + Tailwind CSS
+  Icons:         Font Awesome 6
+  Hosting:       Static site (GitHub Pages / Vercel compatible)
+
+Important notes
+  • All client engagements governed by strict NDAs
+  • Intelligence obtained exclusively through lawful, obtainable sources
+  • Certifications (CEH, CISSP, CREST) held by individual specialists engaged per matter
+  • No client data stored, retained or monetised beyond engagement scope
+
+Aspen Meridian – Truth in every digital trace.
