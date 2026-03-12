@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hall of Shame — Bad Websites</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Special+Elite&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #e8001e;
+      --red-dim: #9b0015;
+      --cream: #f0e8d0;
+      --dark: #0d0b08;
+      --dark2: #171410;
+      --border: #2a2520;
+      --text-dim: #6b6055;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Mono', monospace;
+      padding: 24px;
+    }
+
+    /* ── WIDGET SHELL ── */
+    .widget {
+      width: 480px;
+      max-width: 100%;
+      background: var(--dark2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px #000, 0 32px 80px rgba(0,0,0,0.9), 0 0 60px rgba(232,0,30,0.06);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Tape strip across top */
+    .tape {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--red) 0px, var(--red) 28px,
+        transparent 28px, transparent 36px
+      );
+      z-index: 20;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      padding: 20px 20px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .badge {
+      background: var(--red);
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      padding: 2px 8px;
+      border-radius: 2px;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .header-text h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 3px;
+      color: var(--cream);
+      margin: 0 0 4px;
+      line-height: 1;
+    }
+
+    .header-text p {
+      font-family: 'Special Elite', serif;
+      font-size: 11px;
+      color: var(--text-dim);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .counter {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 36px;
+      color: var(--red);
+      line-height: 1;
+      letter-spacing: 1px;
+      opacity: 0.6;
+    }
+
+    /* ── STAGE ── */
+    .stage {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #000;
+      cursor: pointer;
+    }
+
+    .stage-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94), filter 0.4s;
+      filter: saturate(0.7) brightness(0.75);
+      transform-origin: center;
+    }
+
+    .stage:hover .stage-img {
+      transform: scale(1.04);
+      filter: saturate(1) brightness(0.9);
+    }
+
+    /* Scanline overlay */
+    .scanlines {
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.15) 2px,
+        rgba(0,0,0,0.15) 4px
+      );
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Name plate */
+    .nameplate {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.95));
+      padding: 32px 16px 14px;
+      z-index: 3;
+    }
+
+    .site-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--cream);
+      margin: 0 0 3px;
+      line-height: 1;
+    }
+
+    .site-url {
+      font-size: 10px;
+      color: var(--red);
+      letter-spacing: 1px;
+      margin: 0;
+      opacity: 0.8;
+    }
+
+    /* Crime tape diagonal */
+    .crime-tag {
+      position: absolute;
+      top: 14px;
+      right: -28px;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      padding: 4px 36px;
+      transform: rotate(30deg);
+      z-index: 5;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+
+    /* Expand hint */
+    .expand-hint {
+      position: absolute;
+      top: 12px;
+      left: 14px;
+      background: rgba(0,0,0,0.7);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.5);
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      padding: 3px 8px;
+      border-radius: 2px;
+      z-index: 5;
+      pointer-events: none;
+    }
+
+    /* ── FILMSTRIP ── */
+    .strip-wrap {
+      overflow: hidden;
+      background: #000;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .strip-wrap::before,
+    .strip-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 48px;
+      z-index: 4;
+      pointer-events: none;
+    }
+    .strip-wrap::before { left: 0; background: linear-gradient(90deg, #000, transparent); }
+    .strip-wrap::after  { right: 0; background: linear-gradient(-90deg, #000, transparent); }
+
+    .strip {
+      display: flex;
+      gap: 8px;
+      width: max-content;
+      animation: filmroll 40s linear infinite;
+      will-change: transform;
+    }
+
+    .strip-wrap:hover .strip {
+      animation-play-state: paused;
+    }
+
+    @keyframes filmroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .thumb {
+      width: 80px;
+      height: 52px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      filter: saturate(0.5) brightness(0.6);
+      border: 1px solid transparent;
+      position: relative;
+    }
+
+    .thumb:hover,
+    .thumb.active {
+      filter: saturate(1) brightness(1);
+      border-color: var(--red);
+      transform: scale(1.1);
+      box-shadow: 0 0 16px rgba(232,0,30,0.5);
+      z-index: 5;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .verdict {
+      font-family: 'Special Elite', serif;
+      font-size: 10.5px;
+      color: var(--text-dim);
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .verdict em {
+      color: var(--cream);
+      font-style: normal;
+    }
+
+    .nav-btns {
+      display: flex;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 2px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      letter-spacing: 0;
+      line-height: 1;
+    }
+
+    .nav-btn:hover {
+      border-color: var(--red);
+      color: var(--red);
+      background: rgba(232,0,30,0.08);
+    }
+
+    .visit-btn {
+      background: var(--red);
+      border: none;
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      padding: 0 14px;
+      height: 32px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .visit-btn:hover { background: #ff1a35; transform: scale(1.04); }
+    .visit-btn:active { transform: scale(0.97); }
+
+    /* ── IFRAME VISIT MODAL ── */
+    #visitModal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(0,0,0,0.97);
+      flex-direction: column;
+    }
+    #visitModal.active { display: flex; }
+
+    .vm-topbar {
+      height: 48px;
+      background: var(--dark2);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 14px;
+      flex-shrink: 0;
+    }
+
+    .vm-site-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 15px;
+      letter-spacing: 3px;
+      color: var(--cream);
+      flex: 1;
+    }
+
+    .vm-site-label span {
+      color: var(--red);
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-left: 10px;
+      font-family: 'DM Mono', monospace;
+      opacity: 0.6;
+    }
+
+    /* countdown pill in topbar */
+    .vm-countdown {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(232,0,30,0.08);
+      border: 1px solid rgba(232,0,30,0.25);
+      border-radius: 3px;
+      padding: 4px 12px 4px 8px;
+    }
+
+    .vm-cd-ring {
+      position: relative;
+      width: 28px;
+      height: 28px;
+      flex-shrink: 0;
+    }
+
+    .vm-cd-ring svg {
+      position: absolute;
+      inset: 0;
+      transform: rotate(-90deg);
+    }
+
+    .vm-cd-track { fill: none; stroke: #2a2520; stroke-width: 3; }
+    .vm-cd-arc   {
+      fill: none;
+      stroke: var(--red);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 75.4;
+      stroke-dashoffset: 0;
+      transition: stroke-dashoffset 0.95s linear;
+    }
+
+    .vm-cd-num {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      color: var(--red);
+      line-height: 1;
+    }
+
+    .vm-cd-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .vm-cd-text strong {
+      display: block;
+      color: var(--cream);
+      font-size: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .vm-close {
+      background: var(--red);
+      border: none;
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 12px;
+      letter-spacing: 2px;
+      padding: 0 14px;
+      height: 30px;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
+    .vm-close:hover { background: #ff1a35; }
+
+    .vm-frame-wrap {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #visitFrame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      background: #fff;
+    }
+
+    /* Blocked site fallback */
+    .vm-blocked {
+      display: none;
+      position: absolute;
+      inset: 0;
+      background: var(--dark);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .vm-blocked.show { display: flex; }
+
+    .vm-blocked-icon {
+      font-size: 48px;
+      line-height: 1;
+    }
+
+    .vm-blocked h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 26px;
+      letter-spacing: 3px;
+      color: var(--cream);
+      margin: 0;
+    }
+
+    .vm-blocked p {
+      font-family: 'Special Elite', serif;
+      font-size: 13px;
+      color: var(--text-dim);
+      margin: 0;
+      max-width: 340px;
+      line-height: 1.6;
+    }
+
+    .vm-open-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--red);
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      padding: 8px 20px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background 0.2s;
+      margin-top: 4px;
+    }
+    .vm-open-link:hover { background: #ff1a35; }
+
+    /* ── LIGHTBOX ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.97);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    #lightbox.open { display: flex; }
+
+    .lb-img-wrap {
+      position: relative;
+      max-width: 92vw;
+      max-height: 80vh;
+    }
+
+    #lbImg {
+      max-width: 92vw;
+      max-height: 78vh;
+      border-radius: 4px;
+      box-shadow: 0 0 0 1px #333, 0 40px 100px rgba(0,0,0,0.9);
+      display: block;
+    }
+
+    .lb-label {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: var(--text-dim);
+    }
+
+    .lb-label span { color: var(--red); }
+
+    #lbClose {
+      position: fixed;
+      top: 20px; right: 20px;
+      background: var(--red);
+      color: #fff;
+      border: none;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background 0.2s;
+    }
+
+    #lbClose:hover { background: #ff1a35; }
+
+    /* Disclaimer pill */
+    .disclaimer {
+      font-size: 9px;
+      color: #3a3530;
+      text-align: center;
+      padding: 0 20px 12px;
+      letter-spacing: 0.5px;
+      line-height: 1.6;
+    }
+
+    /* Entry animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .widget { animation: fadeUp 0.6s ease both; }
+  </style>
+</head>
+<body>
+
+<div class="widget">
+  <div class="tape"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-text">
+      <h1>Hall of Shame</h1>
+      <p>Notable brands. Inexplicable websites.<br>All opinions are, well… ours. ✦</p>
+    </div>
+    <div style="text-align:right">
+      <div class="badge">EXHIBIT</div>
+      <div class="counter" id="counterDisplay">01</div>
+    </div>
+  </div>
+
+  <!-- Main stage -->
+  <div class="stage" id="stage" onclick="openLightbox()">
+    <div class="scanlines"></div>
+    <div class="crime-tag" id="crimeTag">GUILTY</div>
+    <div class="expand-hint">CLICK TO ENLARGE</div>
+    <img class="stage-img" id="stageImg" src="" alt="Bad website screenshot">
+    <div class="nameplate">
+      <p class="site-name" id="stageName">—</p>
+      <p class="site-url" id="stageUrl">—</p>
+    </div>
+  </div>
+
+  <!-- Filmstrip -->
+  <div class="strip-wrap">
+    <div class="strip" id="strip"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="verdict" id="verdict">—</div>
+    <div class="nav-btns">
+      <button class="nav-btn" onclick="prev()">&#8592;</button>
+      <button class="nav-btn" onclick="next()">&#8594;</button>
+    </div>
+    <button class="visit-btn" id="visitBtn" onclick="openVisitModal()">&#x2192; VISIT SITE</button>
+  </div>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    All screenshots shown as critical commentary. Opinions expressed are solely those of this site's author and do not constitute fact. All trademarks belong to their respective owners.
+  </div>
+</div>
+
+<!-- ── IFRAME VISIT MODAL ── -->
+<div id="visitModal">
+  <div class="vm-topbar">
+    <div class="vm-site-label">
+      <span id="vmSiteName">—</span>
+      <span id="vmSiteUrl"></span>
+    </div>
+    <div class="vm-countdown" id="vmCountdown">
+      <div class="vm-cd-ring">
+        <svg viewBox="0 0 28 28">
+          <circle class="vm-cd-track" cx="14" cy="14" r="12"/>
+          <circle class="vm-cd-arc"   cx="14" cy="14" r="12" id="vmArc"
+            stroke-dasharray="75.4" stroke-dashoffset="0"/>
+        </svg>
+        <div class="vm-cd-num" id="vmNum">5</div>
+      </div>
+      <div class="vm-cd-text">
+        <strong>AUTO-CLOSING</strong>
+        IN SECONDS
+      </div>
+    </div>
+    <button class="vm-close" onclick="closeVisitModal()">✕ CLOSE</button>
+  </div>
+  <div class="vm-frame-wrap">
+    <iframe id="visitFrame" src="about:blank" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" title="Website preview"></iframe>
+    <div class="vm-blocked" id="vmBlocked">
+      <div class="vm-blocked-icon">🚫</div>
+      <h2>THEY'RE HIDING</h2>
+      <p id="vmBlockedMsg">This site has blocked external previews — probably embarrassed. You'll have to witness the horror directly.</p>
+      <a class="vm-open-link" id="vmOpenLink" href="#" target="_blank" rel="noopener noreferrer">→ OPEN IN NEW TAB</a>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button id="lbClose" onclick="closeLightbox()">✕</button>
+  <div class="lb-img-wrap">
+    <img id="lbImg" src="" alt="">
+  </div>
+  <div class="lb-label">EXHIBIT <span id="lbNum">01</span> — <span id="lbName">—</span></div>
+</div>
+
+<script>
+  const sites = [
+    { name:"BERKSHIRE HATHAWAY",  url:"berkshirehathaway.com",    href:"https://berkshirehathaway.com",        img:"1.avif",  verdict:"Worth <em>$900 billion.</em> Budget spent on the website: apparently none." },
+    { name:"GOODREADS",           url:"goodreads.com",             href:"https://goodreads.com",                img:"2.avif",  verdict:"Amazon owns it. They apparently decided <em>circa-2010 MySpace</em> was the look." },
+    { name:"LIFE ACTION REVIVAL", url:"lifeactionrevival.com",     href:"https://lifeactionrevival.com",        img:"3.avif",  verdict:"A spiritual experience — and the design choices are <em>truly a test of faith.</em>" },
+    { name:"LIPTON TEA",          url:"lipton.com (historical)",   href:"https://lipton.com",                   img:"4.avif",  verdict:"One of the world's biggest tea brands. The site needed <em>a strong brew</em> of UX." },
+    { name:"PACIFIC NW X-RAY",   url:"pacificnorthwestxray.com",  href:"https://www.pacificnorthwestxray.com", img:"5.avif",  verdict:"We can't look directly at it either — much like <em>an unshielded X-ray.</em>" },
+    { name:"PENNY JUICE",         url:"pennyjuice.com",            href:"https://www.pennyjuice.com",           img:"6.avif",  verdict:"It's made for kids, sure — but surely <em>children deserve readable text too.</em>" },
+    { name:"TAG TEAM SIGNS",      url:"tagteamsigns.com",          href:"https://www.tagteamsigns.com",         img:"7.avif",  verdict:"The irony of a sign company with a site that <em>signals absolutely nothing good.</em>" },
+    { name:"TORONTO CUPCAKE",     url:"torontocupcake.com",        href:"https://www.torontocupcake.com",       img:"8.avif",  verdict:"The cupcakes look delicious. The website looks like <em>it was frosted by a cat.</em>" },
+    { name:"YAHOO",               url:"yahoo.com",                 href:"https://yahoo.com",                    img:"9.avif",  verdict:"Once internet royalty — now a digital <em>yard sale that never ends.</em>" },
+    { name:"YALE SCHOOL OF ART",  url:"art.yale.edu",              href:"https://art.yale.edu",                 img:"10.avif", verdict:"A prestigious art school. The website is… well, <em>certainly a choice.</em> We'll give them that." }
+  ];
+
+  const crimeTags = ["GUILTY","HEINOUS","OFFENDER","CULPRIT","FLAGGED","CHARGED"];
+  let current = 0;
+  let cdTimer  = null;
+  const CD_SECS = 5;
+  const ARC_LEN = 75.4; // 2π × r=12
+
+  function pad(n) { return String(n+1).padStart(2,'0'); }
+
+  function show(idx) {
+    current = (idx + sites.length) % sites.length;
+    const s = sites[current];
+    document.getElementById('stageImg').src                  = s.img;
+    document.getElementById('stageName').textContent         = s.name;
+    document.getElementById('stageUrl').textContent          = s.url;
+    document.getElementById('verdict').innerHTML             = s.verdict;
+    document.getElementById('counterDisplay').textContent    = pad(current);
+    document.getElementById('crimeTag').textContent          = crimeTags[current % crimeTags.length];
+    document.querySelectorAll('.thumb').forEach((t,i) =>
+      t.classList.toggle('active', i % sites.length === current));
+  }
+
+  function next() { show(current + 1); }
+  function prev() { show(current - 1); }
+
+  // ── IFRAME VISIT MODAL ──
+  function openVisitModal() {
+    const s       = sites[current];
+    const modal   = document.getElementById('visitModal');
+    const frame   = document.getElementById('visitFrame');
+    const blocked = document.getElementById('vmBlocked');
+
+    document.getElementById('vmSiteName').textContent  = s.name;
+    document.getElementById('vmSiteUrl').textContent   = s.url;
+    document.getElementById('vmOpenLink').href         = s.href;
+    document.getElementById('vmBlockedMsg').textContent =
+      s.name + ' refuses to load in a preview — probably embarrassed. Click below to witness the horror directly.';
+
+    blocked.classList.remove('show');
+    frame.src = 'about:blank';
+    modal.classList.add('active');
+
+    setTimeout(() => {
+      frame.src = s.href;
+
+      frame.onload = () => {
+        try {
+          const doc = frame.contentDocument || frame.contentWindow.document;
+          if (!doc || !doc.body || doc.body.innerHTML === '') {
+            blocked.classList.add('show');
+          }
+        } catch(e) {
+          blocked.classList.add('show');
+        }
+      };
+      frame.onerror = () => blocked.classList.add('show');
+    }, 80);
+
+    startCountdown();
+  }
+
+  function startCountdown() {
+    clearTimeout(cdTimer);
+    let remaining = CD_SECS;
+    const numEl = document.getElementById('vmNum');
+    const arcEl = document.getElementById('vmArc');
+
+    // Reset arc instantly, then animate
+    arcEl.style.transition        = 'none';
+    arcEl.style.strokeDashoffset  = '0';
+
+    function tick() {
+      numEl.textContent = remaining;
+      const elapsed = CD_SECS - remaining;
+      requestAnimationFrame(() => {
+        arcEl.style.transition       = 'stroke-dashoffset 0.95s linear';
+        arcEl.style.strokeDashoffset = String(ARC_LEN * (elapsed / CD_SECS));
+      });
+
+      if (remaining <= 0) {
+        closeVisitModal();
+        return;
+      }
+      remaining--;
+      cdTimer = setTimeout(tick, 1000);
+    }
+
+    tick();
+  }
+
+  function closeVisitModal() {
+    clearTimeout(cdTimer);
+    document.getElementById('visitModal').classList.remove('active');
+    setTimeout(() => { document.getElementById('visitFrame').src = 'about:blank'; }, 300);
+  }
+
+  // ── LIGHTBOX (screenshot zoom) ──
+  function openLightbox() {
+    const s = sites[current];
+    document.getElementById('lbImg').src              = s.img;
+    document.getElementById('lbNum').textContent      = pad(current);
+    document.getElementById('lbName').textContent     = s.name;
+    document.getElementById('lightbox').classList.add('open');
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeLightbox(); closeVisitModal(); }
+    if (e.key === 'ArrowRight') next();
+    if (e.key === 'ArrowLeft')  prev();
+  });
+
+  // ── FILMSTRIP ──
+  function buildStrip() {
+    const strip = document.getElementById('strip');
+    [...sites, ...sites].forEach((s, i) => {
+      const img     = document.createElement('img');
+      img.src       = s.img;
+      img.alt       = s.name;
+      img.className = 'thumb' + (i % sites.length === 0 ? ' active' : '');
+      img.title     = s.name;
+      img.onclick   = () => show(i % sites.length);
+      strip.appendChild(img);
+    });
+  }
+
+  buildStrip();
+  show(0);
+</script>
+</body>
+</html>
